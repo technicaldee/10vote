@@ -1,0 +1,42 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/edidiong/Downloads/10vote Game App (1)/contracts/DuelManager.sol": {
+      "lastModificationDate": 1760626945987,
+      "contentHash": "91fbf74ab6305c12a3ae71410a8db5a0",
+      "sourceName": "contracts/DuelManager.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "DuelManager",
+        "IERC20"
+      ]
+    }
+  }
+}
