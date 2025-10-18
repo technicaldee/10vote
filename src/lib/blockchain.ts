@@ -2,8 +2,12 @@ import { createPublicClient, createWalletClient, http, webSocket, fallback } fro
 import { defineChain } from 'viem/utils';
 import { Chain } from 'wagmi';
 
-const wsUrl = import.meta.env.VITE_CELO_WS_RPC_URL as string;
-const httpUrl = import.meta.env.VITE_CELO_HTTP_RPC_URL as string;
+const DEFAULT_HTTP = 'https://forno.celo.org';
+const DEFAULT_WS = 'wss://forno.celo.org/ws';
+const sanitize = (url?: string) => (url ? url.replace(/^`|`$/g, '').trim() : '');
+
+const httpUrl = sanitize(import.meta.env.VITE_CELO_HTTP_RPC_URL) || DEFAULT_HTTP;
+const wsUrl = sanitize(import.meta.env.VITE_CELO_WS_RPC_URL) || DEFAULT_WS;
 
 export const celoChain: Chain = {
   id: 42220,

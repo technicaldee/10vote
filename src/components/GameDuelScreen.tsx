@@ -93,14 +93,14 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const [opponentDisplay, setOpponentDisplay] = useState<string>(opponent || 'Opponent');
   const [isLive, setIsLive] = useState<boolean>(!!duelId && !spectator);
   const [hasOpponentHello, setHasOpponentHello] = useState<boolean>(false);
-const [questions, setQuestions] = useState<NormalizedQuestion[]>([]);
+  const [questions, setQuestions] = useState<NormalizedQuestion[]>([]);
 
   const isSpectator = !!spectator;
   const isCreator = !!creator;
-  const wsUrlEnv = import.meta.env.VITE_GAME_WS_URL as string | undefined;
-  const wsUrl = (typeof window !== 'undefined')
-    ? (wsUrlEnv || `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws`)
-    : wsUrlEnv;
+  const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
+  const wsUrlEnv = wsUrlEnvRaw ? wsUrlEnvRaw.replace(/^`|`$/g, '').trim() : undefined;
+  const defaultWs = (typeof window !== 'undefined') ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws` : undefined;
+  const wsUrl = wsUrlEnv ? (wsUrlEnv.endsWith('/ws') ? wsUrlEnv : `${wsUrlEnv.replace(/\/+$/, '')}/ws`) : defaultWs;
   const wsRef = useRef<WebSocket | null>(null);
   const { address } = useAccount();
   const helloIntervalRef = useRef<number | null>(null);
