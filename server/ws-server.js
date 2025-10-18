@@ -1,13 +1,12 @@
 import 'dotenv/config';
-import pkg from 'ws';
-const { Server } = pkg;
+import { WebSocketServer } from 'ws';
 import http from 'http';
 import crypto from 'crypto';
 
 const PORT = process.env.WS_PORT ? Number(process.env.WS_PORT) : 8080;
 
 const server = http.createServer();
-const wss = new Server({ server });
+const wss = new WebSocketServer({ server });
 
 const rooms = new Map(); // roomId -> Set<ws>
 const queueByCategory = new Map(); // category -> Array<ws>

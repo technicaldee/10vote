@@ -1,0 +1,994 @@
+[
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Which film won the **Academy Award for Best Picture in 2024** and was the highest-grossing film of 2023 at the global box office?",
+    "options": ["Oppenheimer", "Poor Things", "Killers of the Flower Moon", "Barbie"],
+    "correctAnswer": "Oppenheimer",
+    "imageURL": "SEARCH_QUERY: 'Oppenheimer Best Picture Oscar 2024 photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (2023-2024)",
+    "question": "Which artist broke the record for the most cumulative weeks at **number one on the Billboard Hot 100** by a female artist, surpassing Mariah Carey?",
+    "options": ["Taylor Swift", "Doja Cat", "Beyoncé", "Rihanna"],
+    "correctAnswer": "Taylor Swift",
+    "imageURL": "SEARCH_QUERY: 'Taylor Swift Billboard Hot 100 record photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "The HBO series *Succession* revolves around the Roy family and their media conglomerate. What is the **full name** of this fictional company?",
+    "options": ["Waystar Global", "Waystar RoyCo", "The Roy Group", "Global Media Nexus"],
+    "correctAnswer": "Waystar RoyCo",
+    "imageURL": "SEARCH_QUERY: 'Succession Waystar RoyCo logo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "Which highly influential, video game-like world, originally released in 2006, celebrated its '100 million monthly active users' milestone in 2023?",
+    "options": ["Minecraft", "Fortnite", "Roblox", "Second Life"],
+    "correctAnswer": "Roblox",
+    "imageURL": "SEARCH_QUERY: 'Roblox platform 2023 graphic'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Classics)",
+    "question": "Which 1970s blockbuster is notable for being the first film in history to reach **$100 million** at the U.S. domestic box office?",
+    "options": ["Star Wars (1977)", "The Godfather (1972)", "The Exorcist (1973)", "Jaws (1975)"],
+    "correctAnswer": "Jaws (1975)",
+    "imageURL": "SEARCH_QUERY: 'Jaws 1975 movie poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the name of the acclaimed 2022 album by Beyoncé that is the second installment of a three-part project and draws heavily from house music and Black queer culture?",
+    "options": ["Lemonade", "I Am... Sasha Fierce", "Renaissance", "Dangerously in Love"],
+    "correctAnswer": "Renaissance",
+    "imageURL": "SEARCH_QUERY: 'Beyoncé Renaissance album cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "Which character, often associated with a trench coat and a penchant for solving mysteries, is the protagonist of the longest-running prime-time dramatic series on American television?",
+    "options": ["Olivia Benson", "Columbo", "Benson", "Leroy Jethro Gibbs"],
+    "correctAnswer": "Olivia Benson",
+    "imageURL": "SEARCH_QUERY: 'Olivia Benson SVU character photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "The highly successful fantasy action-RPG game *Elden Ring* (2022) was a collaboration between director Hidetaka Miyazaki and which famous fantasy author?",
+    "options": ["Brandon Sanderson", "Neil Gaiman", "George R.R. Martin", "Patrick Rothfuss"],
+    "correctAnswer": "George R.R. Martin",
+    "imageURL": "SEARCH_QUERY: 'Elden Ring game cover art'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "The final line of dialogue in the classic film *Casablanca* (1942) is famously: 'Louis, I think this is the beginning of a beautiful...'",
+    "options": ["friendship", "adventure", "journey", "tomorrow"],
+    "correctAnswer": "friendship",
+    "imageURL": "SEARCH_QUERY: 'Casablanca final scene Humphrey Bogart'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the specific musical term for the repetitive, looped instrumental section that forms the basis of many early hip-hop tracks?",
+    "options": ["Chorus", "Bridge", "Breakbeat", "Riff"],
+    "correctAnswer": "Breakbeat",
+    "imageURL": "SEARCH_QUERY: 'DJ Kool Herc breakbeat technique photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "Which critically acclaimed 2023 limited series starring Ali Wong and Steven Yeun follows the aftermath of a road rage incident?",
+    "options": ["The Last of Us", "Beef", "The Bear", "Reservation Dogs"],
+    "correctAnswer": "Beef",
+    "imageURL": "SEARCH_QUERY: 'Beef Netflix series poster Ali Wong Steven Yeun'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "The term **'Doppelgänger effect'** in social media refers to the phenomenon of an AI program generating highly realistic fake profile images based on which specific style of network?",
+    "options": ["Recurrent Neural Network (RNN)", "Convolutional Neural Network (CNN)", "Generative Adversarial Network (GAN)", "Transformer Model"],
+    "correctAnswer": "Generative Adversarial Network (GAN)",
+    "imageURL": "SEARCH_QUERY: 'Generative Adversarial Network fake face image'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "Which director is the only person in history to win the Academy Award for **Best Director three times in a row** (1935-1937)?",
+    "options": ["Frank Capra", "Billy Wilder", "John Ford", "William Wyler"],
+    "correctAnswer": "Frank Capra",
+    "imageURL": "SEARCH_QUERY: 'Frank Capra director portrait'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "The 2024 album *TTPD* (*The Tortured Poets Department*) by Taylor Swift features a collaboration with which English band's frontman on the track 'Florida!!!'?",
+    "options": ["Arctic Monkeys", "The 1975", "The National", "Florence + The Machine"],
+    "correctAnswer": "Florence + The Machine",
+    "imageURL": "SEARCH_QUERY: 'Taylor Swift TTPD tracklist The National'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "What is the name of the fictional town in the Pacific Northwest where the cult-classic series *Twin Peaks* is set?",
+    "options": ["Riverdale", "Stars Hollow", "Twin Peaks", "Forks"],
+    "correctAnswer": "Twin Peaks",
+    "imageURL": "SEARCH_QUERY: 'Twin Peaks Welcome Sign photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "The **Nintendo Switch** succeeded which underperforming Nintendo console that featured a unique tablet controller?",
+    "options": ["Nintendo 64", "GameCube", "Wii U", "3DS"],
+    "correctAnswer": "Wii U",
+    "imageURL": "SEARCH_QUERY: 'Nintendo Wii U console and gamepad photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Before starring in *Barbie*, Ryan Gosling co-starred with Emma Stone in which 2016 musical film, for which he received an Oscar nomination?",
+    "options": ["The Notebook", "Crazy, Stupid, Love", "La La Land", "Drive"],
+    "correctAnswer": "La La Land",
+    "imageURL": "SEARCH_QUERY: 'La La Land Ryan Gosling Emma Stone poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the name of the influential, multi-platinum album released by Kendrick Lamar in 2015, heavily influenced by jazz and funk?",
+    "options": ["good kid, m.A.A.d city", "To Pimp a Butterfly", "DAMN.", "Mr. Morale & The Big Steppers"],
+    "correctAnswer": "To Pimp a Butterfly",
+    "imageURL": "SEARCH_QUERY: 'Kendrick Lamar To Pimp a Butterfly album cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "Which series won the **Emmy Award for Outstanding Drama Series** for its final season in early 2024 (for the 2023 season)?",
+    "options": ["Ted Lasso", "Succession", "The White Lotus", "The Bear"],
+    "correctAnswer": "Succession",
+    "imageURL": "SEARCH_QUERY: 'Succession cast Emmy award 2024 photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "The term **'Simp'**, widely used on the internet, is an acronym that originally stood for what phrase in certain online communities?",
+    "options": ["Single, Male, Person", "Sophisticated, Interesting, Meme Provider", "Sucka Idolizing Mediocre P***y", "Superior Intelligence, Master Player"],
+    "correctAnswer": "Sucka Idolizing Mediocre P***y",
+    "imageURL": "SEARCH_QUERY: 'Simp internet meme origin definition'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Classics)",
+    "question": "Who was the first (and only) actor to win an Academy Award for playing a character in a **Star Wars** film?",
+    "options": ["Alec Guinness", "Harrison Ford", "Mark Hamill", "Carrie Fisher"],
+    "correctAnswer": "Alec Guinness",
+    "imageURL": "SEARCH_QUERY: 'Alec Guinness as Obi-Wan Kenobi photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which Canadian pop star holds the record for the most total Billboard Hot 100 entries (2009-2024)?",
+    "options": ["Drake", "The Weeknd", "Justin Bieber", "Celine Dion"],
+    "correctAnswer": "Drake",
+    "imageURL": "SEARCH_QUERY: 'Drake Billboard Hot 100 record photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "Before his roles in *Breaking Bad* and *Better Call Saul*, Bob Odenkirk was primarily known as a writer and star of which 1990s sketch comedy show?",
+    "options": ["Saturday Night Live", "In Living Color", "The Kids in the Hall", "Mr. Show with Bob and David"],
+    "correctAnswer": "Mr. Show with Bob and David",
+    "imageURL": "SEARCH_QUERY: 'Mr. Show with Bob and David poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "In the *Pokémon* universe, what is the name of the original region where the first generation of games (Red, Blue, Yellow) is set?",
+    "options": ["Johto", "Kanto", "Sinnoh", "Hoenn"],
+    "correctAnswer": "Kanto",
+    "imageURL": "SEARCH_QUERY: 'Kanto region Pokémon map'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Which major film studio produced and distributed *The Super Mario Bros. Movie* (2023), making it a significant box office success?",
+    "options": ["Walt Disney Pictures", "Universal Pictures", "Warner Bros.", "Paramount Pictures"],
+    "correctAnswer": "Universal Pictures",
+    "imageURL": "SEARCH_QUERY: 'Super Mario Bros Movie 2023 logo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Which artist had a massive 2023 hit with the song 'Flowers', a defiant anthem about self-love and independence?",
+    "options": ["Olivia Rodrigo", "Dua Lipa", "Miley Cyrus", "SZA"],
+    "correctAnswer": "Miley Cyrus",
+    "imageURL": "SEARCH_QUERY: 'Miley Cyrus Flowers music video screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "What is the name of the fictional town and high school where the iconic 1990s teen drama *Beverly Hills, 90210* is set?",
+    "options": ["Capeside", "Sunnydale", "West Beverly High", "Bayside High"],
+    "correctAnswer": "West Beverly High",
+    "imageURL": "SEARCH_QUERY: 'Beverly Hills 90210 West Beverly High building'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "What term is used on Twitch and YouTube to describe a video or stream where the content creator silently works on a task, often for long periods?",
+    "options": ["Vlog", "ASMR", "Study Stream", "Lofi Girl"],
+    "correctAnswer": "Study Stream",
+    "imageURL": "SEARCH_QUERY: 'Lofi Girl Study Stream YouTube background'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "In the *Lord of the Rings* trilogy, what is the name of the giant spider that Frodo and Sam encounter near the borders of Mordor?",
+    "options": ["Ungoliant", "Shelob", "Aragog", "Gothmog"],
+    "correctAnswer": "Shelob",
+    "imageURL": "SEARCH_QUERY: 'Shelob Lord of the Rings creature design'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which pioneering female rapper's debut single 'Push It' (1987) was initially released as the B-side to a separate track?",
+    "options": ["Salt-N-Pepa", "MC Lyte", "Queen Latifah", "Roxanne Shanté"],
+    "correctAnswer": "Salt-N-Pepa",
+    "imageURL": "SEARCH_QUERY: 'Salt-N-Pepa Push It single cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "The second season of which 2023-2024 hit series featured a parallel dimension known as 'The Upside Down' where a monstrous entity resides?",
+    "options": ["Yellowjackets", "Stranger Things", "Severance", "Loki"],
+    "correctAnswer": "Stranger Things",
+    "imageURL": "SEARCH_QUERY: 'Stranger Things Upside Down set design'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "The highly-anticipated 2023 sequel to the *Legend of Zelda: Breath of the Wild* is titled what?",
+    "options": ["Tears of the Kingdom", "A Link Between Worlds", "Skyward Sword", "Twilight Princess"],
+    "correctAnswer": "Tears of the Kingdom",
+    "imageURL": "SEARCH_QUERY: 'Legend of Zelda Tears of the Kingdom logo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Classics)",
+    "question": "Which film holds the record for the most total Academy Award nominations without winning a single Oscar (11 nominations)?",
+    "options": ["The Turning Point (1977)", "The Color Purple (1985)", "Gangs of New York (2002)", "The Last Picture Show (1971)"],
+    "correctAnswer": "The Turning Point (1977)",
+    "imageURL": "SEARCH_QUERY: 'The Turning Point 1977 movie poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Which artist's 2024 album *Eternal Sunshine* debuted at number one and was partly inspired by the film *Eternal Sunshine of the Spotless Mind*?",
+    "options": ["SZA", "Dua Lipa", "Ariana Grande", "Billie Eilish"],
+    "correctAnswer": "Ariana Grande",
+    "imageURL": "SEARCH_QUERY: 'Ariana Grande Eternal Sunshine album cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *The Office* (US), what is the full name of the paper company where the characters work?",
+    "options": ["Staples & Co.", "Dunder Mifflin Paper Company", "Sabre", "Wernham Hogg"],
+    "correctAnswer": "Dunder Mifflin Paper Company",
+    "imageURL": "SEARCH_QUERY: 'The Office Dunder Mifflin logo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "Which popular social media platform launched the short-video feature **'Reels'** in 2020 as a direct competitor to TikTok?",
+    "options": ["Snapchat", "Twitter (X)", "Instagram", "Facebook"],
+    "correctAnswer": "Instagram",
+    "imageURL": "SEARCH_QUERY: 'Instagram Reels interface screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "What is the name of the fictional theme park populated by genetically engineered dinosaurs in the *Jurassic Park* franchise?",
+    "options": ["Dino World", "Jurassic Park", "Isla Sorna", "Lost World"],
+    "correctAnswer": "Jurassic Park",
+    "imageURL": "SEARCH_QUERY: 'Jurassic Park logo and entrance gate'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which British band's 1997 album *OK Computer* is considered a landmark achievement in alternative rock and a commentary on technology and globalization?",
+    "options": ["Oasis", "Blur", "Radiohead", "Pulp"],
+    "correctAnswer": "Radiohead",
+    "imageURL": "SEARCH_QUERY: 'Radiohead OK Computer album cover art'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "In the dark comedy series *The Bear*, what is the name of the small sandwich shop in Chicago that chef Carmy Berzatto inherits?",
+    "options": ["The Beef", "The Bear", "The Original Beef of Chicagoland", "Carm's Kitchen"],
+    "correctAnswer": "The Original Beef of Chicagoland",
+    "imageURL": "SEARCH_QUERY: 'The Bear TV show restaurant sign photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "Which major video game franchise introduced the battle royale genre to mainstream gaming with its 2017 release?",
+    "options": ["Call of Duty", "PlayerUnknown's Battlegrounds (PUBG)", "Fortnite", "Apex Legends"],
+    "correctAnswer": "Fortnite",
+    "imageURL": "SEARCH_QUERY: 'Fortnite battle royale game screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Who was the director of the critically acclaimed 2024 film *Dune: Part Two*?",
+    "options": ["Christopher Nolan", "Denis Villeneuve", "Greta Gerwig", "Jordan Peele"],
+    "correctAnswer": "Denis Villeneuve",
+    "imageURL": "SEARCH_QUERY: 'Dune Part Two director Denis Villeneuve photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which legendary hip-hop group from Staten Island is famously named after a classic 1978 martial arts film?",
+    "options": ["A Tribe Called Quest", "Run-DMC", "Wu-Tang Clan", "N.W.A."],
+    "correctAnswer": "Wu-Tang Clan",
+    "imageURL": "SEARCH_QUERY: 'Wu-Tang Clan group photo 1990s'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *Friends*, what is the name of the coffee shop where the group primarily hangs out?",
+    "options": ["The Daily Grind", "Central Perk", "Monk's Diner", "Cheers"],
+    "correctAnswer": "Central Perk",
+    "imageURL": "SEARCH_QUERY: 'Friends Central Perk coffee shop set photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "The term **'NFT'** stands for what digital asset classification that gained massive popularity in 2021-2022?",
+    "options": ["Non-Fungible Token", "New Financial Technology", "Networked File Transfer", "Non-Fiction Text"],
+    "correctAnswer": "Non-Fungible Token",
+    "imageURL": "SEARCH_QUERY: 'NFT Non-Fungible Token logo illustration'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Classics)",
+    "question": "Which Steven Spielberg film features the line, 'E.T. phone home'?",
+    "options": ["Close Encounters of the Third Kind", "Poltergeist", "E.T. the Extra-Terrestrial", "War of the Worlds"],
+    "correctAnswer": "E.T. the Extra-Terrestrial",
+    "imageURL": "SEARCH_QUERY: 'E.T. phone home movie scene photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which influential New York punk band released the seminal 1977 album *Rocket to Russia* and is often cited as a key influence on countless subsequent bands?",
+    "options": ["The Clash", "Sex Pistols", "Ramones", "Talking Heads"],
+    "correctAnswer": "Ramones",
+    "imageURL": "SEARCH_QUERY: 'Ramones band photo 1977'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "Who plays the lead role of Detective Rustin 'Rust' Cohle in the highly-acclaimed first season of the anthology series *True Detective*?",
+    "options": ["Woody Harrelson", "Matthew McConaughey", "Mahershala Ali", "Colin Farrell"],
+    "correctAnswer": "Matthew McConaughey",
+    "imageURL": "SEARCH_QUERY: 'Matthew McConaughey True Detective photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "The **Steam Deck** is a portable gaming computer developed and manufactured by which major digital distribution company?",
+    "options": ["Sony", "Microsoft", "Valve Corporation", "Epic Games"],
+    "correctAnswer": "Valve Corporation",
+    "imageURL": "SEARCH_QUERY: 'Steam Deck portable console photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "Who directed the neo-noir masterpiece *Chinatown* (1974), featuring Jack Nicholson as private eye J.J. Gittes?",
+    "options": ["Martin Scorsese", "Francis Ford Coppola", "Roman Polanski", "Sydney Pollack"],
+    "correctAnswer": "Roman Polanski",
+    "imageURL": "SEARCH_QUERY: 'Chinatown 1974 movie poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Which global superstar kicked off the highly successful **'Eras Tour'** in 2023, becoming the first tour to gross over $1 billion?",
+    "options": ["Beyoncé", "Adele", "Harry Styles", "Taylor Swift"],
+    "correctAnswer": "Taylor Swift",
+    "imageURL": "SEARCH_QUERY: 'Taylor Swift The Eras Tour stadium photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *Seinfeld*, what is the name of the fictional character often associated with loud, abrasive behavior and the phrase 'Giddy up!'?",
+    "options": ["Newman", "Kramer", "George Costanza", "Jerry Seinfeld"],
+    "correctAnswer": "Kramer",
+    "imageURL": "SEARCH_QUERY: 'Seinfeld Kramer character photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "What is the common term for a user who actively seeks to disrupt online communities, often by posting inflammatory or off-topic content?",
+    "options": ["Bot", "Lurker", "Shill", "Troll"],
+    "correctAnswer": "Troll",
+    "imageURL": "SEARCH_QUERY: 'Internet Troll meme face graphic'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Who directed the 2023 film *Barbie*, which became a cultural phenomenon and the highest-grossing film directed by a sole woman?",
+    "options": ["Emerald Fennell", "Sofia Coppola", "Chloé Zhao", "Greta Gerwig"],
+    "correctAnswer": "Greta Gerwig",
+    "imageURL": "SEARCH_QUERY: 'Barbie movie Greta Gerwig director photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "The groundbreaking 1989 album *Paul's Boutique* was released by which New York City hip-hop group?",
+    "options": ["Public Enemy", "Beastie Boys", "De La Soul", "A Tribe Called Quest"],
+    "correctAnswer": "Beastie Boys",
+    "imageURL": "SEARCH_QUERY: 'Beastie Boys Paul's Boutique album cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "What is the name of the fictional pharmaceutical company featured prominently in the series *Mad Men* that serves as a key client for Sterling Cooper?",
+    "options": ["Sterling Cooper", "Pillsbury", "Lucky Strike", "Vick Chemical"],
+    "correctAnswer": "Lucky Strike",
+    "imageURL": "SEARCH_QUERY: 'Mad Men Lucky Strike advertisement vintage'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "What is the official name of the protagonist in the *Halo* video game series, known for his green power armor?",
+    "options": ["Captain Keyes", "The Arbiter", "Master Chief (John-117)", "Sgt. Johnson"],
+    "correctAnswer": "Master Chief (John-117)",
+    "imageURL": "SEARCH_QUERY: 'Halo Master Chief John-117 armor photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Classics)",
+    "question": "Which 1999 psychological thriller, starring Bruce Willis and Haley Joel Osment, is famous for its iconic plot twist?",
+    "options": ["Memento", "Fight Club", "The Sixth Sense", "The Usual Suspects"],
+    "correctAnswer": "The Sixth Sense",
+    "imageURL": "SEARCH_QUERY: 'The Sixth Sense movie poster 1999'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Which artist collaborated with The Weeknd on the 2023 hit song 'Popular' for the HBO series *The Idol*?",
+    "options": ["Dua Lipa", "Ariana Grande", "Madonna", "SZA"],
+    "correctAnswer": "Madonna",
+    "imageURL": "SEARCH_QUERY: 'The Weeknd Madonna Popular single cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "In the series *The Last of Us*, what is the name of the organization that is seeking a cure for the Cordyceps brain infection?",
+    "options": ["The Fireflies", "WLF", "FEDRA", "The Hunters"],
+    "correctAnswer": "The Fireflies",
+    "imageURL": "SEARCH_QUERY: 'The Last of Us Fireflies symbol logo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "What is the common term for a video that features a person reacting to another video, often appearing in a small corner window?",
+    "options": ["Meme video", "Vlog", "Reaction Video", "Clip Show"],
+    "correctAnswer": "Reaction Video",
+    "imageURL": "SEARCH_QUERY: 'YouTube Reaction Video format screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "Which iconic sci-fi film franchise introduced the concept of a 'Blade Runner'—a police officer tasked with hunting down 'Replicants'?",
+    "options": ["The Terminator", "Alien", "Blade Runner", "RoboCop"],
+    "correctAnswer": "Blade Runner",
+    "imageURL": "SEARCH_QUERY: 'Blade Runner movie neon sign photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the name of the record label co-founded by Berry Gordy Jr. in Detroit in 1959, which became a powerhouse of R&B and soul music?",
+    "options": ["Def Jam", "Atlantic Records", "Motown Records", "Stax Records"],
+    "correctAnswer": "Motown Records",
+    "imageURL": "SEARCH_QUERY: 'Motown Records headquarters building Detroit'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "Which TV series introduced the 'Wibbly wobbly, timey wimey' quote, describing the non-linear nature of time travel?",
+    "options": ["Lost", "Fringe", "Doctor Who", "Star Trek"],
+    "correctAnswer": "Doctor Who",
+    "imageURL": "SEARCH_QUERY: 'Doctor Who TARDIS time travel photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "The massively popular sandbox game *Minecraft* was originally created by which Swedish game designer?",
+    "options": ["Hideo Kojima", "Shigeru Miyamoto", "Markus 'Notch' Persson", "Toby Fox"],
+    "correctAnswer": "Markus 'Notch' Persson",
+    "imageURL": "SEARCH_QUERY: 'Markus Persson Minecraft creator photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "The 2023 film *Past Lives* tells the decades-long story of childhood sweethearts separated by migration. What Korean concept describes the central theme of destined connection?",
+    "options": ["Jeong", "Han", "In-yeon", "Aegyo"],
+    "correctAnswer": "In-yeon",
+    "imageURL": "SEARCH_QUERY: 'Past Lives movie poster In-yeon concept'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which iconic music festival, established in 1970, is now the largest greenfield music and performing arts festival in the world, held in Somerset, England?",
+    "options": ["Coachella", "Woodstock", "Glastonbury Festival", "Lollapalooza"],
+    "correctAnswer": "Glastonbury Festival",
+    "imageURL": "SEARCH_QUERY: 'Glastonbury Festival Pyramid Stage photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *Game of Thrones*, what is the name of the northern castle and ancestral home of House Stark?",
+    "options": ["Casterly Rock", "King's Landing", "Winterfell", "The Eyrie"],
+    "correctAnswer": "Winterfell",
+    "imageURL": "SEARCH_QUERY: 'Game of Thrones Winterfell castle photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "The acronym **'AMA'**, widely used on Reddit and other forums, stands for what type of interaction with an expert or celebrity?",
+    "options": ["Ask Me Anything", "Accept My Answer", "All Media Available", "Automated Message Alert"],
+    "correctAnswer": "Ask Me Anything",
+    "imageURL": "SEARCH_QUERY: 'Reddit Ask Me Anything AMA format screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "Which highly influential German Expressionist film from 1920 is known for its stylized, angular sets and shocking twist ending?",
+    "options": ["Nosferatu", "Metropolis", "The Cabinet of Dr. Caligari", "M"],
+    "correctAnswer": "The Cabinet of Dr. Caligari",
+    "imageURL": "SEARCH_QUERY: 'The Cabinet of Dr. Caligari film set photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the specific musical genre, often associated with artists like Skrillex and Excision, characterized by aggressive, wobbling basslines and half-time rhythms?",
+    "options": ["House", "Techno", "Drum and Bass", "Dubstep"],
+    "correctAnswer": "Dubstep",
+    "imageURL": "SEARCH_QUERY: 'Dubstep music genre concert graphic'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "The lead character of the series *Yellowjackets* is a soccer team stranded after a plane crash in which region?",
+    "options": ["Alaskan Wilderness", "Canadian Wilderness", "Andes Mountains", "Siberian Tundra"],
+    "correctAnswer": "Canadian Wilderness",
+    "imageURL": "SEARCH_QUERY: 'Yellowjackets TV show Canadian wilderness setting'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "Which company, now a subsidiary of Microsoft, is the developer of the popular *Elder Scrolls* and *Fallout* role-playing game franchises?",
+    "options": ["Ubisoft", "Rockstar Games", "Bethesda Game Studios", "BioWare"],
+    "correctAnswer": "Bethesda Game Studios",
+    "imageURL": "SEARCH_QUERY: 'Bethesda Game Studios logo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Which historical epic, directed by Ridley Scott, stars Joaquin Phoenix as the titular French Emperor?",
+    "options": ["Oppenheimer", "The Last Duel", "Napoleon", "Gladiator 2"],
+    "correctAnswer": "Napoleon",
+    "imageURL": "SEARCH_QUERY: 'Napoleon 2023 movie Joaquin Phoenix poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Which artist's 2024 single 'Texas Hold 'Em' made them the first Black woman to ever top the Billboard Hot Country Songs chart?",
+    "options": ["Megan Thee Stallion", "SZA", "Beyoncé", "Lainey Wilson"],
+    "correctAnswer": "Beyoncé",
+    "imageURL": "SEARCH_QUERY: 'Beyoncé Texas Hold Em single cover country'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "The critically acclaimed series *Breaking Bad* is primarily set in and around which U.S. city?",
+    "options": ["Los Angeles", "Albuquerque", "New Orleans", "Phoenix"],
+    "correctAnswer": "Albuquerque",
+    "imageURL": "SEARCH_QUERY: 'Breaking Bad Albuquerque New Mexico landscape'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "What is the name of the popular AI image generator that uses text descriptions (prompts) to create highly detailed, often artistic images?",
+    "options": ["ChatGPT", "Midjourney", "DALL-E 2", "Stable Diffusion"],
+    "correctAnswer": "Midjourney",
+    "imageURL": "SEARCH_QUERY: 'Midjourney AI art example prompt'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Classics)",
+    "question": "Which groundbreaking 1941 film, directed by Orson Welles, features the famous dying word 'Rosebud'?",
+    "options": ["The Maltese Falcon", "Citizen Kane", "The African Queen", "Gone with the Wind"],
+    "correctAnswer": "Citizen Kane",
+    "imageURL": "SEARCH_QUERY: 'Citizen Kane Rosebud sled photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "The iconic 1980s music video 'Take On Me' by A-ha is famous for its pioneering use of what specific visual technique?",
+    "options": ["Stop Motion", "Rotoscoping", "CGI", "Green Screen"],
+    "correctAnswer": "Rotoscoping",
+    "imageURL": "SEARCH_QUERY: 'A-ha Take On Me rotoscoping style image'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *Arrested Development*, what is the name of the Bluth family's failed residential development in Iraq?",
+    "options": ["Operation Hot Mess", "A.S.S.", "Sudden Valley", "Wee Britain"],
+    "correctAnswer": "Sudden Valley",
+    "imageURL": "SEARCH_QUERY: 'Arrested Development Sudden Valley graphic'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "Which specific game holds the record for the **most copies sold** of any single video game, surpassing *Tetris* and *Grand Theft Auto V*?",
+    "options": ["Wii Sports", "Minecraft", "Super Mario Bros.", "Pac-Man"],
+    "correctAnswer": "Minecraft",
+    "imageURL": "SEARCH_QUERY: 'Minecraft best selling video game photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Which director's first feature film, *The Babadook* (2014), gained cult status before they directed the 2024 horror film *Late Night with the Devil*?",
+    "options": ["Ari Aster", "Robert Eggers", "Jennifer Kent", "Jordan Peele"],
+    "correctAnswer": "Jennifer Kent",
+    "imageURL": "SEARCH_QUERY: 'Jennifer Kent The Babadook director photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the name of the iconic New York City club, famous in the mid-1970s, that launched the careers of punk and new wave bands like the Ramones and Talking Heads?",
+    "options": ["The Fillmore", "CBGB", "The Factory", "The Apollo"],
+    "correctAnswer": "CBGB",
+    "imageURL": "SEARCH_QUERY: 'CBGB music club New York City exterior photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "The character of Captain Jean-Luc Picard in *Star Trek: The Next Generation* famously commands which starship?",
+    "options": ["USS Enterprise (NCC-1701)", "USS Defiant", "USS Voyager", "USS Enterprise (NCC-1701-D)"],
+    "correctAnswer": "USS Enterprise (NCC-1701-D)",
+    "imageURL": "SEARCH_QUERY: 'Star Trek USS Enterprise NCC-1701-D model'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "Which popular open-source software is the original foundation for most modern internet forums, bulletin boards, and blogging systems?",
+    "options": ["PHP", "JavaScript", "Linux", "WordPress"],
+    "correctAnswer": "WordPress",
+    "imageURL": "SEARCH_QUERY: 'WordPress logo original design'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "What specific weapon, invented by the character Q, is famously known as 'Walther PPK' in the *James Bond* franchise?",
+    "options": ["A laser watch", "A modified pistol", "A jetpack", "An underwater vehicle"],
+    "correctAnswer": "A modified pistol",
+    "imageURL": "SEARCH_QUERY: 'James Bond Walther PPK pistol photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Which artist's 2023 album *SOS* was the highest-streamed R&B album of all time on Spotify and features the massive hit 'Kill Bill'?",
+    "options": ["Rihanna", "Summer Walker", "SZA", "H.E.R."],
+    "correctAnswer": "SZA",
+    "imageURL": "SEARCH_QUERY: 'SZA SOS album cover art'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "The HBO series *The White Lotus* is an anthology that critiques the lives of wealthy guests at a luxurious resort in which two primary locations across its first two seasons?",
+    "options": ["Hawaii and Italy", "Maldives and Greece", "Mexico and Bali", "Tulum and Mykonos"],
+    "correctAnswer": "Hawaii and Italy",
+    "imageURL": "SEARCH_QUERY: 'The White Lotus resort setting photo Hawaii Italy'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "Which 2020 game, famous for its social deduction gameplay and the line 'There is an impostor among us', saw a massive surge in popularity during the pandemic?",
+    "options": ["Fall Guys", "Among Us", "Garry's Mod", "Rust"],
+    "correctAnswer": "Among Us",
+    "imageURL": "SEARCH_QUERY: 'Among Us game character screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "Which director, known for their distinct visual style and meticulous set design, helmed the 2023 film *Asteroid City*?",
+    "options": ["Wes Anderson", "Quentin Tarantino", "Guillermo del Toro", "Noah Baumbach"],
+    "correctAnswer": "Wes Anderson",
+    "imageURL": "SEARCH_QUERY: 'Wes Anderson Asteroid City film set photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the title of the 1991 album by Nirvana that is widely credited with bringing grunge music into the mainstream and disrupting the hair metal dominance?",
+    "options": ["In Utero", "Nevermind", "Bleach", "MTV Unplugged in New York"],
+    "correctAnswer": "Nevermind",
+    "imageURL": "SEARCH_QUERY: 'Nirvana Nevermind album cover baby'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *Buffy the Vampire Slayer*, what is the name of the fictional town built on a 'Hellmouth'?",
+    "options": ["Sunnydale", "Smallville", "Forks", "Riverdale"],
+    "correctAnswer": "Sunnydale",
+    "imageURL": "SEARCH_QUERY: 'Buffy the Vampire Slayer Sunnydale High School photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "The video platform **Twitch** is primarily focused on what type of streaming content?",
+    "options": ["Vlogs and Daily Life", "Educational Tutorials", "Video Game Live Streaming", "Short-form Comedy Clips"],
+    "correctAnswer": "Video Game Live Streaming",
+    "imageURL": "SEARCH_QUERY: 'Twitch live gaming stream interface screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Which film won the **Academy Award for Best Original Screenplay in 2024** for its unique story about an anatomy professor who is accused of murder?",
+    "options": ["Maestro", "Anatomy of a Fall", "The Holdovers", "Poor Things"],
+    "correctAnswer": "Anatomy of a Fall",
+    "imageURL": "SEARCH_QUERY: 'Anatomy of a Fall Best Original Screenplay poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Who was the first female artist to have a song debut at number one on the Billboard Hot 100 with a country song in 2024?",
+    "options": ["Carrie Underwood", "Kacey Musgraves", "Taylor Swift", "Beyoncé"],
+    "correctAnswer": "Beyoncé",
+    "imageURL": "SEARCH_QUERY: 'Beyoncé Billboard Hot 100 country record photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *Lost*, what is the name of the scientific research organization obsessed with the island and conducting experiments there?",
+    "options": ["The Dharma Initiative", "The Others", "The Widmore Group", "Oceanic Airlines"],
+    "correctAnswer": "The Dharma Initiative",
+    "imageURL": "SEARCH_QUERY: 'Lost Dharma Initiative logo symbol'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "What is the name of the protagonist in the *God of War* series, known for his relentless rage and the Blades of Chaos?",
+    "options": ["Kratos", "Zeus", "Ares", "Atreus"],
+    "correctAnswer": "Kratos",
+    "imageURL": "SEARCH_QUERY: 'God of War Kratos character portrait'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "Who wrote the novel *The Exorcist* (1971) and also adapted the screenplay for the iconic 1973 film, winning an Oscar for it?",
+    "options": ["Stephen King", "William Peter Blatty", "Peter Straub", "Ira Levin"],
+    "correctAnswer": "William Peter Blatty",
+    "imageURL": "SEARCH_QUERY: 'William Peter Blatty The Exorcist author photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which late 2000s/early 2010s subgenre of electronic dance music is characterized by heavy use of Auto-Tune and often features brightly colored visuals?",
+    "options": ["Trap", "Vaporwave", "Brostep", "Seapunk"],
+    "correctAnswer": "Seapunk",
+    "imageURL": "SEARCH_QUERY: 'Seapunk aesthetic music genre graphic'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "Which spin-off series of *The Walking Dead*, which premiered in 2023, focuses on Daryl Dixon waking up in France?",
+    "options": ["The Ones Who Live", "Dead City", "Daryl Dixon", "Tales of the Walking Dead"],
+    "correctAnswer": "Daryl Dixon",
+    "imageURL": "SEARCH_QUERY: 'Daryl Dixon The Walking Dead spin-off poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "What is the term for an online community or subculture that uses irony and self-referential humor, often considered to be 'in the know' or sophisticatedly cynical?",
+    "options": ["Normie", "Hivemind", "Alt-Culture", "The Irony Bro"],
+    "correctAnswer": "Alt-Culture",
+    "imageURL": "SEARCH_QUERY: 'Alt-Culture internet aesthetics image'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "What is the name of the iconic director whose films often feature extreme violence, non-linear narratives, and extensive pop culture references, such as *Pulp Fiction*?",
+    "options": ["Guy Ritchie", "David Fincher", "Quentin Tarantino", "Spike Lee"],
+    "correctAnswer": "Quentin Tarantino",
+    "imageURL": "SEARCH_QUERY: 'Quentin Tarantino director portrait stylized'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which influential early 1990s rapper released the controversial album *The Chronic* and went on to become a major record producer and entrepreneur?",
+    "options": ["Snoop Dogg", "Ice Cube", "Eminem", "Dr. Dre"],
+    "correctAnswer": "Dr. Dre",
+    "imageURL": "SEARCH_QUERY: 'Dr. Dre The Chronic album cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "Before it was rebooted in 2023, the original *Frasier* series was a spin-off from which long-running Boston-based sitcom?",
+    "options": ["MASH", "Cheers", "The Golden Girls", "The Mary Tyler Moore Show"],
+    "correctAnswer": "Cheers",
+    "imageURL": "SEARCH_QUERY: 'Cheers bar setting photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "What is the name of the fictional, high-tech organization that the protagonist, Desmond Miles, is trying to foil in the *Assassin's Creed* series?",
+    "options": ["The Templars", "The Brotherhood of Assassins", "Abstergo Industries", "The Illuminati"],
+    "correctAnswer": "Abstergo Industries",
+    "imageURL": "SEARCH_QUERY: 'Assassin's Creed Abstergo Industries logo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "Which film, based on a novel by Richard Matheson, popularized the post-apocalyptic subgenre of one lone human surviving in a ruined city?",
+    "options": ["The Omega Man", "I Am Legend", "The Road", "28 Days Later"],
+    "correctAnswer": "I Am Legend",
+    "imageURL": "SEARCH_QUERY: 'I Am Legend Will Smith movie poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "The 2023 Grammy Album of the Year, *Harry's House*, was recorded by which former member of the boy band One Direction?",
+    "options": ["Niall Horan", "Zayn Malik", "Louis Tomlinson", "Harry Styles"],
+    "correctAnswer": "Harry Styles",
+    "imageURL": "SEARCH_QUERY: 'Harry Styles Harry's House album cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "What is the name of the fictional suburban town in the series *Desperate Housewives* where the main characters reside?",
+    "options": ["Wisteria Lane", "Fairview", "Pleasantville", "The Glades"],
+    "correctAnswer": "Wisteria Lane",
+    "imageURL": "SEARCH_QUERY: 'Desperate Housewives Wisteria Lane street photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "The term **'Shitposting'** is generally used to describe what kind of activity in online forums and social media?",
+    "options": ["Posting genuine, high-quality content", "Posting aggressive political commentary", "Posting intentionally low-quality, humorous, or irrelevant content", "Posting self-promotional material"],
+    "correctAnswer": "Posting intentionally low-quality, humorous, or irrelevant content",
+    "imageURL": "SEARCH_QUERY: 'Shitposting internet meme graphic'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "Which film won the **Academy Award for Best Picture in 1976**, famously starring Jack Nicholson as a mental patient?",
+    "options": ["Taxi Driver", "All the President's Men", "One Flew Over the Cuckoo's Nest", "Rocky"],
+    "correctAnswer": "One Flew Over the Cuckoo's Nest",
+    "imageURL": "SEARCH_QUERY: 'One Flew Over the Cuckoo's Nest movie poster'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which iconic artist is known for the 1984 hit 'When Doves Cry' and his backing band, **The Revolution**?",
+    "options": ["Michael Jackson", "Prince", "George Michael", "Lionel Richie"],
+    "correctAnswer": "Prince",
+    "imageURL": "SEARCH_QUERY: 'Prince and The Revolution band photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "Who plays the lead role of a troubled chef in the critically acclaimed series *The Bear*?",
+    "options": ["Jeremy Allen White", "Ebon Moss-Bachrach", "Ayo Edebiri", "Matty Matheson"],
+    "correctAnswer": "Jeremy Allen White",
+    "imageURL": "SEARCH_QUERY: 'Jeremy Allen White The Bear chef photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "In the *Final Fantasy* series, what are the powerful, summoned entities that aid the heroes in battle often called?",
+    "options": ["Espers (or Summons)", "Monsters", "Eikons", "Eidolon"],
+    "correctAnswer": "Espers (or Summons)",
+    "imageURL": "SEARCH_QUERY: 'Final Fantasy Summons Ifrit Shiva photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Deep Cut)",
+    "question": "What is the full name of the hotel featured in the Stanley Kubrick horror classic *The Shining*?",
+    "options": ["The Black Lodge", "The Bates Motel", "The Overlook Hotel", "The Grand Budapest"],
+    "correctAnswer": "The Overlook Hotel",
+    "imageURL": "SEARCH_QUERY: 'The Overlook Hotel The Shining exterior photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Latest)",
+    "question": "Which artist achieved the first-ever **Spotify 'Billions Club'** song entirely written by a solo female artist with the 2017 hit 'New Rules'?",
+    "options": ["Taylor Swift", "Adele", "Dua Lipa", "Billie Eilish"],
+    "correctAnswer": "Dua Lipa",
+    "imageURL": "SEARCH_QUERY: 'Dua Lipa New Rules music video screenshot'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "In the series *Curb Your Enthusiasm*, what is the name of Larry David's long-suffering manager?",
+    "options": ["Jeff Greene", "Leon Black", "Susie Greene", "Marty Funkhouser"],
+    "correctAnswer": "Jeff Greene",
+    "imageURL": "SEARCH_QUERY: 'Curb Your Enthusiasm Jeff Garlin photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "What is the common term for the practice of displaying a misleading, attention-grabbing thumbnail or title on a YouTube video?",
+    "options": ["Thumbnailing", "Clickbait", "SEO Spam", "Viral Marketing"],
+    "correctAnswer": "Clickbait",
+    "imageURL": "SEARCH_QUERY: 'Clickbait YouTube thumbnail example graphic'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (2023-2024)",
+    "question": "The 2024 Oscar-winning film *Poor Things* stars Emma Stone as a woman resurrected with the mind of a child. Who directed this visually distinctive film?",
+    "options": ["Christopher Nolan", "Yorgos Lanthimos", "Denis Villeneuve", "Jonathan Glazer"],
+    "correctAnswer": "Yorgos Lanthimos",
+    "imageURL": "SEARCH_QUERY: 'Poor Things Yorgos Lanthimos director photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "Which American singer-songwriter's 1971 album *Blue* is widely regarded as one of the greatest folk-rock albums of all time?",
+    "options": ["Carole King", "Joni Mitchell", "Janis Joplin", "Laura Nyro"],
+    "correctAnswer": "Joni Mitchell",
+    "imageURL": "SEARCH_QUERY: 'Joni Mitchell Blue album cover art'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (2023-2024)",
+    "question": "The Disney+ series *The Mandalorian* is set after the events of which classic *Star Wars* film?",
+    "options": ["Revenge of the Sith", "Return of the Jedi", "The Force Awakens", "Rogue One"],
+    "correctAnswer": "Return of the Jedi",
+    "imageURL": "SEARCH_QUERY: 'The Mandalorian Star Wars setting photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Gaming",
+    "question": "Which company, now known for its *Final Fantasy* and *Dragon Quest* franchises, began its life in the 1980s as a publisher of video game *manuals*?",
+    "options": ["Capcom", "Konami", "Square Enix", "Bandai Namco"],
+    "correctAnswer": "Square Enix",
+    "imageURL": "SEARCH_QUERY: 'Square Enix logo historical'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Film (Classics)",
+    "question": "The 1982 film *Blade Runner* is an adaptation of which Philip K. Dick novel?",
+    "options": ["A Scanner Darkly", "Ubik", "Do Androids Dream of Electric Sheep?", "Minority Report"],
+    "correctAnswer": "Do Androids Dream of Electric Sheep?",
+    "imageURL": "SEARCH_QUERY: 'Do Androids Dream of Electric Sheep book cover'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Music (Deep Cut)",
+    "question": "What is the name of the popular music movement that originated in the Pacific Northwest (Seattle) in the late 1980s, characterized by loud guitars and punk rock influences?",
+    "options": ["Goth Rock", "Shoegaze", "Grunge", "Britpop"],
+    "correctAnswer": "Grunge",
+    "imageURL": "SEARCH_QUERY: 'Grunge music band photo 1990s Seattle'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Television (Deep Cut)",
+    "question": "What is the name of the fictional town and the secretive cult that forms its basis in the series *The Leftovers*?",
+    "options": ["Mapleton", "The Guilty Remnant", "The Departed", "The Sudden Departure"],
+    "correctAnswer": "The Guilty Remnant",
+    "imageURL": "SEARCH_QUERY: 'The Leftovers Guilty Remnant smoking photo'"
+  },
+  {
+    "quizName": "The Pop Culture Deep Dive",
+    "category": "Internet & Social Media",
+    "question": "The term **'Algorithmic Bias'** refers to the phenomenon where AI-driven content feeds disproportionately favor or suppress information based on what factor?",
+    "options": ["Server Load", "User's Location", "The training data's inherent human biases", "Paid Promotions"],
+    "correctAnswer": "The training data's inherent human biases",
+    "imageURL": "SEARCH_QUERY: 'Algorithmic Bias diagram social media'"
+  }
+]

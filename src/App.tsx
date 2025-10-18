@@ -40,8 +40,8 @@ export default function App() {
     }
   }, [isConnected, cusdBalance]);
 
-  const startGame = (stake: number, opponent?: string, duelId?: string, spectator?: boolean, creator?: boolean) => {
-    setGameData({ stake, opponent, duelId, spectator: !!spectator, creator: !!creator });
+  const startGame = (stake: number, opponent?: string, duelId?: string, spectator?: boolean, creator?: boolean, category?: string) => {
+    setGameData({ stake, opponent, duelId, spectator: !!spectator, creator: !!creator, category: category || 'random' });
     setActiveTab('game');
   };
 
@@ -114,6 +114,7 @@ export default function App() {
             duelId={gameData?.duelId}
             spectator={gameData?.spectator}
             creator={gameData?.creator}
+            category={gameData?.category}
             onGameFinish={finishGame}
           />
         )}
@@ -124,7 +125,7 @@ export default function App() {
             correctAnswers={gameData?.correctAnswers}
             totalQuestions={gameData?.totalQuestions}
             stake={gameData?.stake}
-            onRematch={() => startGame(gameData?.stake, gameData?.opponent, gameData?.duelId, false, true)}
+            onRematch={() => startGame(gameData?.stake, gameData?.opponent, gameData?.duelId, false, true, gameData?.category)}
             onNewDuel={returnToDuel}
           />
         )}

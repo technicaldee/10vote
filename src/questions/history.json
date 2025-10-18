@@ -1,0 +1,1010 @@
+[
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "Which ancient city, a capital of the Hittite Empire, was known as **Hattusa**?",
+    "options": ["Nineveh", "Babylon", "Ankara", "Boğazkale (Modern Turkey)"],
+    "correctAnswer": "Boğazkale (Modern Turkey)",
+    "imageURL": "SEARCH_QUERY: 'Hittite Empire capital Hattusa ruins'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Treaty of Tordesillas (1494)** divided the newly discovered lands outside Europe between which two competing maritime powers?",
+    "options": ["England and France", "Spain and Portugal", "Venice and Genoa", "Netherlands and Spain"],
+    "correctAnswer": "Spain and Portugal",
+    "imageURL": "SEARCH_QUERY: 'Treaty of Tordesillas line of demarcation map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "Which astronomer was forced by the Roman Inquisition to recant his heliocentric view of the universe in 1633?",
+    "options": ["Nicolaus Copernicus", "Johannes Kepler", "Tycho Brahe", "Galileo Galilei"],
+    "correctAnswer": "Galileo Galilei",
+    "imageURL": "SEARCH_QUERY: 'Galileo facing the Roman Inquisition painting'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "What was the name of the doctrine, established in 1823, that warned European powers against further colonization in the Western Hemisphere?",
+    "options": ["Roosevelt Corollary", "Manifest Destiny", "Monroe Doctrine", "Truman Doctrine"],
+    "correctAnswer": "Monroe Doctrine",
+    "imageURL": "SEARCH_QUERY: 'President James Monroe portrait'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Suez Crisis of 1956** was triggered by the nationalization of the Suez Canal by which political leader?",
+    "options": ["David Ben-Gurion", "Anthony Eden", "Gamal Abdel Nasser", "Dwight D. Eisenhower"],
+    "correctAnswer": "Gamal Abdel Nasser",
+    "imageURL": "SEARCH_QUERY: 'Gamal Abdel Nasser Suez Canal nationalization speech'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "Which specific German air campaign targeted British cities and industrial centers between September 1940 and May 1941?",
+    "options": ["Operation Barbarossa", "The Battle of Britain", "The Blitz", "Operation Sealion"],
+    "correctAnswer": "The Blitz",
+    "imageURL": "SEARCH_QUERY: 'London during The Blitz damage photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which African nation, independent since 1847, became the first republic on the continent?",
+    "options": ["Ghana", "Liberia", "Ethiopia", "South Africa"],
+    "correctAnswer": "Liberia",
+    "imageURL": "SEARCH_QUERY: 'Liberia founding document 1847'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "Which Persian king launched the second invasion of Greece in 480 BC, notably leading the huge army defeated at Salamis and Plataea?",
+    "options": ["Darius I", "Cyrus the Great", "Xerxes I", "Artaxerxes I"],
+    "correctAnswer": "Xerxes I",
+    "imageURL": "SEARCH_QUERY: 'Persian King Xerxes I portrait relief'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "In what year did the **Great Schism** officially divide the Christian Church into the Roman Catholic and Eastern Orthodox churches?",
+    "options": ["1054", "1378", "1453", "476"],
+    "correctAnswer": "1054",
+    "imageURL": "SEARCH_QUERY: 'Great Schism 1054 historical illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "What 16th-century religious event led to the translation of the Bible into vernacular languages, challenging the authority of the Catholic Church?",
+    "options": ["The Crusades", "The Inquisition", "The Protestant Reformation", "The Counter-Reformation"],
+    "correctAnswer": "The Protestant Reformation",
+    "imageURL": "SEARCH_QUERY: 'Martin Luther nailing 95 Theses illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "Who was the main architect behind the unification of Germany in 1871, famously known for his 'Blood and Iron' speech?",
+    "options": ["Kaiser Wilhelm II", "Helmuth von Moltke", "Otto von Bismarck", "Frederick the Great"],
+    "correctAnswer": "Otto von Bismarck",
+    "imageURL": "SEARCH_QUERY: 'Otto von Bismarck portrait and German unification'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Cuban Missile Crisis** of 1962 ended after the US and USSR agreed to remove Soviet missiles from Cuba in exchange for the removal of US missiles from which NATO country?",
+    "options": ["Greece", "Italy", "Turkey", "West Germany"],
+    "correctAnswer": "Turkey",
+    "imageURL": "SEARCH_QUERY: 'Cuban Missile Crisis map US USSR agreement'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "The sinking of which specific passenger liner in 1915 contributed significantly to American public outrage against German unrestricted submarine warfare?",
+    "options": ["Titanic", "Lusitania", "Britannic", "Aquitania"],
+    "correctAnswer": "Lusitania",
+    "imageURL": "SEARCH_QUERY: 'Sinking of the RMS Lusitania historical photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Who led the movement for India's independence using non-violent civil disobedience, inspiring movements worldwide?",
+    "options": ["Jawaharlal Nehru", "Muhammad Ali Jinnah", "Subhas Chandra Bose", "Mahatma Gandhi"],
+    "correctAnswer": "Mahatma Gandhi",
+    "imageURL": "SEARCH_QUERY: 'Mahatma Gandhi Salt March historic photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "Which civilization is credited with creating the first known writing system, **cuneiform**?",
+    "options": ["Egyptians", "Indus Valley", "Sumerians", "Minoans"],
+    "correctAnswer": "Sumerians",
+    "imageURL": "SEARCH_QUERY: 'Sumerian cuneiform tablet artifact'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Battle of Hastings (1066)** resulted in the Norman conquest of England, led by which French duke?",
+    "options": ["Harold Godwinson", "Edward the Confessor", "William the Conqueror", "Richard the Lionheart"],
+    "correctAnswer": "William the Conqueror",
+    "imageURL": "SEARCH_QUERY: 'William the Conqueror at the Battle of Hastings tapestry detail'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "Who authored *The Prince*, a 16th-century political treatise on how a ruler can acquire and maintain power, regardless of morality?",
+    "options": ["Thomas More", "Desiderius Erasmus", "Niccolò Machiavelli", "Giovanni Boccaccio"],
+    "correctAnswer": "Niccolò Machiavelli",
+    "imageURL": "SEARCH_QUERY: 'Niccolò Machiavelli portrait The Prince book cover'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Treaty of Ghent** officially ended which major conflict between the United States and Great Britain in 1815?",
+    "options": ["American Revolution", "Mexican-American War", "War of 1812", "French and Indian War"],
+    "correctAnswer": "War of 1812",
+    "imageURL": "SEARCH_QUERY: 'Treaty of Ghent signing historical depiction'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Prague Spring** of 1968 was a period of political liberalization in which Eastern Bloc country, before being crushed by the Soviet Union?",
+    "options": ["Poland", "Hungary", "Czechoslovakia", "East Germany"],
+    "correctAnswer": "Czechoslovakia",
+    "imageURL": "SEARCH_QUERY: 'Prague Spring 1968 Soviet tanks photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the codename for the Allied invasion of Normandy on June 6, 1944?",
+    "options": ["Operation Torch", "Operation Overlord", "Operation Citadel", "Operation Husky"],
+    "correctAnswer": "Operation Overlord",
+    "imageURL": "SEARCH_QUERY: 'D-Day Operation Overlord beach landing photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which leader was the first President of newly independent Ghana in 1957, a major figure in the Pan-African movement?",
+    "options": ["Nelson Mandela", "Jomo Kenyatta", "Kwame Nkrumah", "Patrice Lumumba"],
+    "correctAnswer": "Kwame Nkrumah",
+    "imageURL": "SEARCH_QUERY: 'Kwame Nkrumah first president of Ghana photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "What material were the famous **Dead Sea Scrolls** primarily written on?",
+    "options": ["Parchment and Papyrus", "Clay Tablets", "Stone Slabs", "Silk"],
+    "correctAnswer": "Parchment and Papyrus",
+    "imageURL": "SEARCH_QUERY: 'Dead Sea Scrolls artifact fragment photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "Who was the founder of the Mongol Empire in the early 13th century?",
+    "options": ["Kublai Khan", "Ögedei Khan", "Tamerlane", "Genghis Khan"],
+    "correctAnswer": "Genghis Khan",
+    "imageURL": "SEARCH_QUERY: 'Genghis Khan historical illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "Which English monarch established the **Church of England** (Anglican Church) after breaking with the Pope in the 1530s?",
+    "options": ["Elizabeth I", "Henry VIII", "Edward VI", "Mary I"],
+    "correctAnswer": "Henry VIII",
+    "imageURL": "SEARCH_QUERY: 'King Henry VIII portrait painting'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "What decisive naval battle in 1805 solidified Great Britain's naval supremacy for a century, though its commander, Horatio Nelson, was killed?",
+    "options": ["Battle of the Nile", "Battle of Trafalgar", "Battle of Waterloo", "Battle of Copenhagen"],
+    "correctAnswer": "Battle of Trafalgar",
+    "imageURL": "SEARCH_QUERY: 'Battle of Trafalgar historical painting'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Berlin Wall** was constructed in which year?",
+    "options": ["1953", "1961", "1968", "1989"],
+    "correctAnswer": "1961",
+    "imageURL": "SEARCH_QUERY: 'Berlin Wall construction photo 1961'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What major military setback for Nazi Germany in the winter of 1942-1943 is often considered a turning point on the Eastern Front?",
+    "options": ["Battle of Kursk", "Battle of Moscow", "Battle of Stalingrad", "Siege of Leningrad"],
+    "correctAnswer": "Battle of Stalingrad",
+    "imageURL": "SEARCH_QUERY: 'Battle of Stalingrad winter conditions photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "The **Mau Mau Uprising** in the 1950s was a rebellion against British rule in which East African country?",
+    "options": ["Tanzania", "Uganda", "Kenya", "Zambia"],
+    "correctAnswer": "Kenya",
+    "imageURL": "SEARCH_QUERY: 'Mau Mau Uprising fighters photo Kenya'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "The philosophical school known as **Stoicism** originated in which ancient Mediterranean city?",
+    "options": ["Rome", "Alexandria", "Athens", "Syracuse"],
+    "correctAnswer": "Athens",
+    "imageURL": "SEARCH_QUERY: 'Ancient Athens agora ruins'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Magna Carta**, signed in 1215, imposed limits on the power of which English king?",
+    "options": ["Henry II", "Richard the Lionheart", "King John", "Edward I"],
+    "correctAnswer": "King John",
+    "imageURL": "SEARCH_QUERY: 'King John signing the Magna Carta illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "Which Chinese dynasty built much of the current Great Wall and oversaw the voyages of the great admiral Zheng He?",
+    "options": ["Tang Dynasty", "Song Dynasty", "Ming Dynasty", "Qing Dynasty"],
+    "correctAnswer": "Ming Dynasty",
+    "imageURL": "SEARCH_QUERY: 'Ming Dynasty Great Wall section photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Opium Wars** were fought primarily between Great Britain and which Asian empire?",
+    "options": ["Ottoman Empire", "Japanese Empire", "Qing Dynasty (China)", "Mughal Empire"],
+    "correctAnswer": "Qing Dynasty (China)",
+    "imageURL": "SEARCH_QUERY: 'Opium Wars historical clash illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "Who was the Soviet leader who initiated the reforms of *perestroika* (restructuring) and *glasnost* (openness) in the 1980s?",
+    "options": ["Leonid Brezhnev", "Yuri Andropov", "Mikhail Gorbachev", "Boris Yeltsin"],
+    "correctAnswer": "Mikhail Gorbachev",
+    "imageURL": "SEARCH_QUERY: 'Mikhail Gorbachev perestroika glasnost portrait'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the name of the last major German offensive on the Western Front during World War II, launched in December 1944?",
+    "options": ["Battle of the Bulge", "Battle of the Rhine", "Operation Market Garden", "Battle of El Alamein"],
+    "correctAnswer": "Battle of the Bulge",
+    "imageURL": "SEARCH_QUERY: 'Battle of the Bulge winter fighting photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "The **Partition of India** in 1947 led to the creation of two independent nations: India and what other nation?",
+    "options": ["Bangladesh", "Sri Lanka", "Myanmar", "Pakistan"],
+    "correctAnswer": "Pakistan",
+    "imageURL": "SEARCH_QUERY: 'Partition of India 1947 refugee trains photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "The legendary king **Minos** is associated with which Bronze Age civilization centered on the island of Crete?",
+    "options": ["Cycladic", "Mycenean", "Minoan", "Phoenician"],
+    "correctAnswer": "Minoan",
+    "imageURL": "SEARCH_QUERY: 'Knossos Palace Minoan civilization ruins'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "What was the primary economic system of medieval Europe, based on land ownership and loyalty between lords and vassals?",
+    "options": ["Mercantilism", "Feudalism", "Capitalism", "Socialism"],
+    "correctAnswer": "Feudalism",
+    "imageURL": "SEARCH_QUERY: 'Feudalism social structure pyramid diagram'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "Which Enlightenment philosopher authored *Two Treatises of Government*, arguing for natural rights to life, liberty, and property?",
+    "options": ["Jean-Jacques Rousseau", "Voltaire", "John Locke", "Thomas Hobbes"],
+    "correctAnswer": "John Locke",
+    "imageURL": "SEARCH_QUERY: 'John Locke portrait Enlightenment thinker'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Congress of Vienna (1814-1815)** was held after the defeat of which major European military figure?",
+    "options": ["Frederick the Great", "Kaiser Wilhelm I", "Napoleon Bonaparte", "Tsar Alexander I"],
+    "correctAnswer": "Napoleon Bonaparte",
+    "imageURL": "SEARCH_QUERY: 'Congress of Vienna meeting painting'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "In what year did the **Soviet Union officially dissolve**?",
+    "options": ["1989", "1990", "1991", "1992"],
+    "correctAnswer": "1991",
+    "imageURL": "SEARCH_QUERY: 'Soviet Union flag lowering Kremlin 1991'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the name of the German air force during World War II?",
+    "options": ["Wehrmacht", "Kriegsmarine", "Luftwaffe", "Schutzstaffel (SS)"],
+    "correctAnswer": "Luftwaffe",
+    "imageURL": "SEARCH_QUERY: 'Luftwaffe German air force plane photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which major Asian country was divided along the **38th Parallel** following World War II?",
+    "options": ["Vietnam", "Korea", "Philippines", "Indonesia"],
+    "correctAnswer": "Korea",
+    "imageURL": "SEARCH_QUERY: '38th Parallel Korea map division'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "The **Colosseum** in Rome was originally known by what name?",
+    "options": ["Circus Maximus", "Pantheon", "Flavian Amphitheatre", "Forum Romanum"],
+    "correctAnswer": "Flavian Amphitheatre",
+    "imageURL": "SEARCH_QUERY: 'Roman Colosseum Flavian Amphitheatre exterior view'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Black Death** (Bubonic Plague) is estimated to have killed what fraction of Europe's population in the 14th century?",
+    "options": ["One-tenth", "One-quarter", "One-third to one-half", "Two-thirds"],
+    "correctAnswer": "One-third to one-half",
+    "imageURL": "SEARCH_QUERY: 'Black Death plague doctor historical illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "The phrase *L'État, c'est moi* ('I am the state') is often attributed to which absolute French monarch?",
+    "options": ["Louis XIV", "Francis I", "Henry IV", "Louis XVI"],
+    "correctAnswer": "Louis XIV",
+    "imageURL": "SEARCH_QUERY: 'King Louis XIV absolute monarch portrait'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Reign of Terror** during the French Revolution was primarily led by which figure?",
+    "options": ["Georges Danton", "Jean-Paul Marat", "Maximilian Robespierre", "Napoleon Bonaparte"],
+    "correctAnswer": "Maximilian Robespierre",
+    "imageURL": "SEARCH_QUERY: 'Maximilian Robespierre portrait French Revolution'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Tiananmen Square Protests** for democratic reform occurred in which year?",
+    "options": ["1976", "1989", "1997", "2001"],
+    "correctAnswer": "1989",
+    "imageURL": "SEARCH_QUERY: 'Tiananmen Square protests 1989 photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What major naval battle in June 1942 is considered the turning point of the war in the Pacific?",
+    "options": ["Battle of the Coral Sea", "Battle of Guadalcanal", "Battle of Midway", "Attack on Pearl Harbor"],
+    "correctAnswer": "Battle of Midway",
+    "imageURL": "SEARCH_QUERY: 'Battle of Midway aircraft carriers historical photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which former colony of France fought a devastating war for independence from 1954 to 1962?",
+    "options": ["Morocco", "Vietnam", "Algeria", "Tunisia"],
+    "correctAnswer": "Algeria",
+    "imageURL": "SEARCH_QUERY: 'Algerian War of Independence historical photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "Which ancient Chinese philosopher advocated for a system of ethics and social harmony based on filial piety and respect for authority?",
+    "options": ["Laozi", "Mozi", "Han Fei", "Confucius"],
+    "correctAnswer": "Confucius",
+    "imageURL": "SEARCH_QUERY: 'Confucius philosopher portrait'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "Who was the Byzantine emperor who oversaw the codification of Roman law, known as *Corpus Juris Civilis*?",
+    "options": ["Constantine I", "Heraclius", "Justinian I", "Basil II"],
+    "correctAnswer": "Justinian I",
+    "imageURL": "SEARCH_QUERY: 'Emperor Justinian I mosaic San Vitale'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "What technological innovation, credited to Johannes Gutenberg around 1440, revolutionized the spread of information in Europe?",
+    "options": ["Telescope", "Steam Engine", "Moveable Type Printing Press", "Water Wheel"],
+    "correctAnswer": "Moveable Type Printing Press",
+    "imageURL": "SEARCH_QUERY: 'Gutenberg printing press historical model'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "What major document, issued in 1863, declared that all enslaved persons in Confederate states were free?",
+    "options": ["Gettysburg Address", "Declaration of Independence", "Emancipation Proclamation", "Thirteenth Amendment"],
+    "correctAnswer": "Emancipation Proclamation",
+    "imageURL": "SEARCH_QUERY: 'Abraham Lincoln Emancipation Proclamation signing'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Civil Rights Act** and the **Voting Rights Act** were passed in the United States in what decade?",
+    "options": ["1950s", "1960s", "1970s", "1980s"],
+    "correctAnswer": "1960s",
+    "imageURL": "SEARCH_QUERY: 'Martin Luther King Jr. Civil Rights March photo 1960s'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What major international organization was founded in 1945 to promote peace and cooperation after World War II?",
+    "options": ["League of Nations", "North Atlantic Treaty Organization (NATO)", "United Nations (UN)", "International Court of Justice (ICJ)"],
+    "correctAnswer": "United Nations (UN)",
+    "imageURL": "SEARCH_QUERY: 'United Nations emblem and building'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Who was the first President of Indonesia after its declaration of independence from the Netherlands in 1945?",
+    "options": ["Mohammad Hatta", "Suharto", "Sukarno", "Joko Widodo"],
+    "correctAnswer": "Sukarno",
+    "imageURL": "SEARCH_QUERY: 'Sukarno first president of Indonesia photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "Which great library of the ancient world, located in Egypt, was one of the largest and most significant centers of learning?",
+    "options": ["Library of Pergamum", "Library of Alexandria", "Temple of Edfu", "Library of Ashurbanipal"],
+    "correctAnswer": "Library of Alexandria",
+    "imageURL": "SEARCH_QUERY: 'Library of Alexandria ancient world reconstruction'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Reconquista** was the long process by which Christian kingdoms gradually expelled Muslim rule from which European peninsula?",
+    "options": ["Balkan Peninsula", "Italian Peninsula", "Iberian Peninsula", "Scandinavian Peninsula"],
+    "correctAnswer": "Iberian Peninsula",
+    "imageURL": "SEARCH_QUERY: 'Reconquista map Iberian Peninsula historical'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "Which Spanish conquistador led the expedition that conquered the Aztec Empire in the early 16th century?",
+    "options": ["Francisco Pizarro", "Hernán Cortés", "Vasco da Gama", "Ferdinand Magellan"],
+    "correctAnswer": "Hernán Cortés",
+    "imageURL": "SEARCH_QUERY: 'Hernán Cortés portrait and Aztec conquest'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Meiji Restoration** of 1868 led to the modernization and rapid industrialization of which Asian nation?",
+    "options": ["China", "Korea", "Japan", "Thailand"],
+    "correctAnswer": "Japan",
+    "imageURL": "SEARCH_QUERY: 'Meiji Restoration era Japan photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "What was the term for the US policy of preventing the expansion of Communism during the Cold War?",
+    "options": ["Isolationism", "Détente", "Containment", "Appeasement"],
+    "correctAnswer": "Containment",
+    "imageURL": "SEARCH_QUERY: 'Cold War Containment policy map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "The **Treaty of Versailles**, which officially ended World War I, was signed in which year?",
+    "options": ["1917", "1918", "1919", "1920"],
+    "correctAnswer": "1919",
+    "imageURL": "SEARCH_QUERY: 'Treaty of Versailles signing ceremony photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Who was the leader of the Vietnamese independence movement who later became the first president of North Vietnam?",
+    "options": ["Ngo Dinh Diem", "Bao Dai", "Vo Nguyen Giap", "Ho Chi Minh"],
+    "correctAnswer": "Ho Chi Minh",
+    "imageURL": "SEARCH_QUERY: 'Ho Chi Minh portrait photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "The **Ishtar Gate** was a massive entrance to which great Mesopotamian city?",
+    "options": ["Ur", "Persepolis", "Nineveh", "Babylon"],
+    "correctAnswer": "Babylon",
+    "imageURL": "SEARCH_QUERY: 'Ishtar Gate ancient Babylon reconstruction'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Dome of the Rock** in Jerusalem, an early Islamic masterpiece, was completed under the authority of which Caliphate?",
+    "options": ["Abbasid Caliphate", "Umayyad Caliphate", "Fatimad Caliphate", "Seljuk Empire"],
+    "correctAnswer": "Umayyad Caliphate",
+    "imageURL": "SEARCH_QUERY: 'Dome of the Rock Jerusalem exterior photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "What was the term for the system of trade in the 16th to 18th centuries that saw European goods traded for enslaved Africans, who were then traded for American raw materials?",
+    "options": ["Colonialism", "Triangular Trade", "Silk Road", "Trans-Atlantic Exchange"],
+    "correctAnswer": "Triangular Trade",
+    "imageURL": "SEARCH_QUERY: 'Triangular Trade route map Atlantic'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Zollverein** was an economic union established in 1834 to reduce internal tariffs among the states of which future nation?",
+    "options": ["Italy", "France", "Germany", "Austria-Hungary"],
+    "correctAnswer": "Germany",
+    "imageURL": "SEARCH_QUERY: 'Zollverein German customs union map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Sharpeville Massacre** in 1960, which saw police kill dozens of peaceful black protesters, took place in which country?",
+    "options": ["Nigeria", "South Africa", "Rhodesia (Zimbabwe)", "Algeria"],
+    "correctAnswer": "South Africa",
+    "imageURL": "SEARCH_QUERY: 'Sharpeville Massacre 1960 historical photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "Which country lost the most civilian and military lives combined in World War II?",
+    "options": ["Germany", "China", "United States", "Soviet Union"],
+    "correctAnswer": "Soviet Union",
+    "imageURL": "SEARCH_QUERY: 'World War II Soviet Union losses statistics graphic'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Who was the first president of post-Apartheid South Africa, elected in 1994?",
+    "options": ["Thabo Mbeki", "Desmond Tutu", "Nelson Mandela", "F.W. de Klerk"],
+    "correctAnswer": "Nelson Mandela",
+    "imageURL": "SEARCH_QUERY: 'Nelson Mandela 1994 inauguration photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "The **Punic Wars** were a series of conflicts fought between Rome and which North African power?",
+    "options": ["Egypt", "Carthage", "Numidia", "Mauretania"],
+    "correctAnswer": "Carthage",
+    "imageURL": "SEARCH_QUERY: 'Punic Wars Roman and Carthaginian forces map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "What title was given to the military dictators who ruled Japan from the 12th to the 19th century?",
+    "options": ["Daimyo", "Emperor", "Samurai", "Shogun"],
+    "correctAnswer": "Shogun",
+    "imageURL": "SEARCH_QUERY: 'Japanese Shogun historical armor illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "The **Glorious Revolution** of 1688 established the supremacy of Parliament over the monarchy in which country?",
+    "options": ["France", "Spain", "England", "Prussia"],
+    "correctAnswer": "England",
+    "imageURL": "SEARCH_QUERY: 'Glorious Revolution 1688 King William III Mary II'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Taiping Rebellion** (1850-1864), one of the bloodiest conflicts in history, occurred in which country?",
+    "options": ["Russia", "China", "India", "Vietnam"],
+    "correctAnswer": "China",
+    "imageURL": "SEARCH_QUERY: 'Taiping Rebellion historical battle scene'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The establishment of the **State of Israel** occurred in which year?",
+    "options": ["1945", "1948", "1956", "1967"],
+    "correctAnswer": "1948",
+    "imageURL": "SEARCH_QUERY: 'Declaration of the Establishment of the State of Israel photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the name of the German secret police force under the Nazi regime?",
+    "options": ["SA (Sturmabteilung)", "SS (Schutzstaffel)", "Gestapo", "Wehrmacht"],
+    "correctAnswer": "Gestapo",
+    "imageURL": "SEARCH_QUERY: 'Gestapo Nazi secret police historical photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "The **Bandung Conference** of 1955 was a key moment in the formation of what global movement of newly independent states?",
+    "options": ["The Commonwealth", "Non-Aligned Movement", "Organization of African Unity (OAU)", "Warsaw Pact"],
+    "correctAnswer": "Non-Aligned Movement",
+    "imageURL": "SEARCH_QUERY: 'Bandung Conference 1955 leaders photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "What were the massive stone carvings of heads, associated with the Olmec civilization in Mesoamerica, called?",
+    "options": ["Stelae", "Cenotes", "Colossal Heads", "Ziggurats"],
+    "correctAnswer": "Colossal Heads",
+    "imageURL": "SEARCH_QUERY: 'Olmec Colossal Heads stone sculpture photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "What major city in the Byzantine Empire, and later the Ottoman Empire, was formerly known as Constantinople?",
+    "options": ["Athens", "Ankara", "Istanbul", "Izmir"],
+    "correctAnswer": "Istanbul",
+    "imageURL": "SEARCH_QUERY: 'Istanbul former Constantinople historical view'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "Which explorer is credited with being the first to circumnavigate the globe, although he died mid-voyage in the Philippines?",
+    "options": ["Christopher Columbus", "Vasco da Gama", "Ferdinand Magellan", "James Cook"],
+    "correctAnswer": "Ferdinand Magellan",
+    "imageURL": "SEARCH_QUERY: 'Ferdinand Magellan portrait and globe route map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "Who was the leading figure of the Venezuelan independence movement against the Spanish Empire, known as 'El Libertador'?",
+    "options": ["José de San Martín", "Túpac Amaru II", "Simón Bolívar", "Miguel Hidalgo y Costilla"],
+    "correctAnswer": "Simón Bolívar",
+    "imageURL": "SEARCH_QUERY: 'Simón Bolívar El Libertador portrait'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **1979 Islamic Revolution** led to the establishment of a theocratic government in which Middle Eastern country?",
+    "options": ["Saudi Arabia", "Iraq", "Iran", "Egypt"],
+    "correctAnswer": "Iran",
+    "imageURL": "SEARCH_QUERY: 'Ayatollah Khomeini 1979 Iranian Revolution photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the name of the military alliance formed by the US, Canada, and Western European nations after WWII?",
+    "options": ["SEATO", "Warsaw Pact", "United Nations", "NATO"],
+    "correctAnswer": "NATO",
+    "imageURL": "SEARCH_QUERY: 'NATO North Atlantic Treaty Organization logo and flags'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "The **Suez Canal**, nationalized in 1956, connects the Mediterranean Sea to which other major body of water?",
+    "options": ["Black Sea", "Red Sea", "Arabian Sea", "Persian Gulf"],
+    "correctAnswer": "Red Sea",
+    "imageURL": "SEARCH_QUERY: 'Suez Canal map Red Sea connection'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "Which Roman emperor made Christianity the state religion of the Roman Empire in 380 AD?",
+    "options": ["Constantine the Great", "Diocletian", "Theodosius I", "Augustus"],
+    "correctAnswer": "Theodosius I",
+    "imageURL": "SEARCH_QUERY: 'Emperor Theodosius I Edict of Thessalonica illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "Which Italian city-state was famously known for its powerful navy and trade dominance in the Eastern Mediterranean during the Middle Ages?",
+    "options": ["Florence", "Milan", "Venice", "Naples"],
+    "correctAnswer": "Venice",
+    "imageURL": "SEARCH_QUERY: 'Venice maritime republic historical map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "The **Thirty Years' War** (1618–1648), a devastating European conflict, concluded with the signing of what major treaty?",
+    "options": ["Treaty of Paris", "Peace of Augsburg", "Peace of Westphalia", "Treaty of Utrecht"],
+    "correctAnswer": "Peace of Westphalia",
+    "imageURL": "SEARCH_QUERY: 'Peace of Westphalia signing historical painting'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "What American industrialist founded the **Standard Oil Company** and became one of the wealthiest people in modern history?",
+    "options": ["Andrew Carnegie", "J.P. Morgan", "Cornelius Vanderbilt", "John D. Rockefeller"],
+    "correctAnswer": "John D. Rockefeller",
+    "imageURL": "SEARCH_QUERY: 'John D. Rockefeller Standard Oil portrait'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Potsdam Conference** in 1945 saw the leaders of the US, UK, and USSR meet to discuss the future of which defeated country?",
+    "options": ["Japan", "Italy", "Germany", "Hungary"],
+    "correctAnswer": "Germany",
+    "imageURL": "SEARCH_QUERY: 'Potsdam Conference 1945 Churchill Truman Stalin photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the name of the US-led program that developed the first atomic weapons?",
+    "options": ["Operation Paperclip", "Project Apollo", "Manhattan Project", "Operation Dynamo"],
+    "correctAnswer": "Manhattan Project",
+    "imageURL": "SEARCH_QUERY: 'Manhattan Project Los Alamos historical photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which French-speaking West African country gained independence in 1960 and became a major oil producer?",
+    "options": ["Côte d'Ivoire", "Senegal", "Algeria", "Nigeria"],
+    "correctAnswer": "Nigeria",
+    "imageURL": "SEARCH_QUERY: 'Nigeria independence day 1960 celebration photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "The city of **Teotihuacan**, home to the Pyramid of the Sun, belonged to which major Mesoamerican culture?",
+    "options": ["Maya", "Inca", "Aztec", "Classic Teotihuacan culture"],
+    "correctAnswer": "Classic Teotihuacan culture",
+    "imageURL": "SEARCH_QUERY: 'Pyramid of the Sun Teotihuacan photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Hanseatic League** was a powerful commercial and defensive confederation of merchant guilds and market towns in which region of Europe?",
+    "options": ["Mediterranean", "Baltic and North Sea", "Black Sea", "Iberian Peninsula"],
+    "correctAnswer": "Baltic and North Sea",
+    "imageURL": "SEARCH_QUERY: 'Hanseatic League trade routes map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "What was the name of the movement in the 16th and 17th centuries that focused on human potential and achievements, rather than divine matters?",
+    "options": ["Scholasticism", "Humanism", "Empiricism", "Rationalism"],
+    "correctAnswer": "Humanism",
+    "imageURL": "SEARCH_QUERY: 'Renaissance Humanism intellectual movement artwork'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Reform Acts** of 1832, 1867, and 1884 gradually expanded voting rights in which country?",
+    "options": ["United States", "France", "Great Britain", "Germany"],
+    "correctAnswer": "Great Britain",
+    "imageURL": "SEARCH_QUERY: 'British Parliament Reform Acts historical illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Cultural Revolution** (1966-1976) was a sociopolitical movement launched by which Chinese leader?",
+    "options": ["Deng Xiaoping", "Jiang Zemin", "Mao Zedong", "Zhou Enlai"],
+    "correctAnswer": "Mao Zedong",
+    "imageURL": "SEARCH_QUERY: 'Mao Zedong Cultural Revolution poster'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What specific term describes the systematic mass murder of European Jews by the Nazi regime during WWII?",
+    "options": ["Genocide", "Pogrom", "The Final Solution (Holocaust)", "Ethnic Cleansing"],
+    "correctAnswer": "The Final Solution (Holocaust)",
+    "imageURL": "SEARCH_QUERY: 'Holocaust memorial site Auschwitz photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which former French colony, known for its rubber and tin production, was a key target of Japanese expansion in Southeast Asia during WWII?",
+    "options": ["Philippines", "Malaya", "Burma", "Indochina (Vietnam)"],
+    "correctAnswer": "Indochina (Vietnam)",
+    "imageURL": "SEARCH_QUERY: 'French Indochina historical map pre-1954'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "What was the name of the system of roads, initially built by the Achaemenid Empire, that connected Persia's vast territories?",
+    "options": ["Via Appia", "Silk Road", "Royal Road", "Inca Trail"],
+    "correctAnswer": "Royal Road",
+    "imageURL": "SEARCH_QUERY: 'Achaemenid Royal Road map Persia'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Investiture Controversy** during the 11th and 12th centuries was a major power struggle between which two authorities in Europe?",
+    "options": ["Kings and Nobles", "The Pope and the Holy Roman Emperor", "Monks and Secular Clergy", "England and France"],
+    "correctAnswer": "The Pope and the Holy Roman Emperor",
+    "imageURL": "SEARCH_QUERY: 'Investiture Controversy Pope Emperor historical depiction'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "The term **'Baroque'** is used to describe a dominant style of art, architecture, and music of which historical period?",
+    "options": ["Medieval", "Renaissance", "17th and Early 18th Centuries", "Classical"],
+    "correctAnswer": "17th and Early 18th Centuries",
+    "imageURL": "SEARCH_QUERY: 'Baroque architecture style Palace of Versailles'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Suez Canal** was officially opened in which year?",
+    "options": ["1848", "1869", "1898", "1914"],
+    "correctAnswer": "1869",
+    "imageURL": "SEARCH_QUERY: 'Suez Canal opening ceremony 1869 photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "What famous speech, delivered by Winston Churchill in 1946, popularized the term for the boundary separating Communist Eastern Europe from Western Europe?",
+    "options": ["'We Shall Fight on the Beaches'", "'Iron Curtain' Speech", "'Finest Hour' Speech", "'Tear Down This Wall'"],
+    "correctAnswer": "'Iron Curtain' Speech",
+    "imageURL": "SEARCH_QUERY: 'Winston Churchill Iron Curtain speech photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the purpose of the **Lend-Lease Act**, passed by the US Congress in 1941?",
+    "options": ["To formalize US entry into WWII", "To provide military aid to Allied nations", "To implement the draft", "To fund the Manhattan Project"],
+    "correctAnswer": "To provide military aid to Allied nations",
+    "imageURL": "SEARCH_QUERY: 'Lend-Lease Act WWII US aid poster'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "The **Six-Day War** of 1967 was primarily fought between Israel and a coalition of which Arab states?",
+    "options": ["Iran, Iraq, Syria", "Egypt, Jordan, Syria", "Saudi Arabia, Libya, Algeria", "Lebanon, Turkey, Egypt"],
+    "correctAnswer": "Egypt, Jordan, Syria",
+    "imageURL": "SEARCH_QUERY: 'Six-Day War 1967 map gains'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "What was the title given to the ruler of the ancient Inca Empire?",
+    "options": ["Tlatoani", "Sapa Inca", "Pharaoh", "Maharaja"],
+    "correctAnswer": "Sapa Inca",
+    "imageURL": "SEARCH_QUERY: 'Sapa Inca ruler historical illustration'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Battle of Crécy** (1346) was a key English victory during which prolonged conflict between England and France?",
+    "options": ["War of the Roses", "Hundred Years' War", "The Crusades", "Norman Conquest"],
+    "correctAnswer": "Hundred Years' War",
+    "imageURL": "SEARCH_QUERY: 'Battle of Crécy historical painting longbows'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "The first permanent English settlement in North America, established in 1607, was named what?",
+    "options": ["Plymouth", "Roanoke", "Jamestown", "New Amsterdam"],
+    "correctAnswer": "Jamestown",
+    "imageURL": "SEARCH_QUERY: 'Jamestown settlement historical reconstruction'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Second Industrial Revolution** is generally considered to have been driven by advancements in which two major energy sources?",
+    "options": ["Water and Wood", "Coal and Steam", "Oil and Electricity", "Solar and Nuclear"],
+    "correctAnswer": "Oil and Electricity",
+    "imageURL": "SEARCH_QUERY: 'Second Industrial Revolution factories electricity photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Marshall Plan** was a US initiative to aid the economic recovery of which region after World War II?",
+    "options": ["Japan and Korea", "Latin America", "Western Europe", "The Soviet Union"],
+    "correctAnswer": "Western Europe",
+    "imageURL": "SEARCH_QUERY: 'Marshall Plan aid to Western Europe historical poster'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the term for the rapid, overwhelming German military tactic meaning 'lightning war'?",
+    "options": ["U-Boat Warfare", "Total War", "Schlieffen Plan", "Blitzkrieg"],
+    "correctAnswer": "Blitzkrieg",
+    "imageURL": "SEARCH_QUERY: 'German Blitzkrieg tanks and planes photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which two European powers jointly owned and administered the **Suez Canal Company** before its nationalization?",
+    "options": ["France and Italy", "Great Britain and France", "Germany and Great Britain", "Netherlands and Belgium"],
+    "correctAnswer": "Great Britain and France",
+    "imageURL": "SEARCH_QUERY: 'Suez Canal Company historical ownership flags'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "The philosophical text **The Republic**, discussing justice and the ideal state, was authored by which Greek thinker?",
+    "options": ["Aristotle", "Socrates", "Plato", "Homer"],
+    "correctAnswer": "Plato",
+    "imageURL": "SEARCH_QUERY: 'Plato philosopher bust The Republic'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "The **Hagia Sophia** in Constantinople was originally built as what type of religious building?",
+    "options": ["Synagogue", "Mosque", "Christian Basilica", "Pagan Temple"],
+    "correctAnswer": "Christian Basilica",
+    "imageURL": "SEARCH_QUERY: 'Hagia Sophia historical interior view'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "The **Edict of Nantes** (1598) granted substantial rights to the Huguenots (French Protestants) and was issued by which French king?",
+    "options": ["Louis XIII", "Henry IV", "Francis II", "Charles IX"],
+    "correctAnswer": "Henry IV",
+    "imageURL": "SEARCH_QUERY: 'Edict of Nantes historical document image'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "The **Boxer Rebellion** (1899-1901) was an anti-foreign, anti-colonial uprising that took place in which country?",
+    "options": ["Japan", "India", "China", "Korea"],
+    "correctAnswer": "China",
+    "imageURL": "SEARCH_QUERY: 'Boxer Rebellion historical fighters photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Bay of Pigs Invasion** in 1961 was a failed US-backed attempt to overthrow the government of which leader?",
+    "options": ["Augusto Pinochet", "Fidel Castro", "Nikita Khrushchev", "Daniel Ortega"],
+    "correctAnswer": "Fidel Castro",
+    "imageURL": "SEARCH_QUERY: 'Fidel Castro Cuban leader portrait'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "The **Molotov–Ribbentrop Pact** of 1939 was a non-aggression agreement between Nazi Germany and which other major power?",
+    "options": ["Italy", "Japan", "Soviet Union", "France"],
+    "correctAnswer": "Soviet Union",
+    "imageURL": "SEARCH_QUERY: 'Molotov–Ribbentrop Pact signing photo 1939'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which former colony was the site of the **Dien Bien Phu** battle in 1954, a decisive defeat for the French?",
+    "options": ["Congo", "Algeria", "Vietnam", "Laos"],
+    "correctAnswer": "Vietnam",
+    "imageURL": "SEARCH_QUERY: 'Battle of Dien Bien Phu historical photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Ancient Civilizations",
+    "question": "What was the name of the Egyptian writing system that used pictorial characters to represent words and sounds?",
+    "options": ["Cuneiform", "Hieroglyphics", "Demotic", "Linear B"],
+    "correctAnswer": "Hieroglyphics",
+    "imageURL": "SEARCH_QUERY: 'Egyptian Hieroglyphics carving photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Medieval History",
+    "question": "Which major civilization built the complex irrigation canals and massive stepped pyramids (huacas) in the Moche Valley of ancient Peru?",
+    "options": ["Inca", "Moche Culture", "Nazca", "Tiwanaku"],
+    "correctAnswer": "Moche Culture",
+    "imageURL": "SEARCH_QUERY: 'Moche civilization huaca ruins Peru'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Renaissance & Early Modern",
+    "question": "What 16th-century naval fleet, sent by Spain to invade England, was famously defeated by a combination of English tactics and bad weather?",
+    "options": ["Spanish Flotilla", "Invincible Armada", "Genoese Fleet", "Hanseatic Fleet"],
+    "correctAnswer": "Invincible Armada",
+    "imageURL": "SEARCH_QUERY: 'Spanish Armada naval battle painting'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "18th & 19th Centuries",
+    "question": "Who authored *The Communist Manifesto* in 1848, which called for a working-class revolution?",
+    "options": ["Friedrich Engels and Vladimir Lenin", "Karl Marx and Friedrich Engels", "Vladimir Lenin and Leon Trotsky", "Karl Marx and Joseph Stalin"],
+    "correctAnswer": "Karl Marx and Friedrich Engels",
+    "imageURL": "SEARCH_QUERY: 'Karl Marx and Friedrich Engels portrait photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "20th Century",
+    "question": "The **Velvet Revolution** in 1989 peacefully overthrew the Communist regime in which country?",
+    "options": ["Hungary", "Poland", "Czechoslovakia", "Romania"],
+    "correctAnswer": "Czechoslovakia",
+    "imageURL": "SEARCH_QUERY: 'Velvet Revolution Czechoslovakia 1989 protests photo'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "World Wars",
+    "question": "What was the code name for the invasion of the Soviet Union by Nazi Germany, launched in June 1941?",
+    "options": ["Operation Sealion", "Operation Husky", "Operation Barbarossa", "Operation Torch"],
+    "correctAnswer": "Operation Barbarossa",
+    "imageURL": "SEARCH_QUERY: 'Operation Barbarossa German invasion map'"
+  },
+  {
+    "quizName": "The History Deep Dive",
+    "category": "Decolonization",
+    "question": "Which island nation in the Caribbean gained independence from Great Britain in 1962 and is famous for its cultural influence?",
+    "options": ["Cuba", "Haiti", "Jamaica", "Puerto Rico"],
+    "correctAnswer": "Jamaica",
+    "imageURL": "SEARCH_QUERY: 'Jamaica independence day 1962 photo'"
+  }
+]

@@ -1,0 +1,810 @@
+[
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which large South American country is the **only one** to have coastlines on both the Pacific Ocean and the Caribbean Sea?",
+    "options": ["Brazil", "Chile", "Colombia", "Peru"],
+    "correctAnswer": "Colombia",
+    "imageURL": "SEARCH_QUERY: 'Colombia map Caribbean and Pacific coastlines'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What is the name of the deepest known point in the Earth's oceans, located in the western Pacific?",
+    "options": ["Tonga Trench", "Puerto Rico Trench", "Mariana Trench (Challenger Deep)", "Kermadec Trench"],
+    "correctAnswer": "Mariana Trench (Challenger Deep)",
+    "imageURL": "SEARCH_QUERY: 'Mariana Trench Challenger Deep location map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which capital city, located at the mouth of the Congo River, is separated from Kinshasa by only a few kilometers?",
+    "options": ["Brazzaville", "Luanda", "Libreville", "Yaoundé"],
+    "correctAnswer": "Brazzaville",
+    "imageURL": "SEARCH_QUERY: 'Brazzaville Kinshasa map separation'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The **Great Pacific Garbage Patch** is most closely associated with which major ocean current system?",
+    "options": ["Gulf Stream", "Kuroshio Current", "North Pacific Gyre", "Antarctic Circumpolar Current"],
+    "correctAnswer": "North Pacific Gyre",
+    "imageURL": "SEARCH_QUERY: 'North Pacific Gyre ocean currents map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a river that flows into another river, rather than directly into a sea, ocean, or lake?",
+    "options": ["Estuary", "Fjord", "Tributary", "Distributary"],
+    "correctAnswer": "Tributary",
+    "imageURL": "SEARCH_QUERY: 'River tributary diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "What is the largest landlocked country in the world by area?",
+    "options": ["Kazakhstan", "Mongolia", "Chad", "Uzbekistan"],
+    "correctAnswer": "Kazakhstan",
+    "imageURL": "SEARCH_QUERY: 'Kazakhstan map landlocked country'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Plateau of Tibet**, often called the 'Roof of the World,' is primarily bounded by which two major mountain ranges?",
+    "options": ["Andes and Rockies", "Himalayas and Kunlun Mountains", "Alps and Carpathians", "Urals and Caucasus"],
+    "correctAnswer": "Himalayas and Kunlun Mountains",
+    "imageURL": "SEARCH_QUERY: 'Plateau of Tibet geographical boundaries map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which non-European capital city sits on the Bosphorus Strait, straddling two continents?",
+    "options": ["Ankara", "Istanbul (historical capital)", "Baku", "Beirut"],
+    "correctAnswer": "Istanbul (historical capital)",
+    "imageURL": "SEARCH_QUERY: 'Istanbul Bosphorus Strait map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The **Sahel** region is a transitional zone in Africa located between the Sahara Desert and what type of ecological zone to the south?",
+    "options": ["Tropical Rainforest", "Mediterranean Coast", "Savanna (Sudanian Savanna)", "Atlas Mountains"],
+    "correctAnswer": "Savanna (Sudanian Savanna)",
+    "imageURL": "SEARCH_QUERY: 'Sahel region African map ecology'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a narrow strip of land connecting two larger landmasses, with water on either side?",
+    "options": ["Peninsula", "Archipelago", "Isthmus", "Cape"],
+    "correctAnswer": "Isthmus",
+    "imageURL": "SEARCH_QUERY: 'Isthmus landform geographical diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which country is the **only one** to border both Norway and Poland?",
+    "options": ["Sweden", "Finland", "Germany", "Russia"],
+    "correctAnswer": "Russia",
+    "imageURL": "SEARCH_QUERY: 'Russia borders Norway and Poland map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What natural feature separates the Iberian Peninsula (Spain and Portugal) from the rest of Europe?",
+    "options": ["The Rhine River", "The Alps", "The Pyrenees Mountains", "The Strait of Gibraltar"],
+    "correctAnswer": "The Pyrenees Mountains",
+    "imageURL": "SEARCH_QUERY: 'Pyrenees Mountains Iberian Peninsula separation map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which capital city is geographically the **highest** (in elevation) capital city of South America?",
+    "options": ["Quito, Ecuador", "La Paz, Bolivia (de facto)", "Bogotá, Colombia", "Sucre, Bolivia (constitutional)"],
+    "correctAnswer": "La Paz, Bolivia (de facto)",
+    "imageURL": "SEARCH_QUERY: 'La Paz Bolivia highest capital city elevation photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "What is the name of the massive glacier on the West Antarctic Ice Sheet whose potential collapse is considered a major contributor to sea-level rise?",
+    "options": ["Perito Moreno Glacier", "Pine Island Glacier", "Thwaites Glacier ('Doomsday Glacier')", "Lambert Glacier"],
+    "correctAnswer": "Thwaites Glacier ('Doomsday Glacier')",
+    "imageURL": "SEARCH_QUERY: 'Thwaites Glacier Antarctica map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What geological feature is a deep, narrow, and elongated sea or lake with steep sides, typically formed by glacial erosion?",
+    "options": ["Delta", "Lagoon", "Fjord", "Atoll"],
+    "correctAnswer": "Fjord",
+    "imageURL": "SEARCH_QUERY: 'Fjord geological feature photo Norway'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which large island nation in Southeast Asia is divided into a western and eastern half, with one half being a sovereign nation and the other half an Indonesian province?",
+    "options": ["New Guinea (Papua New Guinea and Papua/West Papua)", "Mindanao", "Borneo", "Sumatra"],
+    "correctAnswer": "New Guinea (Papua New Guinea and Papua/West Papua)",
+    "imageURL": "SEARCH_QUERY: 'New Guinea island political division map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Ring of Fire**, known for its high concentration of earthquakes and volcanoes, primarily encircles which ocean?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "correctAnswer": "Pacific Ocean",
+    "imageURL": "SEARCH_QUERY: 'Pacific Ring of Fire tectonic plates map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "What is the capital city of Switzerland?",
+    "options": ["Zurich", "Geneva", "Bern", "Lausanne"],
+    "correctAnswer": "Bern",
+    "imageURL": "SEARCH_QUERY: 'Bern Switzerland capital city photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The loss of which vast Asian inland body of water is frequently cited as one of the world's worst environmental disasters, shrinking due to Soviet-era irrigation projects?",
+    "options": ["Caspian Sea", "Lake Baikal", "Aral Sea", "Lake Balkhash"],
+    "correctAnswer": "Aral Sea",
+    "imageURL": "SEARCH_QUERY: 'Aral Sea shrinking over time satellite photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the name for the large, relatively flat areas of land at the bottom of the ocean, typically found at depths between 3,000 and 6,000 meters?",
+    "options": ["Continental Shelf", "Ocean Trench", "Abyssal Plain", "Mid-Ocean Ridge"],
+    "correctAnswer": "Abyssal Plain",
+    "imageURL": "SEARCH_QUERY: 'Abyssal Plain ocean floor diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which country is bordered by exactly **three** other countries (not including maritime borders)?",
+    "options": ["Austria", "Germany", "Thailand", "Canada"],
+    "correctAnswer": "Thailand",
+    "imageURL": "SEARCH_QUERY: 'Thailand border countries map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Strait of Hormuz**, a critically important maritime chokepoint, connects the Persian Gulf to which other body of water?",
+    "options": ["Red Sea", "Gulf of Aden", "Arabian Sea (via Gulf of Oman)", "Mediterranean Sea"],
+    "correctAnswer": "Arabian Sea (via Gulf of Oman)",
+    "imageURL": "SEARCH_QUERY: 'Strait of Hormuz geographical map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which capital city of a Balkan country sits on the banks of the Sava and Danube rivers?",
+    "options": ["Skopje", "Sarajevo", "Belgrade", "Tirana"],
+    "correctAnswer": "Belgrade",
+    "imageURL": "SEARCH_QUERY: 'Belgrade Sava Danube rivers map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "What is the primary natural process that drives the high salt concentration of the **Dead Sea**?",
+    "options": ["Undersea Volcanic Vents", "Minimal River Inflow", "High Evaporation Rate", "Tidal Action"],
+    "correctAnswer": "High Evaporation Rate",
+    "imageURL": "SEARCH_QUERY: 'Dead Sea high evaporation salt photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a volcanic feature that forms when a volcanic cone collapses into itself, creating a large, bowl-shaped depression?",
+    "options": ["Crater", "Maar", "Lava Dome", "Caldera"],
+    "correctAnswer": "Caldera",
+    "imageURL": "SEARCH_QUERY: 'Volcanic caldera geological diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "What is the only country whose territory is completely inside the borders of South Africa?",
+    "options": ["Eswatini (Swaziland)", "Botswana", "Lesotho", "Namibia"],
+    "correctAnswer": "Lesotho",
+    "imageURL": "SEARCH_QUERY: 'Lesotho enclave in South Africa map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Canary Current** is a cold ocean current that flows southward along the western coast of which continent?",
+    "options": ["North America", "South America", "Africa", "Australia"],
+    "correctAnswer": "Africa",
+    "imageURL": "SEARCH_QUERY: 'Canary Current ocean flow map Africa'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "What is the capital city of Australia?",
+    "options": ["Sydney", "Melbourne", "Canberra", "Perth"],
+    "correctAnswer": "Canberra",
+    "imageURL": "SEARCH_QUERY: 'Canberra Australia capital city photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The 2021 **Kakhovka Dam** destruction caused massive flooding and environmental damage along the banks of which major European river?",
+    "options": ["Danube River", "Volga River", "Dnieper River", "Rhine River"],
+    "correctAnswer": "Dnieper River",
+    "imageURL": "SEARCH_QUERY: 'Kakhovka Dam Dnieper River damage map 2021'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the name for a large mass of ice formed over land, usually in a valley, that slowly flows under its own weight?",
+    "options": ["Iceberg", "Ice Shelf", "Glacier", "Ice Floe"],
+    "correctAnswer": "Glacier",
+    "imageURL": "SEARCH_QUERY: 'Valley glacier landform photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "The **Kashmir** region, a major geopolitical hotspot, is primarily contested by which three nations?",
+    "options": ["India, Pakistan, Afghanistan", "India, China, Pakistan", "China, Russia, India", "Pakistan, Iran, China"],
+    "correctAnswer": "India, China, Pakistan",
+    "imageURL": "SEARCH_QUERY: 'Kashmir political dispute map India China Pakistan'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What is the geographical term for the process where tectonic plates move away from each other, often leading to the formation of new crust and rift valleys?",
+    "options": ["Subduction", "Transform Boundary", "Convergent Boundary", "Divergent Boundary"],
+    "correctAnswer": "Divergent Boundary",
+    "imageURL": "SEARCH_QUERY: 'Divergent plate boundary geological diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "What is the name of the capital city of New Zealand?",
+    "options": ["Auckland", "Christchurch", "Wellington", "Queenstown"],
+    "correctAnswer": "Wellington",
+    "imageURL": "SEARCH_QUERY: 'Wellington New Zealand capital city photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "Which large South American biome, often called a 'Lungs of the Earth,' experienced record deforestation rates in the early 2020s?",
+    "options": ["Atacama Desert", "Andes Mountains", "Amazon Rainforest", "Pampas Grasslands"],
+    "correctAnswer": "Amazon Rainforest",
+    "imageURL": "SEARCH_QUERY: 'Amazon Rainforest deforestation satellite image'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What term is used for the steep slope or long cliff that results from erosion or faulting and separates two relatively level areas of differing elevations?",
+    "options": ["Butte", "Mesa", "Hogback", "Escarpment"],
+    "correctAnswer": "Escarpment",
+    "imageURL": "SEARCH_QUERY: 'Escarpment geological landform photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which two countries share the island of Hispaniola?",
+    "options": ["Jamaica and Cuba", "Haiti and Dominican Republic", "Cuba and Haiti", "Puerto Rico and Dominican Republic"],
+    "correctAnswer": "Haiti and Dominican Republic",
+    "imageURL": "SEARCH_QUERY: 'Hispaniola island political map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Gobi Desert**, a large cold desert, is located primarily in which two Asian countries?",
+    "options": ["China and India", "Kazakhstan and Russia", "China and Mongolia", "Pakistan and Afghanistan"],
+    "correctAnswer": "China and Mongolia",
+    "imageURL": "SEARCH_QUERY: 'Gobi Desert map China Mongolia'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "What is the capital city of Pakistan?",
+    "options": ["Karachi", "Lahore", "Islamabad", "Rawalpindi"],
+    "correctAnswer": "Islamabad",
+    "imageURL": "SEARCH_QUERY: 'Islamabad Pakistan capital city photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The ongoing crisis in the **Chaco Boreal** region involves massive deforestation for agricultural expansion in which South American nation?",
+    "options": ["Brazil", "Argentina", "Paraguay", "Uruguay"],
+    "correctAnswer": "Paraguay",
+    "imageURL": "SEARCH_QUERY: 'Chaco Boreal Paraguay deforestation satellite image'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a long, narrow bank of sand or gravel running parallel to the shore and built up by waves and currents?",
+    "options": ["Cliff", "Tombolo", "Spit (or Barrier Spit)", "Cave"],
+    "correctAnswer": "Spit (or Barrier Spit)",
+    "imageURL": "SEARCH_QUERY: 'Barrier spit coastal landform diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which Southeast Asian country is an **archipelago** consisting of over 17,000 islands and is the world's largest island country?",
+    "options": ["Philippines", "Malaysia", "Indonesia", "Vietnam"],
+    "correctAnswer": "Indonesia",
+    "imageURL": "SEARCH_QUERY: 'Indonesia archipelago map 17000 islands'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What is the name of the narrowest point of the Strait of Gibraltar, separating Europe and Africa?",
+    "options": ["Cape Finisterre", "Punta de Tarifa", "Tangier", "Ceuta"],
+    "correctAnswer": "Punta de Tarifa",
+    "imageURL": "SEARCH_QUERY: 'Punta de Tarifa Strait of Gibraltar narrowest point map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which Central American capital city is situated at the highest elevation?",
+    "options": ["San Salvador", "Tegucigalpa", "Guatemala City", "San José"],
+    "correctAnswer": "Guatemala City",
+    "imageURL": "SEARCH_QUERY: 'Guatemala City Central America highest elevation photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "What is the term for the large areas of the Amazon and other tropical forests that are transitioning from carbon sinks to **carbon sources** due to deforestation and fire?",
+    "options": ["Bioremediation Zones", "Ecological Hotspots", "Tipping Points", "Carbon Neutral Zones"],
+    "correctAnswer": "Tipping Points",
+    "imageURL": "SEARCH_QUERY: 'Amazon rainforest carbon tipping point diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a large, flat-topped hill or mountain with steep sides, common in arid and semi-arid regions?",
+    "options": ["Butte", "Plateau", "Mesa", "Hogback"],
+    "correctAnswer": "Mesa",
+    "imageURL": "SEARCH_QUERY: 'Mesa landform geographical photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "The **Transnistria** region, a breakaway state unrecognized by most of the world, is located within the internationally recognized borders of which country?",
+    "options": ["Ukraine", "Romania", "Moldova", "Belarus"],
+    "correctAnswer": "Moldova",
+    "imageURL": "SEARCH_QUERY: 'Transnistria region Moldova map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What is the name of the current that warms Western Europe, making its climate significantly milder than other areas at the same latitude?",
+    "options": ["Labrador Current", "Canary Current", "North Atlantic Drift (Gulf Stream extension)", "California Current"],
+    "correctAnswer": "North Atlantic Drift (Gulf Stream extension)",
+    "imageURL": "SEARCH_QUERY: 'North Atlantic Drift warming effect map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which Asian capital city is known for its concentric, circular organization, centered on the Grand Palace and the Chao Phraya River?",
+    "options": ["Hanoi", "Kuala Lumpur", "Bangkok", "Manila"],
+    "correctAnswer": "Bangkok",
+    "imageURL": "SEARCH_QUERY: 'Bangkok Thailand city structure map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The 2024 **La Soufrière** volcano activity prompted warnings and evacuations in which Caribbean island nation?",
+    "options": ["Martinique", "Montserrat", "St. Vincent and the Grenadines", "Barbados"],
+    "correctAnswer": "St. Vincent and the Grenadines",
+    "imageURL": "SEARCH_QUERY: 'La Soufrière volcano St. Vincent 2024 eruption photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the name for the geological process where wind erosion scours and polishes rock surfaces, especially in deserts?",
+    "options": ["Deposition", "Abrasion", "Saltation", "Deflation"],
+    "correctAnswer": "Abrasion",
+    "imageURL": "SEARCH_QUERY: 'Wind abrasion geological process diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "The **Spratly Islands** are a small archipelago in the South China Sea, primarily claimed by which three major regional powers (among others)?",
+    "options": ["Japan, South Korea, China", "China, Taiwan, Vietnam", "Indonesia, Malaysia, Philippines", "Russia, China, North Korea"],
+    "correctAnswer": "China, Taiwan, Vietnam",
+    "imageURL": "SEARCH_QUERY: 'Spratly Islands South China Sea territorial claims map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What is the name of the large crack in the Earth's crust that runs through East Africa, creating several large rift valley lakes?",
+    "options": ["San Andreas Fault", "East African Rift Valley", "Great Dividing Range", "Great Rift Valley (General Term)"],
+    "correctAnswer": "East African Rift Valley",
+    "imageURL": "SEARCH_QUERY: 'East African Rift Valley geographical map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which North African capital city sits directly on the Strait of Gibraltar, acting as a gateway to the Atlantic Ocean?",
+    "options": ["Casablanca", "Algiers", "Rabat", "Tangier"],
+    "correctAnswer": "Rabat",
+    "imageURL": "SEARCH_QUERY: 'Rabat Morocco capital city location map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The **Australian Great Barrier Reef** is under severe threat primarily from which environmental process, causing coral to turn white?",
+    "options": ["Ocean Acidification", "Coral Bleaching (due to warming waters)", "Invasive Starfish", "Erosion"],
+    "correctAnswer": "Coral Bleaching (due to warming waters)",
+    "imageURL": "SEARCH_QUERY: 'Great Barrier Reef coral bleaching photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a circular coral reef that encloses a lagoon, often formed atop a sunken volcanic island?",
+    "options": ["Seamount", "Barrier Reef", "Atoll", "Fringing Reef"],
+    "correctAnswer": "Atoll",
+    "imageURL": "SEARCH_QUERY: 'Atoll coral reef formation diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which European country has the longest land border with Russia?",
+    "options": ["Finland", "Estonia", "Poland", "Ukraine"],
+    "correctAnswer": "Ukraine",
+    "imageURL": "SEARCH_QUERY: 'Ukraine longest land border with Russia map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Volga River**, the longest river in Europe, drains into which body of water?",
+    "options": ["Black Sea", "Baltic Sea", "Caspian Sea", "Arctic Ocean"],
+    "correctAnswer": "Caspian Sea",
+    "imageURL": "SEARCH_QUERY: 'Volga River drainage basin map Caspian Sea'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "What is the capital city of Canada?",
+    "options": ["Toronto", "Montreal", "Vancouver", "Ottawa"],
+    "correctAnswer": "Ottawa",
+    "imageURL": "SEARCH_QUERY: 'Ottawa Canada capital city photo Parliament Hill'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "What is the name of the phenomenon where the ground in Arctic and sub-Arctic regions, usually frozen solid, thaws due to climate change?",
+    "options": ["Glacial Retreat", "Tundra Melting", "Permafrost Thaw", "Arctic Amplification"],
+    "correctAnswer": "Permafrost Thaw",
+    "imageURL": "SEARCH_QUERY: 'Permafrost thaw Arctic landscape photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a hill or mound of sand created by the wind, common in deserts and coastal areas?",
+    "options": ["Loess", "Oasis", "Erg", "Dune"],
+    "correctAnswer": "Dune",
+    "imageURL": "SEARCH_QUERY: 'Sand dune landform photo desert'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which country is the **most populous** landlocked country in the world?",
+    "options": ["Ethiopia", "Nepal", "Mongolia", "Afghanistan"],
+    "correctAnswer": "Ethiopia",
+    "imageURL": "SEARCH_QUERY: 'Ethiopia map most populous landlocked country'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Karakum Desert** occupies much of the territory of which Central Asian country?",
+    "options": ["Uzbekistan", "Kazakhstan", "Turkmenistan", "Kyrgyzstan"],
+    "correctAnswer": "Turkmenistan",
+    "imageURL": "SEARCH_QUERY: 'Karakum Desert Turkmenistan map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which major Asian capital city was historically known as **Saigon**?",
+    "options": ["Phnom Penh", "Hanoi", "Ho Chi Minh City", "Kuala Lumpur"],
+    "correctAnswer": "Ho Chi Minh City",
+    "imageURL": "SEARCH_QUERY: 'Ho Chi Minh City former Saigon photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "What is the scientific term for the gradual process of once-fertile land becoming desert, often caused by climate change or human activity?",
+    "options": ["Tectonic Uplift", "Salinization", "Desertification", "Eutrophication"],
+    "correctAnswer": "Desertification",
+    "imageURL": "SEARCH_QUERY: 'Desertification process illustration'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a wide, shallow river mouth where the tide meets the stream, resulting in a mix of fresh and salt water?",
+    "options": ["Delta", "Lagoon", "Estuary", "Bayou"],
+    "correctAnswer": "Estuary",
+    "imageURL": "SEARCH_QUERY: 'Estuary river mouth diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which South American country has no land border with Brazil?",
+    "options": ["Chile", "Bolivia", "Uruguay", "Colombia"],
+    "correctAnswer": "Chile",
+    "imageURL": "SEARCH_QUERY: 'Chile and Brazil border map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "Which South American mountain range is the world's longest continental mountain range?",
+    "options": ["Sierra Madre", "Rocky Mountains", "Andes Mountains", "Atlas Mountains"],
+    "correctAnswer": "Andes Mountains",
+    "imageURL": "SEARCH_QUERY: 'Andes Mountains South America map length'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which capital city of a former Soviet republic sits on the shores of the Caspian Sea?",
+    "options": ["Tashkent", "Baku", "Astana", "Tbilisi"],
+    "correctAnswer": "Baku",
+    "imageURL": "SEARCH_QUERY: 'Baku Azerbaijan Caspian Sea coast photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The **Three Gorges Dam**, the world's largest power station, is built on which major river in China?",
+    "options": ["Yellow River (Huang He)", "Pearl River", "Yangtze River (Chang Jiang)", "Mekong River"],
+    "correctAnswer": "Yangtze River (Chang Jiang)",
+    "imageURL": "SEARCH_QUERY: 'Three Gorges Dam Yangtze River photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the geological term for a fan-shaped deposit of sediment where a fast-moving stream meets a flatter plain, especially common in arid regions?",
+    "options": ["Delta", "Alluvial Fan", "Levee", "Moraine"],
+    "correctAnswer": "Alluvial Fan",
+    "imageURL": "SEARCH_QUERY: 'Alluvial fan geological feature diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which nation is a **microstate** in Europe that lies entirely within the borders of Italy?",
+    "options": ["Vatican City", "Monaco", "Liechtenstein", "San Marino"],
+    "correctAnswer": "San Marino",
+    "imageURL": "SEARCH_QUERY: 'San Marino enclave in Italy map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What is the name of the narrow sea channel that separates the island of Madagascar from mainland Africa?",
+    "options": ["Strait of Hormuz", "Mozambique Channel", "Gulf of Aden", "Suez Canal"],
+    "correctAnswer": "Mozambique Channel",
+    "imageURL": "SEARCH_QUERY: 'Mozambique Channel map Madagascar Africa'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which South African capital city (one of three) is the legislative capital, home to the Parliament?",
+    "options": ["Pretoria (executive)", "Bloemfontein (judicial)", "Cape Town (legislative)", "Johannesburg"],
+    "correctAnswer": "Cape Town (legislative)",
+    "imageURL": "SEARCH_QUERY: 'Cape Town South Africa Parliament building photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The term **'Blue Carbon'** refers to the carbon captured and stored by which specific type of marine ecosystem?",
+    "options": ["Phytoplankton blooms", "Open Ocean Water", "Coastal and Marine Ecosystems (mangroves, salt marshes)", "Deep Sea Vents"],
+    "correctAnswer": "Coastal and Marine Ecosystems (mangroves, salt marshes)",
+    "imageURL": "SEARCH_QUERY: 'Blue Carbon ecosystem drawing mangroves'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a natural depression on the Earth's surface caused by the dissolution of soluble rock (like limestone), characteristic of a **Karst** landscape?",
+    "options": ["Butte", "Sinkhole (or Cenote)", "Dike", "Fault"],
+    "correctAnswer": "Sinkhole (or Cenote)",
+    "imageURL": "SEARCH_QUERY: 'Sinkhole Karst landscape photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "The **Kuril Islands** are a chain of islands primarily disputed between which two nations?",
+    "options": ["Russia and Japan", "China and Taiwan", "Russia and USA", "South Korea and Japan"],
+    "correctAnswer": "Russia and Japan",
+    "imageURL": "SEARCH_QUERY: 'Kuril Islands dispute map Russia Japan'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Great Artesian Basin**, a large underground water source, is located beneath which country?",
+    "options": ["Saudi Arabia", "United States", "Australia", "China"],
+    "correctAnswer": "Australia",
+    "imageURL": "SEARCH_QUERY: 'Great Artesian Basin Australia map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which European capital city sits on the River Liffey, often nicknamed the 'Fair City'?",
+    "options": ["London", "Edinburgh", "Dublin", "Cardiff"],
+    "correctAnswer": "Dublin",
+    "imageURL": "SEARCH_QUERY: 'Dublin Ireland River Liffey photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The **Tsunami** that devastated the Indian Ocean region in 2004 was triggered by a major earthquake off the coast of which island?",
+    "options": ["Java", "Sumatra", "Luzon", "Borneo"],
+    "correctAnswer": "Sumatra",
+    "imageURL": "SEARCH_QUERY: '2004 Indian Ocean Tsunami Sumatra earthquake map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the geological term for a mass of rock or sediment deposited by a glacier, especially one that forms a ridge or mound?",
+    "options": ["Drumlin", "Esker", "Cirque", "Moraine"],
+    "correctAnswer": "Moraine",
+    "imageURL": "SEARCH_QUERY: 'Moraine glacial landform diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which country borders both Argentina and Peru?",
+    "options": ["Brazil", "Bolivia", "Chile", "Paraguay"],
+    "correctAnswer": "Bolivia",
+    "imageURL": "SEARCH_QUERY: 'Bolivia borders Argentina and Peru map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Patagonian Desert**, the largest desert in Argentina, is a result of what meteorological phenomenon caused by the Andes Mountains?",
+    "options": ["Rain Shadow Effect", "Orographic Lifting", "Adiabatic Cooling", "Katabatic Winds"],
+    "correctAnswer": "Rain Shadow Effect",
+    "imageURL": "SEARCH_QUERY: 'Patagonian Desert rain shadow Andes diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which North American capital city is situated on an island and is known for its narrow, colorful streets?",
+    "options": ["Havana", "Kingston", "Port-au-Prince", "Victoria (BC)"],
+    "correctAnswer": "Havana",
+    "imageURL": "SEARCH_QUERY: 'Havana Cuba capital city photo colorful streets'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "What is the common name for the massive, recurring dust storms that originate in the Sahara Desert and impact air quality as far as the Caribbean and Amazon?",
+    "options": ["Mistral Winds", "Harmattan Winds", "Sirocco", "Sahara Dust Plume"],
+    "correctAnswer": "Sahara Dust Plume",
+    "imageURL": "SEARCH_QUERY: 'Sahara Dust Plume satellite image Caribbean'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for the flat, low-lying land along a river, formed by sediment deposition, that is subject to periodic flooding?",
+    "options": ["Floodplain", "Terrace", "Meander", "Oxbow Lake"],
+    "correctAnswer": "Floodplain",
+    "imageURL": "SEARCH_QUERY: 'River floodplain geographical diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "Which two countries are separated by the **Bab el-Mandeb** strait, a major chokepoint between the Red Sea and the Gulf of Aden?",
+    "options": ["Saudi Arabia and Egypt", "Eritrea and Yemen", "Djibouti and Yemen", "Sudan and Saudi Arabia"],
+    "correctAnswer": "Djibouti and Yemen",
+    "imageURL": "SEARCH_QUERY: 'Bab el-Mandeb strait Djibouti Yemen map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Great Rift Valley** extends from Lebanon in the Middle East down to which southern African country?",
+    "options": ["South Africa", "Zambia", "Mozambique", "Botswana"],
+    "correctAnswer": "Mozambique",
+    "imageURL": "SEARCH_QUERY: 'Great Rift Valley extent map Lebanon Mozambique'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which South Asian capital city is known as the 'City of Temples' and sits on the Bagmati River?",
+    "options": ["New Delhi", "Kathmandu", "Thimphu", "Dhaka"],
+    "correctAnswer": "Kathmandu",
+    "imageURL": "SEARCH_QUERY: 'Kathmandu Nepal City of Temples photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The increasing severity and frequency of **heat domes** in North America and Europe are linked to disruptions in which atmospheric current?",
+    "options": ["Trade Winds", "Westerlies", "Jet Stream", "Monsoon Winds"],
+    "correctAnswer": "Jet Stream",
+    "imageURL": "SEARCH_QUERY: 'Heat dome formation Jet Stream disruption diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a U-shaped body of water formed when a wide meander of a river is cut off, creating a separated, curved lake?",
+    "options": ["Tarn", "Lagoon", "Oxbow Lake", "Fjord"],
+    "correctAnswer": "Oxbow Lake",
+    "imageURL": "SEARCH_QUERY: 'Oxbow lake formation diagram river meander'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "The **Svalbard archipelago** is internationally governed by Norway but allows citizens of signatory nations to live and work without a visa under which treaty?",
+    "options": ["Antarctic Treaty System", "Svalbard Treaty", "Oslo Accords", "Northern Territories Agreement"],
+    "correctAnswer": "Svalbard Treaty",
+    "imageURL": "SEARCH_QUERY: 'Svalbard Treaty signatories map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "What is the largest coral reef system in the world (by area)?",
+    "options": ["The Belize Barrier Reef", "The New Caledonia Barrier Reef", "The Great Barrier Reef", "The Mesoamerican Reef"],
+    "correctAnswer": "The Great Barrier Reef",
+    "imageURL": "SEARCH_QUERY: 'Great Barrier Reef Australia satellite photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which former Asian capital city, now the largest city, was originally built on a swampy delta and is often compared to Venice due to its many canals?",
+    "options": ["Hanoi", "Ho Chi Minh City", "Jakarta", "Bangkok"],
+    "correctAnswer": "Bangkok",
+    "imageURL": "SEARCH_QUERY: 'Bangkok canals historical photo Venice of the East'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The **Ozone Layer** is recovering primarily due to the global ban on the production of which specific class of industrial chemicals?",
+    "options": ["Carbon Dioxide (CO2)", "Chlorofluorocarbons (CFCs)", "Sulfur Dioxide (SO2)", "Methane (CH4)"],
+    "correctAnswer": "Chlorofluorocarbons (CFCs)",
+    "imageURL": "SEARCH_QUERY: 'CFCs chemical compound Ozone Layer hole diagram'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the geological term for a flat-topped, erosional hill that is significantly smaller than a mesa?",
+    "options": ["Hogback", "Butte", "Plateau", "Cuesta"],
+    "correctAnswer": "Butte",
+    "imageURL": "SEARCH_QUERY: 'Butte landform geological photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "The **Strait of Malacca**, one of the world's most critical shipping lanes, is bordered by which three nations?",
+    "options": ["Vietnam, Cambodia, Thailand", "Indonesia, Malaysia, Singapore", "Philippines, Indonesia, Australia", "India, Sri Lanka, Maldives"],
+    "correctAnswer": "Indonesia, Malaysia, Singapore",
+    "imageURL": "SEARCH_QUERY: 'Strait of Malacca bordering countries map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Physical Geography",
+    "question": "The **Sahara Desert** is expanding southwards, encroaching on the savanna lands through which process?",
+    "options": ["Tectonic Shift", "Volcanic Ashfall", "Desertification", "El Niño effect"],
+    "correctAnswer": "Desertification",
+    "imageURL": "SEARCH_QUERY: 'Sahara Desert expansion desertification map'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Capital Cities",
+    "question": "Which North European capital city is often called the 'Venice of the North' due to its multiple islands and canals?",
+    "options": ["Copenhagen", "Amsterdam", "Helsinki", "Stockholm"],
+    "correctAnswer": "Stockholm",
+    "imageURL": "SEARCH_QUERY: 'Stockholm Venice of the North photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Environmental Geography (Latest)",
+    "question": "The **Paris Agreement** focuses on limiting the global temperature increase above pre-industrial levels to well below which two degrees Celsius threshold?",
+    "options": ["1.0°C and 1.5°C", "1.5°C and 2.0°C", "2.0°C and 2.5°C", "2.5°C and 3.0°C"],
+    "correctAnswer": "1.5°C and 2.0°C",
+    "imageURL": "SEARCH_QUERY: 'Paris Agreement global temperature limit graphic'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Landforms",
+    "question": "What is the term for a small, shallow lake found in the circular basin (cirque) at the head of a mountain valley that has been carved out by a glacier?",
+    "options": ["Kettle Lake", "Tarn", "Plunge Pool", "Loch"],
+    "correctAnswer": "Tarn",
+    "imageURL": "SEARCH_QUERY: 'Tarn lake glacial landform photo'"
+  },
+  {
+    "quizName": "The Geography Deep Dive",
+    "category": "Political Geography",
+    "question": "The **Kaliningrad Oblast** is a Russian exclave located between which two EU and NATO member states?",
+    "options": ["Latvia and Lithuania", "Poland and Belarus", "Poland and Lithuania", "Estonia and Latvia"],
+    "correctAnswer": "Poland and Lithuania",
+    "imageURL": "SEARCH_QUERY: 'Kaliningrad Oblast exclave map Poland Lithuania'"
+  }
+]

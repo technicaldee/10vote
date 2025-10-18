@@ -1,0 +1,1026 @@
+[
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Nobel Prize in Physics 2023** was awarded for work on attosecond pulses of light. What fundamental particle's dynamics were these pulses used to study?",
+    "options": ["Protons", "Neutrinos", "Electrons", "Quarks"],
+    "correctAnswer": "Electrons",
+    "imageURL": "SEARCH_QUERY: 'attosecond pulse electron motion diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the name of the newly identified human organ structure, first described in 2017, that is a network of fluid-filled spaces supported by collagen and elastin?",
+    "options": ["Mesentery", "Interstitium", "Glial Fibers", "Peyer's Patches"],
+    "correctAnswer": "Interstitium",
+    "imageURL": "SEARCH_QUERY: 'human Interstitium organ structure diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the chemical element with the highest known melting point?",
+    "options": ["Tungsten (W)", "Carbon (C)", "Rhenium (Re)", "Tantalum (Ta)"],
+    "correctAnswer": "Tungsten (W)",
+    "imageURL": "SEARCH_QUERY: 'Tungsten metal sample high melting point'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which specific element forms the primary atmosphere of **Jupiter's moon Io**, released by its intense volcanic activity?",
+    "options": ["Water Vapor", "Sulfur Dioxide", "Methane", "Ammonia"],
+    "correctAnswer": "Sulfur Dioxide",
+    "imageURL": "SEARCH_QUERY: 'Jupiter moon Io volcano plume sulfur dioxide'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the common name for the massive, submerged continent of continental crust largely covered by the southwest Pacific Ocean, distinct from Australia?",
+    "options": ["Laurentia", "Columbia", "Zealandia", "Kerguelen Plateau"],
+    "correctAnswer": "Zealandia",
+    "imageURL": "SEARCH_QUERY: 'map of Zealandia submerged continent'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "What common class of drugs is used to lower cholesterol by inhibiting the enzyme HMG-CoA reductase?",
+    "options": ["Beta-Blockers", "Statins", "ACE Inhibitors", "NSAIDs"],
+    "correctAnswer": "Statins",
+    "imageURL": "SEARCH_QUERY: 'Statin molecule chemical structure'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What is the term for the process where nutrient pollution causes excessive plant growth in aquatic ecosystems, leading to oxygen depletion?",
+    "options": ["Desalination", "Eutrophication", "Acidification", "Transpiration"],
+    "correctAnswer": "Eutrophication",
+    "imageURL": "SEARCH_QUERY: 'algal bloom caused by Eutrophication in lake'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "According to the Standard Model, the Higgs boson is responsible for giving mass to which fundamental particles?",
+    "options": ["Photons and Gluons", "All particles", "Fermions and W/Z Bosons", "Only Quarks"],
+    "correctAnswer": "Fermions and W/Z Bosons",
+    "imageURL": "SEARCH_QUERY: 'Higgs boson giving mass to W and Z bosons diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What term is used to describe an organism whose cells contain a nucleus and other organelles enclosed within membranes?",
+    "options": ["Prokaryote", "Archaea", "Eukaryote", "Virus"],
+    "correctAnswer": "Eukaryote",
+    "imageURL": "SEARCH_QUERY: 'Eukaryotic cell diagram with nucleus'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "The **Haber-Bosch process**, crucial for fertilizer production, uses high pressure and temperature to synthesize ammonia from which two atmospheric gases?",
+    "options": ["Carbon Dioxide and Water", "Methane and Oxygen", "Nitrogen and Hydrogen", "Sulfur Dioxide and Oxygen"],
+    "correctAnswer": "Nitrogen and Hydrogen",
+    "imageURL": "SEARCH_QUERY: 'Haber-Bosch process ammonia synthesis diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "What astronomical object is defined as having gravity so immense that even light cannot escape, but is formed from the gravitational collapse of a massive star?",
+    "options": ["Neutron Star", "White Dwarf", "Black Hole", "Quasar"],
+    "correctAnswer": "Black Hole",
+    "imageURL": "SEARCH_QUERY: 'Black hole event horizon illustration'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "The concept of a 'Turing Machine' is fundamental to computer science. What specific question about computation does the **Halting Problem** address?",
+    "options": ["Can a machine always find the fastest route?", "Can a machine determine if another machine will stop or run forever?", "Can a machine generate truly random numbers?", "Can a machine solve any mathematical problem?"],
+    "correctAnswer": "Can a machine determine if another machine will stop or run forever?",
+    "imageURL": "SEARCH_QUERY: 'Turing Machine and Halting Problem visualization'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "Which specific type of plate boundary is characterized by two plates sliding past each other horizontally, often causing frequent earthquakes, like the San Andreas Fault?",
+    "options": ["Convergent Boundary", "Divergent Boundary", "Transform Boundary", "Subduction Zone"],
+    "correctAnswer": "Transform Boundary",
+    "imageURL": "SEARCH_QUERY: 'Transform plate boundary San Andreas Fault diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "Which type of cancer is characterized by the uncontrolled growth of white blood cells in the bone marrow and blood?",
+    "options": ["Carcinoma", "Sarcoma", "Leukemia", "Lymphoma"],
+    "correctAnswer": "Leukemia",
+    "imageURL": "SEARCH_QUERY: 'Leukemia blood cells microscopy image'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "What is the term for a hypothetical type of matter that makes up about 85% of the total mass in the universe and interacts only through gravity?",
+    "options": ["Dark Energy", "Antimatter", "Dark Matter", "Plasma"],
+    "correctAnswer": "Dark Matter",
+    "imageURL": "SEARCH_QUERY: 'Dark Matter halo structure visualization'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the common name for the process used in molecular biology to amplify a specific segment of DNA?",
+    "options": ["Gel Electrophoresis", "Polymerase Chain Reaction (PCR)", "Western Blot", "Cloning"],
+    "correctAnswer": "Polymerase Chain Reaction (PCR)",
+    "imageURL": "SEARCH_QUERY: 'Polymerase Chain Reaction PCR mechanism diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "In organic chemistry, what common functional group is composed of a carbon atom double-bonded to an oxygen atom, and single-bonded to a hydroxyl group (-OH)?",
+    "options": ["Aldehyde", "Ketone", "Carboxylic Acid", "Amine"],
+    "correctAnswer": "Carboxylic Acid",
+    "imageURL": "SEARCH_QUERY: 'Carboxylic Acid functional group structure'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which NASA mission, launched in 2011, is dedicated to exploring the asteroid belt and is the only spacecraft ever to orbit two extraterrestrial targets (Vesta and Ceres)?",
+    "options": ["New Horizons", "Juno", "Dawn", "Voyager 1"],
+    "correctAnswer": "Dawn",
+    "imageURL": "SEARCH_QUERY: 'NASA Dawn mission spacecraft illustration Vesta Ceres'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What specific atmospheric gas is the largest contributor to the enhanced greenhouse effect after water vapor, primarily due to human activity?",
+    "options": ["Methane (CH4)", "Nitrous Oxide (N2O)", "Carbon Dioxide (CO2)", "Ozone (O3)"],
+    "correctAnswer": "Carbon Dioxide (CO2)",
+    "imageURL": "SEARCH_QUERY: 'atmospheric CO2 concentration graph'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "What is the term for the critical temperature at which a material suddenly loses all electrical resistance, exhibiting perfect conductivity?",
+    "options": ["Absolute Zero", "Curie Temperature", "Critical Point", "Superconducting Transition Temperature"],
+    "correctAnswer": "Superconducting Transition Temperature",
+    "imageURL": "SEARCH_QUERY: 'superconductor levitating magnet Meissner effect'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the name of the process by which a cell engulfs large particles or other cells, often referred to as 'cell eating'?",
+    "options": ["Exocytosis", "Pinocytosis", "Phagocytosis", "Osmosis"],
+    "correctAnswer": "Phagocytosis",
+    "imageURL": "SEARCH_QUERY: 'Phagocytosis cell engulfing particle diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "The **Noble Prize in Chemistry 2023** was awarded for the discovery and synthesis of what type of nanosized semiconductor crystals?",
+    "options": ["Carbon Nanotubes", "Graphene Sheets", "Quantum Dots", "Zeolites"],
+    "correctAnswer": "Quantum Dots",
+    "imageURL": "SEARCH_QUERY: 'Quantum Dots light emission color example'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "The **Event Horizon Telescope (EHT)** collaboration captured the first direct image of a black hole in 2019. Which galaxy is this black hole located in?",
+    "options": ["Andromeda (M31)", "Triangulum Galaxy (M33)", "Messier 87 (M87)", "Milky Way (Sagittarius A*)"],
+    "correctAnswer": "Messier 87 (M87)",
+    "imageURL": "SEARCH_QUERY: 'Event Horizon Telescope Messier 87 black hole image'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What specific type of metamorphic rock is formed from the metamorphosis of limestone or dolomite?",
+    "options": ["Gneiss", "Schist", "Marble", "Quartzite"],
+    "correctAnswer": "Marble",
+    "imageURL": "SEARCH_QUERY: 'Marble rock sample close up texture'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "What is the name of the cryptographic algorithm published by Ron Rivest, Adi Shamir, and Leonard Adleman in 1977 that relies on the difficulty of factoring large numbers?",
+    "options": ["AES", "SHA-256", "RSA", "Elliptic Curve Cryptography"],
+    "correctAnswer": "RSA",
+    "imageURL": "SEARCH_QUERY: 'RSA cryptographic algorithm key representation'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "Which specific molecule carries the genetic information from DNA in the nucleus to the ribosomes in the cytoplasm for protein synthesis?",
+    "options": ["tRNA", "rRNA", "mRNA", "DNA Polymerase"],
+    "correctAnswer": "mRNA",
+    "imageURL": "SEARCH_QUERY: 'mRNA translation at ribosome diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What region of the atmosphere is primarily responsible for absorbing the Sun's harmful ultraviolet (UV) radiation?",
+    "options": ["Troposphere", "Stratosphere", "Mesosphere", "Thermosphere"],
+    "correctAnswer": "Stratosphere",
+    "imageURL": "SEARCH_QUERY: 'atmospheric layers diagram showing stratosphere ozone'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Casimir effect** demonstrates a force between two uncharged, parallel metal plates in a vacuum. What is the source of this force?",
+    "options": ["Zero-point energy of the vacuum", "Thermal radiation", "Magnetic fields", "Gravity"],
+    "correctAnswer": "Zero-point energy of the vacuum",
+    "imageURL": "SEARCH_QUERY: 'Casimir effect parallel plates diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What class of protein acts as a catalyst in biological systems, speeding up chemical reactions without being consumed itself?",
+    "options": ["Antibody", "Hormone", "Enzyme", "Lipid"],
+    "correctAnswer": "Enzyme",
+    "imageURL": "SEARCH_QUERY: 'Enzyme active site catalysis diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "Which chemical element is the primary component of the Moon's dust (regolith) and is considered a potential future energy source?",
+    "options": ["Titanium", "Iron", "Helium-3", "Uranium"],
+    "correctAnswer": "Helium-3",
+    "imageURL": "SEARCH_QUERY: 'Moon dust regolith containing Helium-3 illustration'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "What is the common term for the hypothetical spherical cloud of comets believed to surround the Sun at distances up to 100,000 AU?",
+    "options": ["Kuiper Belt", "Oort Cloud", "Asteroid Belt", "Hills Cloud"],
+    "correctAnswer": "Oort Cloud",
+    "imageURL": "SEARCH_QUERY: 'Oort Cloud solar system diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What type of rock is formed when magma or lava cools and solidifies?",
+    "options": ["Sedimentary", "Metamorphic", "Igneous", "Fossiliferous"],
+    "correctAnswer": "Igneous",
+    "imageURL": "SEARCH_QUERY: 'Igneous rock granite sample close up'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Copenhagen interpretation** is the earliest and most widely accepted interpretation of which branch of physics?",
+    "options": ["General Relativity", "Quantum Mechanics", "Classical Electromagnetism", "Thermodynamics"],
+    "correctAnswer": "Quantum Mechanics",
+    "imageURL": "SEARCH_QUERY: 'Quantum Mechanics Schrödinger's cat thought experiment'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "The process of programmed cell death, which is vital for normal development and immune function, is known as what?",
+    "options": ["Mitosis", "Necrosis", "Apoptosis", "Meiosis"],
+    "correctAnswer": "Apoptosis",
+    "imageURL": "SEARCH_QUERY: 'Apoptosis programmed cell death diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What common laboratory technique is used to separate the components of a mixture based on their differential distribution between a mobile phase and a stationary phase?",
+    "options": ["Titration", "Distillation", "Chromatography", "Crystallization"],
+    "correctAnswer": "Chromatography",
+    "imageURL": "SEARCH_QUERY: 'Chromatography separation process diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which planet in our solar system is known for having the highest rotational speed, with a day lasting only about 10 Earth hours?",
+    "options": ["Mars", "Saturn", "Jupiter", "Uranus"],
+    "correctAnswer": "Jupiter",
+    "imageURL": "SEARCH_QUERY: 'Jupiter planet rotational speed image'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "The process of **autophagy**, a Nobel Prize-winning topic in 2016, refers to a cell's ability to do what?",
+    "options": ["Repair damaged DNA", "Generate energy (ATP)", "Recycle its own damaged components", "Differentiate into new cell types"],
+    "correctAnswer": "Recycle its own damaged components",
+    "imageURL": "SEARCH_QUERY: 'Autophagy cellular recycling process diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What is the primary product of the industrial **Claus process**, which is used to remove harmful hydrogen sulfide from natural gas and petroleum refining?",
+    "options": ["Carbon Monoxide", "Elemental Sulfur", "Methane", "Water"],
+    "correctAnswer": "Elemental Sulfur",
+    "imageURL": "SEARCH_QUERY: 'Claus process elemental sulfur production'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "In the theory of **General Relativity**, the curvature of spacetime is caused by what physical property?",
+    "options": ["Electric Charge", "Magnetic Field Strength", "Mass and Energy", "Angular Momentum"],
+    "correctAnswer": "Mass and Energy",
+    "imageURL": "SEARCH_QUERY: 'spacetime curvature mass energy diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What are the specialized cells in the nervous system that provide support, insulation, and nourishment to neurons?",
+    "options": ["Myocytes", "Adipocytes", "Epithelial Cells", "Glial Cells"],
+    "correctAnswer": "Glial Cells",
+    "imageURL": "SEARCH_QUERY: 'Glial cells surrounding neurons diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the chemical element that is essential for the production of red blood cells and is the central atom in the heme group of hemoglobin?",
+    "options": ["Copper (Cu)", "Magnesium (Mg)", "Iron (Fe)", "Zinc (Zn)"],
+    "correctAnswer": "Iron (Fe)",
+    "imageURL": "SEARCH_QUERY: 'Heme group chemical structure with Iron center'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "The **Kepler Space Telescope** successfully used which detection method to discover thousands of exoplanets by measuring the slight dimming of starlight?",
+    "options": ["Radial Velocity Method", "Direct Imaging", "Transit Method", "Gravitational Microlensing"],
+    "correctAnswer": "Transit Method",
+    "imageURL": "SEARCH_QUERY: 'Kepler Transit Method exoplanet detection diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "The **Ring of Fire**, known for high volcanic and seismic activity, primarily encircles which ocean?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "correctAnswer": "Pacific Ocean",
+    "imageURL": "SEARCH_QUERY: 'map of the Ring of Fire Pacific Ocean'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "In a **Blockchain** network, what is the term for the cryptographic hash that links a current block of transactions to its immediate predecessor?",
+    "options": ["Public Key", "Digital Signature", "Previous Hash", "Nonce"],
+    "correctAnswer": "Previous Hash",
+    "imageURL": "SEARCH_QUERY: 'Blockchain structure previous hash link diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "Which organ of the human body produces **insulin** and **glucagon**, hormones crucial for regulating blood sugar?",
+    "options": ["Liver", "Adrenal Gland", "Pancreas", "Thyroid"],
+    "correctAnswer": "Pancreas",
+    "imageURL": "SEARCH_QUERY: 'Pancreas organ anatomy insulin glucagon'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "The **Kyoto Protocol** and the **Paris Agreement** are major international treaties aimed at addressing the effects of which global environmental issue?",
+    "options": ["Ozone Depletion", "Climate Change", "Deforestation", "Ocean Acidification"],
+    "correctAnswer": "Climate Change",
+    "imageURL": "SEARCH_QUERY: 'Kyoto Protocol Paris Agreement flags'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The principle of **Quantum Entanglement** suggests that two linked particles share the same fate regardless of the distance between them. What did Albert Einstein famously call this phenomenon?",
+    "options": ["Quantum Uncertainty", "Spooky action at a distance", "The Hidden Variable", "Wave-Particle Duality"],
+    "correctAnswer": "Spooky action at a distance",
+    "imageURL": "SEARCH_QUERY: 'Quantum Entanglement diagram spooky action'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the common term for the complex interaction between the brain, the gut, and the trillions of microorganisms that live in the digestive tract?",
+    "options": ["Microbiome Ecosystem", "Enteric Nervous System", "Gut-Brain Axis", "Vagus Nerve Network"],
+    "correctAnswer": "Gut-Brain Axis",
+    "imageURL": "SEARCH_QUERY: 'Gut-Brain Axis connection diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What common acid, found in the digestive system, has the chemical formula HCl?",
+    "options": ["Sulfuric Acid", "Acetic Acid", "Hydrochloric Acid", "Nitric Acid"],
+    "correctAnswer": "Hydrochloric Acid",
+    "imageURL": "SEARCH_QUERY: 'Hydrochloric Acid HCl chemical structure'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "What is the most common classification type for stars, which includes our Sun, on the **Hertzsprung-Russell diagram**?",
+    "options": ["Giants", "Supergiants", "White Dwarfs", "Main Sequence"],
+    "correctAnswer": "Main Sequence",
+    "imageURL": "SEARCH_QUERY: 'Hertzsprung-Russell diagram main sequence region'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What specific geological process is responsible for the formation of caves and sinkholes in regions with limestone bedrock?",
+    "options": ["Glacial Erosion", "Volcanic Activity", "Karst Topography (Dissolution)", "Tectonic Uplift"],
+    "correctAnswer": "Karst Topography (Dissolution)",
+    "imageURL": "SEARCH_QUERY: 'Karst topography sinkhole landscape'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "Which specific component of a computer system is responsible for executing the instructions of a program and is often referred to as the 'brain'?",
+    "options": ["RAM (Random Access Memory)", "GPU (Graphics Processing Unit)", "CPU (Central Processing Unit)", "Motherboard"],
+    "correctAnswer": "CPU (Central Processing Unit)",
+    "imageURL": "SEARCH_QUERY: 'CPU Central Processing Unit chip photo'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "In virology, what is the term for a virus that specifically infects bacteria?",
+    "options": ["Prion", "Virion", "Bacteriophage", "Retrovirus"],
+    "correctAnswer": "Bacteriophage",
+    "imageURL": "SEARCH_QUERY: 'Bacteriophage virus infecting bacteria diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "Which international agreement, signed in 1987, successfully phased out the production of numerous substances responsible for ozone depletion?",
+    "options": ["Basel Convention", "Montreal Protocol", "Stockholm Convention", "Rio Declaration"],
+    "correctAnswer": "Montreal Protocol",
+    "imageURL": "SEARCH_QUERY: 'Montreal Protocol ozone hole graphic'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Doppler effect** describes the change in wave frequency (like sound or light) due to what specific condition?",
+    "options": ["Change in medium density", "Motion of the wave source relative to the observer", "Temperature change", "Intensity variation"],
+    "correctAnswer": "Motion of the wave source relative to the observer",
+    "imageURL": "SEARCH_QUERY: 'Doppler effect sound waves animation'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the name of the energy-rich molecule that is considered the 'energy currency' of the cell, storing and transporting chemical energy?",
+    "options": ["Glucose", "Lipid", "ATP (Adenosine Triphosphate)", "DNA"],
+    "correctAnswer": "ATP (Adenosine Triphosphate)",
+    "imageURL": "SEARCH_QUERY: 'ATP Adenosine Triphosphate molecule diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the term for a solution that resists changes in pH when small amounts of acid or base are added?",
+    "options": ["Neutral Solution", "Saturated Solution", "Buffer Solution", "Electrolyte"],
+    "correctAnswer": "Buffer Solution",
+    "imageURL": "SEARCH_QUERY: 'Buffer solution pH stability diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which of our solar system's planets has a massive, sustained polar vortex composed of hexagonal-shaped jet streams?",
+    "options": ["Neptune", "Saturn", "Jupiter", "Uranus"],
+    "correctAnswer": "Saturn",
+    "imageURL": "SEARCH_QUERY: 'Saturn North Pole hexagon vortex Cassini image'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the specific name for the instrument used by geologists to measure the magnitude and intensity of earthquakes?",
+    "options": ["Barometer", "Anemometer", "Seismograph", "Hydrometer"],
+    "correctAnswer": "Seismograph",
+    "imageURL": "SEARCH_QUERY: 'Seismograph instrument earthquake measurement'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "The **Von Neumann architecture**, a design model for most modern computers, specifies that the program instructions and data share what single component?",
+    "options": ["CPU", "I/O Bus", "Storage (Memory)", "Graphics Card"],
+    "correctAnswer": "Storage (Memory)",
+    "imageURL": "SEARCH_QUERY: 'Von Neumann architecture diagram memory data instructions'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "Which specific type of stem cell is considered **pluripotent**, meaning it can differentiate into any cell type derived from the three primary germ layers?",
+    "options": ["Totipotent Stem Cell", "Multipotent Stem Cell", "Embryonic Stem Cell", "Adult Stem Cell"],
+    "correctAnswer": "Embryonic Stem Cell",
+    "imageURL": "SEARCH_QUERY: 'Pluripotent embryonic stem cells differentiation diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "What term describes the phenomenon where a changing magnetic field induces an electromotive force (voltage) in a conductor, fundamental to transformers and generators?",
+    "options": ["Capacitance", "Magnetic Resonance", "Electromagnetic Induction", "Thermoelectricity"],
+    "correctAnswer": "Electromagnetic Induction",
+    "imageURL": "SEARCH_QUERY: 'Faraday's Law Electromagnetic Induction diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the name of the theory that posits that mitochondria and chloroplasts originated as independent prokaryotic organisms engulfed by a host cell?",
+    "options": ["Cell Theory", "Biogenesis", "Endosymbiotic Theory", "Gene Flow Theory"],
+    "correctAnswer": "Endosymbiotic Theory",
+    "imageURL": "SEARCH_QUERY: 'Endosymbiotic Theory diagram mitochondria chloroplast'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "Which family of the periodic table is known for having a high electron affinity and is often used in disinfectants and lighting applications?",
+    "options": ["Alkali Metals", "Noble Gases", "Halogens", "Transition Metals"],
+    "correctAnswer": "Halogens",
+    "imageURL": "SEARCH_QUERY: 'Halogens group periodic table chlorine fluorine'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which dwarf planet is the largest object in the Kuiper Belt (beyond Neptune) and was originally classified as the ninth planet?",
+    "options": ["Haumea", "Makemake", "Eris", "Pluto"],
+    "correctAnswer": "Pluto",
+    "imageURL": "SEARCH_QUERY: 'Pluto dwarf planet and Kuiper Belt visualization'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the collective term for rocks and mineral fragments that are consolidated and cemented together to form a **sedimentary rock**?",
+    "options": ["Matrix", "Fossils", "Clasts", "Crystals"],
+    "correctAnswer": "Clasts",
+    "imageURL": "SEARCH_QUERY: 'sedimentary rock conglomerate clasts close up'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "What is the name of the protective sheath that covers the axons of most neurons, increasing the speed of impulse transmission?",
+    "options": ["Axon Terminal", "Dendrite", "Myelin Sheath", "Synapse"],
+    "correctAnswer": "Myelin Sheath",
+    "imageURL": "SEARCH_QUERY: 'neuron with Myelin Sheath diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The concept of **entropy** in thermodynamics is fundamentally a measure of what property of a system?",
+    "options": ["Total Energy", "Temperature", "Disorder or Randomness", "Volume"],
+    "correctAnswer": "Disorder or Randomness",
+    "imageURL": "SEARCH_QUERY: 'Entropy increase disorder system diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the name of the tiny, coiled tubules in the kidney that filter waste and regulate the composition of blood, forming the basic structural unit?",
+    "options": ["Alveoli", "Dendrites", "Nephrons", "Glomeruli"],
+    "correctAnswer": "Nephrons",
+    "imageURL": "SEARCH_QUERY: 'Nephron structure kidney diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the term for a substance that can act as both an acid and a base (e.g., water or certain metal hydroxides)?",
+    "options": ["Isomer", "Isotope", "Amphoteric", "Tautomer"],
+    "correctAnswer": "Amphoteric",
+    "imageURL": "SEARCH_QUERY: 'amphoteric substance water acid base reaction'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which NASA mission is the first to directly sample material from an asteroid and return it to Earth in 2023?",
+    "options": ["OSIRIS-REx", "Hayabusa2", "Lucy", "DART"],
+    "correctAnswer": "OSIRIS-REx",
+    "imageURL": "SEARCH_QUERY: 'NASA OSIRIS-REx capsule returning to Earth'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the scientific term for the dark, iron- and magnesium-rich silicate minerals that are characteristic of the oceanic crust?",
+    "options": ["Felsic minerals", "Mafic minerals", "Sedimentary minerals", "Volcanic ash"],
+    "correctAnswer": "Mafic minerals",
+    "imageURL": "SEARCH_QUERY: 'Mafic igneous rock basalt close up'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "What is the term for a non-volatile memory that can be electrically erased and reprogrammed, commonly used for firmware (BIOS) in computers?",
+    "options": ["SRAM (Static RAM)", "DRAM (Dynamic RAM)", "EEPROM (Electrically Erasable PROM)", "HDD (Hard Disk Drive)"],
+    "correctAnswer": "EEPROM (Electrically Erasable PROM)",
+    "imageURL": "SEARCH_QUERY: 'EEPROM chip electronic circuit board'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "Which gland, located near the center of the brain, is primarily responsible for producing the hormone melatonin, which regulates sleep cycles?",
+    "options": ["Pituitary Gland", "Hypothalamus", "Pineal Gland", "Thyroid Gland"],
+    "correctAnswer": "Pineal Gland",
+    "imageURL": "SEARCH_QUERY: 'Pineal Gland location and melatonin production'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "What is the common name for the force that prevents two atoms' electron clouds from overlapping, a consequence of the **Pauli Exclusion Principle**?",
+    "options": ["Weak Nuclear Force", "Coulomb Force", "Exchange Force", "Degeneracy Pressure"],
+    "correctAnswer": "Degeneracy Pressure",
+    "imageURL": "SEARCH_QUERY: 'Pauli Exclusion Principle electron orbits diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the specific name of the structure in plant cells that contains the photosynthetic pigment **chlorophyll**?",
+    "options": ["Mitochondria", "Vacuole", "Chloroplast", "Cell Wall"],
+    "correctAnswer": "Chloroplast",
+    "imageURL": "SEARCH_QUERY: 'Chloroplast structure with chlorophyll diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "In spectroscopy, what is the term for the technique used to identify organic compounds based on the vibration of their functional groups when exposed to infrared light?",
+    "options": ["NMR Spectroscopy", "Mass Spectrometry", "UV-Vis Spectroscopy", "Infrared (IR) Spectroscopy"],
+    "correctAnswer": "Infrared (IR) Spectroscopy",
+    "imageURL": "SEARCH_QUERY: 'Infrared Spectroscopy IR spectrum graph'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "What is the final evolutionary stage of a Sun-like star (less than 8 solar masses) after it sheds its outer layers as a planetary nebula?",
+    "options": ["Neutron Star", "Red Giant", "Black Dwarf", "White Dwarf"],
+    "correctAnswer": "White Dwarf",
+    "imageURL": "SEARCH_QUERY: 'White Dwarf star compared to Earth size'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the densest layer of the Earth, composed primarily of iron and nickel?",
+    "options": ["Mantle", "Outer Core", "Inner Core", "Crust"],
+    "correctAnswer": "Inner Core",
+    "imageURL": "SEARCH_QUERY: 'Earth layers inner core diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What is the term for a wind system that reverses its direction seasonally, primarily affecting the climate of South Asia?",
+    "options": ["Trade Winds", "Monsoon", "Westerlies", "Jet Stream"],
+    "correctAnswer": "Monsoon",
+    "imageURL": "SEARCH_QUERY: 'Monsoon rain season India map'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "What is the **name of the effect** where light is scattered by matter, resulting in a change in wavelength, used extensively in chemical analysis?",
+    "options": ["Photoelectric Effect", "Compton Effect", "Raman Effect", "Zeeman Effect"],
+    "correctAnswer": "Raman Effect",
+    "imageURL": "SEARCH_QUERY: 'Raman Spectroscopy light scattering diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the name of the primary photosynthetic pigment found in most plants, algae, and cyanobacteria?",
+    "options": ["Carotenoid", "Phycobilin", "Chlorophyll", "Xanthophyll"],
+    "correctAnswer": "Chlorophyll",
+    "imageURL": "SEARCH_QUERY: 'Chlorophyll molecule chemical structure'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "In **NMR (Nuclear Magnetic Resonance) spectroscopy**, the technique is fundamentally based on the quantum mechanical property of atomic nuclei known as what?",
+    "options": ["Spin", "Charge", "Parity", "Momentum"],
+    "correctAnswer": "Spin",
+    "imageURL": "SEARCH_QUERY: 'NMR spectroscopy nuclear spin diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "What is the term for a temporary but intense outburst of light and radiation from the Sun's atmosphere, associated with sudden magnetic energy release?",
+    "options": ["Solar Wind", "Coronal Mass Ejection (CME)", "Solar Flare", "Sunspot"],
+    "correctAnswer": "Solar Flare",
+    "imageURL": "SEARCH_QUERY: 'Solar Flare image from space telescope'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the specific name for the fine-grained, dark-colored volcanic rock that is the most common rock type in the oceanic crust?",
+    "options": ["Granite", "Shale", "Basalt", "Pumice"],
+    "correctAnswer": "Basalt",
+    "imageURL": "SEARCH_QUERY: 'Basalt volcanic rock sample close up'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "What is the process called where an antibody binds to a toxin or microbe, thus blocking its biological action or ability to infect a cell?",
+    "options": ["Agglutination", "Opsonization", "Neutralization", "Complement Fixation"],
+    "correctAnswer": "Neutralization",
+    "imageURL": "SEARCH_QUERY: 'Antibody Neutralization of virus diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Meissner effect** is the expulsion of magnetic fields from a material during its transition to what specific state?",
+    "options": ["Plasma", "Bose-Einstein Condensate", "Superconductor", "Semiconductor"],
+    "correctAnswer": "Superconductor",
+    "imageURL": "SEARCH_QUERY: 'Meissner effect superconductor levitation demonstration'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the name of the protein that is responsible for transporting oxygen in the blood of vertebrates?",
+    "options": ["Myoglobin", "Albumin", "Hemoglobin", "Keratin"],
+    "correctAnswer": "Hemoglobin",
+    "imageURL": "SEARCH_QUERY: 'Hemoglobin protein structure oxygen binding'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the term for a substance that slows down or prevents a chemical reaction, often by neutralizing free radicals?",
+    "options": ["Catalyst", "Inhibitor (or Antioxidant)", "Allotrope", "Isotope"],
+    "correctAnswer": "Inhibitor (or Antioxidant)",
+    "imageURL": "SEARCH_QUERY: 'Antioxidant neutralizing free radical diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which specific spacecraft currently holds the record for being the farthest human-made object from Earth and the first to enter interstellar space?",
+    "options": ["Pioneer 10", "New Horizons", "Voyager 1", "Cassini"],
+    "correctAnswer": "Voyager 1",
+    "imageURL": "SEARCH_QUERY: 'Voyager 1 spacecraft illustration interstellar space'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What type of large, intrusive **igneous rock** body, often forming the core of mountain ranges, is defined as having an exposed area greater than 100 square kilometers?",
+    "options": ["Dike", "Sill", "Volcanic Neck", "Batholith"],
+    "correctAnswer": "Batholith",
+    "imageURL": "SEARCH_QUERY: 'Batholith geological formation cross section'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "What specific algorithm, first published in 1965, is essential for rapidly calculating a Discrete Fourier Transform (DFT)?",
+    "options": ["Quick Sort", "Fast Fourier Transform (FFT)", "Dijkstra's Algorithm", "A* Search"],
+    "correctAnswer": "Fast Fourier Transform (FFT)",
+    "imageURL": "SEARCH_QUERY: 'Fast Fourier Transform FFT signal processing diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "What is the name of the structure in the heart that generates the electrical impulses, acting as the natural **pacemaker**?",
+    "options": ["Bundle of His", "Purkinje Fibers", "Atrioventricular (AV) Node", "Sinoatrial (SA) Node"],
+    "correctAnswer": "Sinoatrial (SA) Node",
+    "imageURL": "SEARCH_QUERY: 'Sinoatrial SA Node heart electrical pathway'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What is the term for the maximum population size of a species that an environment can sustain indefinitely, given the available resources?",
+    "options": ["Biotic Potential", "Population Density", "Carrying Capacity", "Limiting Factor"],
+    "correctAnswer": "Carrying Capacity",
+    "imageURL": "SEARCH_QUERY: 'Carrying Capacity population growth curve graph'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Heisenberg Uncertainty Principle** mathematically defines a fundamental limit on the precision with which two specific properties of a particle can be simultaneously known. What are these two properties?",
+    "options": ["Mass and Velocity", "Charge and Spin", "Position and Momentum", "Energy and Temperature"],
+    "correctAnswer": "Position and Momentum",
+    "imageURL": "SEARCH_QUERY: 'Heisenberg Uncertainty Principle position momentum graph'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the collective term for the organs that make up the central part of the flowering plant's reproductive system, including the stigma, style, and ovary?",
+    "options": ["Stamen", "Petals", "Pistil (or Carpel)", "Sepals"],
+    "correctAnswer": "Pistil (or Carpel)",
+    "imageURL": "SEARCH_QUERY: 'Pistil Carpel flower reproductive structure diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the name of the process where a solid turns directly into a gas without passing through the liquid phase (e.g., dry ice)?",
+    "options": ["Vaporization", "Condensation", "Sublimation", "Fusion"],
+    "correctAnswer": "Sublimation",
+    "imageURL": "SEARCH_QUERY: 'dry ice sublimation process visualization'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "What specific type of galaxy is characterized by a flattened, rotating disc of stars and gas, with prominent spiral arms (e.g., the Milky Way)?",
+    "options": ["Elliptical Galaxy", "Irregular Galaxy", "Lenticular Galaxy", "Spiral Galaxy"],
+    "correctAnswer": "Spiral Galaxy",
+    "imageURL": "SEARCH_QUERY: 'Spiral Galaxy M101 structure image'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "The **Mohs scale** is used by geologists to measure which specific property of a mineral?",
+    "options": ["Density", "Cleavage", "Hardness", "Luster"],
+    "correctAnswer": "Hardness",
+    "imageURL": "SEARCH_QUERY: 'Mohs scale of mineral hardness chart'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "Which hormone, often called the 'fight-or-flight' hormone, is rapidly released by the adrenal glands in response to stress?",
+    "options": ["Cortisol", "Estrogen", "Adrenaline (Epinephrine)", "Testosterone"],
+    "correctAnswer": "Adrenaline (Epinephrine)",
+    "imageURL": "SEARCH_QUERY: 'Adrenaline hormone chemical structure stress response'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "In the theory of **Special Relativity**, the phenomenon where time appears to pass more slowly for an object moving relative to an observer is known as what?",
+    "options": ["Length Contraction", "Mass-Energy Equivalence", "Time Dilation", "Gravitational Lensing"],
+    "correctAnswer": "Time Dilation",
+    "imageURL": "SEARCH_QUERY: 'Time Dilation relative velocity diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the process called where an organism develops without sexual fertilization, common in some plants and invertebrates?",
+    "options": ["Parthenogenesis", "Budding", "Fragmentation", "Conjugation"],
+    "correctAnswer": "Parthenogenesis",
+    "imageURL": "SEARCH_QUERY: 'Parthenogenesis development diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the common term for a pure substance that cannot be broken down into simpler substances by ordinary chemical means?",
+    "options": ["Compound", "Mixture", "Molecule", "Element"],
+    "correctAnswer": "Element",
+    "imageURL": "SEARCH_QUERY: 'periodic table of Elements graphic'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which of Jupiter's four large moons is the largest in the entire solar system and is the only moon known to have its own magnetic field?",
+    "options": ["Europa", "Callisto", "Io", "Ganymede"],
+    "correctAnswer": "Ganymede",
+    "imageURL": "SEARCH_QUERY: 'Jupiter moon Ganymede with magnetic field illustration'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the name for the geological layer of the Earth, located below the lithosphere, that is highly viscous and allows for plate tectonic movement?",
+    "options": ["Mesosphere", "Inner Core", "Asthenosphere", "Exosphere"],
+    "correctAnswer": "Asthenosphere",
+    "imageURL": "SEARCH_QUERY: 'Earth layers Asthenosphere and Lithosphere diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What term is used to describe the total amount of greenhouse gases (carbon dioxide and equivalents) emitted by an individual, organization, or product?",
+    "options": ["Carbon Neutrality", "Carbon Footprint", "Greenhouse Index", "Ecological Niche"],
+    "correctAnswer": "Carbon Footprint",
+    "imageURL": "SEARCH_QUERY: 'Carbon Footprint concept visualization'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "What is the name of the fundamental force that is responsible for binding quarks together to form protons and neutrons?",
+    "options": ["Gravity", "Electromagnetism", "Weak Nuclear Force", "Strong Nuclear Force"],
+    "correctAnswer": "Strong Nuclear Force",
+    "imageURL": "SEARCH_QUERY: 'Strong Nuclear Force binding quarks diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "What is the process called where an organ or tissue increases in size due to the *increase in the size* of its cells, not the number of cells?",
+    "options": ["Hyperplasia", "Metaplasia", "Atrophy", "Hypertrophy"],
+    "correctAnswer": "Hypertrophy",
+    "imageURL": "SEARCH_QUERY: 'cellular hypertrophy vs hyperplasia diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the name of the law that states that the pressure of a given amount of gas is directly proportional to its absolute temperature (at constant volume)?",
+    "options": ["Boyle's Law", "Charles's Law", "Avogadro's Law", "Gay-Lussac's Law"],
+    "correctAnswer": "Gay-Lussac's Law",
+    "imageURL": "SEARCH_QUERY: 'Gay-Lussac's Law gas pressure temperature graph'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which term describes the closest point in the orbit of a celestial body (like a planet or comet) to the Sun?",
+    "options": ["Aphelion", "Perigee", "Apogee", "Perihelion"],
+    "correctAnswer": "Perihelion",
+    "imageURL": "SEARCH_QUERY: 'Perihelion Aphelion orbit diagram solar system'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the name of the specific type of fault where the hanging wall moves up relative to the footwall, often associated with compression?",
+    "options": ["Strike-slip fault", "Normal fault", "Reverse fault", "Oblique fault"],
+    "correctAnswer": "Reverse fault",
+    "imageURL": "SEARCH_QUERY: 'Reverse fault geological structure diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "What is the name of the encryption method that uses a single key for both encryption and decryption, commonly referred to as a 'shared secret'?",
+    "options": ["Public-Key Cryptography", "Asymmetric Encryption", "Symmetric-Key Cryptography", "Hashing"],
+    "correctAnswer": "Symmetric-Key Cryptography",
+    "imageURL": "SEARCH_QUERY: 'Symmetric-Key Cryptography shared secret diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "Which organ of the human body performs the functions of detoxification, protein synthesis, and bile production?",
+    "options": ["Kidney", "Stomach", "Liver", "Spleen"],
+    "correctAnswer": "Liver",
+    "imageURL": "SEARCH_QUERY: 'Liver organ anatomy function diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What is the term for a layer of the atmosphere where temperature increases with altitude, often trapping cooler air below and leading to pollution events?",
+    "options": ["Temperature Lapse Rate", "Thermal Inversion", "Adiabatic Cooling", "Convection"],
+    "correctAnswer": "Thermal Inversion",
+    "imageURL": "SEARCH_QUERY: 'Thermal Inversion pollution trapping diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Super-Kamiokande** detector in Japan is a major experiment designed primarily to study the properties of which elusive fundamental particles?",
+    "options": ["Photons", "Neutrinos", "Gravitons", "Muons"],
+    "correctAnswer": "Neutrinos",
+    "imageURL": "SEARCH_QUERY: 'Super-Kamiokande neutrino detector interior photo'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "In genetics, what is the term for an organism's observable traits (physical or biochemical), resulting from its genetic makeup?",
+    "options": ["Genome", "Genotype", "Allele", "Phenotype"],
+    "correctAnswer": "Phenotype",
+    "imageURL": "SEARCH_QUERY: 'Genotype vs Phenotype diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the term for a compound that is chemically identical but has a non-superimposable mirror image of itself (like left and right hands)?",
+    "options": ["Isomer", "Stereoisomer (Enantiomer)", "Polymer", "Allotrope"],
+    "correctAnswer": "Stereoisomer (Enantiomer)",
+    "imageURL": "SEARCH_QUERY: 'Stereoisomer Enantiomer mirror image diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "Which massive telescope, launched in 2021, is the successor to the Hubble Space Telescope and primarily observes the universe in the infrared spectrum?",
+    "options": ["Chandra X-ray Observatory", "Gaia Space Observatory", "James Webb Space Telescope (JWST)", "Spitzer Space Telescope"],
+    "correctAnswer": "James Webb Space Telescope (JWST)",
+    "imageURL": "SEARCH_QUERY: 'James Webb Space Telescope image in space'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the name for the specific layer of the Earth composed of the crust and the uppermost, rigid part of the mantle?",
+    "options": ["Outer Core", "Mantle", "Lithosphere", "Mesosphere"],
+    "correctAnswer": "Lithosphere",
+    "imageURL": "SEARCH_QUERY: 'Earth layers Lithosphere crust mantle diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "What are the protective caps at the ends of chromosomes that shorten with cell division and are associated with aging?",
+    "options": ["Centromeres", "Histones", "Telomeres", "Nucleosomes"],
+    "correctAnswer": "Telomeres",
+    "imageURL": "SEARCH_QUERY: 'Telomeres chromosome end cap diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Physics",
+    "question": "The **Standard Model** of particle physics describes the interactions of three of the four fundamental forces. Which fundamental force is notably excluded from the Standard Model?",
+    "options": ["Electromagnetism", "Weak Nuclear Force", "Strong Nuclear Force", "Gravity"],
+    "correctAnswer": "Gravity",
+    "imageURL": "SEARCH_QUERY: 'Standard Model particles and forces diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Biology",
+    "question": "In plant biology, what is the term for the process where a plant loses water vapor through the stomata in its leaves?",
+    "options": ["Guttation", "Respiration", "Transpiration", "Photosynthesis"],
+    "correctAnswer": "Transpiration",
+    "imageURL": "SEARCH_QUERY: 'plant leaf stomata transpiration diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Chemistry",
+    "question": "What is the term for the amount of heat energy required to raise the temperature of a substance by a specific amount (e.g., one degree Celsius)?",
+    "options": ["Latent Heat", "Heat Capacity", "Enthalpy", "Gibbs Free Energy"],
+    "correctAnswer": "Heat Capacity",
+    "imageURL": "SEARCH_QUERY: 'Heat Capacity specific heat example'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Astronomy",
+    "question": "What is the term for the sudden burst of light caused by a star reaching the end of its life, vastly increasing in brightness?",
+    "options": ["Nova", "Quasar", "Pulsar", "Supernova"],
+    "correctAnswer": "Supernova",
+    "imageURL": "SEARCH_QUERY: 'Supernova explosion event illustration'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Geology",
+    "question": "What is the primary mineral component of beach sand and continental crust?",
+    "options": ["Feldspar", "Calcite", "Quartz", "Mica"],
+    "correctAnswer": "Quartz",
+    "imageURL": "SEARCH_QUERY: 'Quartz crystal mineral close up'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Computer Science",
+    "question": "Which specific field of Artificial Intelligence focuses on giving machines the ability to learn without being explicitly programmed?",
+    "options": ["Expert Systems", "Machine Learning", "Natural Language Processing (NLP)", "Computer Vision"],
+    "correctAnswer": "Machine Learning",
+    "imageURL": "SEARCH_QUERY: 'Machine Learning algorithm process diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Medicine",
+    "question": "The **'Blood-Brain Barrier'** is composed of specialized cells (endothelial cells and astrocytes) that perform what primary function?",
+    "options": ["Produce Cerebrospinal Fluid (CSF)", "Filter waste from blood", "Protect the brain from substances in the blood", "Transport oxygen to neurons"],
+    "correctAnswer": "Protect the brain from substances in the blood",
+    "imageURL": "SEARCH_QUERY: 'Blood-Brain Barrier cellular structure diagram'"
+  },
+  {
+    "quizName": "The Science Deep Dive",
+    "category": "Environmental Science",
+    "question": "What is the name for the large-scale ocean current system that distributes heat around the globe, of which the Gulf Stream is a key part?",
+    "options": ["El Niño-Southern Oscillation (ENSO)", "Thermohaline Circulation", "Upwelling", "Gyre"],
+    "correctAnswer": "Thermohaline Circulation",
+    "imageURL": "SEARCH_QUERY: 'Thermohaline Circulation ocean currents map'"
+  }
+]

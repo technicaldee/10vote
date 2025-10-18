@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 
 interface DuelTabProps {
   userBalance: number;
-  onStartGame: (stake: number, opponent?: string, duelId?: string, spectator?: boolean, creator?: boolean) => void;
+  onStartGame: (stake: number, opponent?: string, duelId?: string, spectator?: boolean, creator?: boolean, category?: string) => void;
 }
 
 const categories = [
@@ -143,7 +143,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
             setWaitingDuelId(duelId);
             setWaitingForMatch(false);
             try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'direct_start', duelId, extra: { role, stake } })); } catch {}
-            onStartGame(stake, undefined, duelId as `0x${string}`, false, role === 'creator');
+            onStartGame(stake, undefined, duelId as `0x${string}`, false, role === 'creator', selectedCategory);
             return;
             
             // Below is the on-chain path (kept for reference, currently bypassed)
@@ -188,7 +188,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 console.log('[duel] creator matched start game');
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_matched', duelId })); } catch {}
                 toast.success('Match found! Starting game…');
-                onStartGame(stake, undefined, duelId as `0x${string}`, false, true);
+                onStartGame(stake, undefined, duelId as `0x${string}`, false, true, selectedCategory);
               } catch (e: any) {
                 const msg = e?.shortMessage || e?.message || 'Failed to create duel';
                 console.error('[duel] creator error', e);
@@ -229,7 +229,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                     console.log('[duel] fallback creator matched start game');
                     try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_matched', duelId })); } catch {}
                     toast.success('Match found! Starting game…');
-                    onStartGame(stake, undefined, duelId as `0x${string}`, false, true);
+                    onStartGame(stake, undefined, duelId as `0x${string}`, false, true, selectedCategory);
                     return;
                   } catch (e: any) {
                     // If duel already exists, continue as normal joiner; otherwise, bail out
@@ -282,7 +282,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 toast.success('Joined duel. Starting…');
                 setWaitingForMatch(false);
                 console.log('[duel] joiner start game');
-                onStartGame(stake, undefined, duelId as `0x${string}`, false, false);
+                onStartGame(stake, undefined, duelId as `0x${string}`, false, false, selectedCategory);
               } catch (e: any) {
                 const msg = e?.shortMessage || e?.message || 'Failed to join duel';
                 console.error('[duel] joiner error', e);
@@ -391,7 +391,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
 
   const handleGameClick = (game: any) => {
     soundEffects.playClick();
-    onStartGame(game.stake, game.player, game.id as `0x${string}`, true, false);
+    onStartGame(game.stake, game.player, game.id as `0x${string}`, true, false, selectedCategory);
   };
 
   const randomBytes32 = () => {
@@ -415,12 +415,41 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       setInviteCode(duelId);
       setShowFriendPanel(true);
       toast.success('Friend duel code created');
-      onStartGame(Number(stake) / 1e18, undefined, duelId as `0x${string}`, false, true);
+      onStartGame(Number(stake) / 1e18, undefined, duelId as `0x${string}`, false, true, selectedCategory);
     } catch (e) {
       const msg = (e as any)?.shortMessage || (e as any)?.message || 'Failed to create friend duel';
       toast.error(msg);
     }
   };
+
+  const shareInvite = async () => {
+    try {
+      if (!inviteCode) return;
+      const url = new URL(window.location.href);
+      url.searchParams.set('join-code', inviteCode);
+      const shareUrl = url.toString();
+      const shareData = { title: '10vote Duel Invite', text: `Join my duel on 10vote`, url: shareUrl };
+      if ((navigator as any).share) {
+        await (navigator as any).share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareUrl);
+        toast.success('Invite link copied to clipboard');
+      }
+    } catch {
+      // ignore
+    }
+  };
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('join-code') || params.get('join_code') || params.get('code');
+      if (code) {
+        setJoinCode(code);
+        setShowFriendPanel(true);
+      }
+    } catch {}
+  }, []);
 
   const joinWithCode = async () => {
     try {
@@ -434,7 +463,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stake], chain: celoChain });
       await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'joinDuel', args: [joinCode as `0x${string}`], chain: celoChain });
       toast.success('Joined duel. Starting…');
-      onStartGame(Number(stake) / 1e18, undefined, joinCode as `0x${string}`, false, false);
+      onStartGame(Number(stake) / 1e18, undefined, joinCode as `0x${string}`, false, false, selectedCategory);
     } catch (e) {
       const msg = (e as any)?.shortMessage || (e as any)?.message || 'Failed to join duel';
       toast.error(msg);
@@ -594,6 +623,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 <>
                   <Input readOnly value={inviteCode} className="bg-slate-800 border-slate-700 text-white font-mono text-xs" />
                   <Button onClick={() => navigator.clipboard.writeText(inviteCode)} variant="outline">Copy</Button>
+                  <Button onClick={shareInvite} variant="outline">Share</Button>
                 </>
               )}
             </div>

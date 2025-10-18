@@ -5,8 +5,9 @@ import { Clock, Check, X, Sparkles } from 'lucide-react';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { Button } from './ui/button';
 import { Progress } from './ui/progress';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import { soundEffects } from '../utils/soundEffects';
+import { AbstractArt } from './AbstractArt';
+import { selectQuestions, DEFAULT_QUESTION_COUNT, NormalizedQuestion } from '../lib/questions';
 
 interface GameDuelScreenProps {
   stake: number;
@@ -14,6 +15,7 @@ interface GameDuelScreenProps {
   duelId?: string;
   spectator?: boolean;
   creator?: boolean;
+  category?: string;
   onGameFinish: (won: boolean, correctAnswers: number, totalQuestions: number, prize: number) => void;
 }
 
@@ -80,7 +82,7 @@ const mockQuestions = [
   },
 ];
 
-export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, onGameFinish }: GameDuelScreenProps) {
+export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, category, onGameFinish }: GameDuelScreenProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -91,6 +93,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, on
   const [opponentDisplay, setOpponentDisplay] = useState<string>(opponent || 'Opponent');
   const [isLive, setIsLive] = useState<boolean>(!!duelId && !spectator);
   const [hasOpponentHello, setHasOpponentHello] = useState<boolean>(false);
+const [questions, setQuestions] = useState<NormalizedQuestion[]>([]);
 
   const isSpectator = !!spectator;
   const isCreator = !!creator;
@@ -100,13 +103,28 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, on
   const helloIntervalRef = useRef<number | null>(null);
   const helloAttemptsRef = useRef<number>(0);
 
-  const question = mockQuestions[currentQuestion];
+  const question = questions[currentQuestion];
   const opponentName = hasOpponentHello ? opponentDisplay : (opponent || 'Opponent');
 
   const shorten = (addr?: string) => {
     if (!addr || addr.length < 10) return addr || 'Opponent';
     return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
   };
+
+  // Load deterministic questions based on category and duelId (or address)
+  useEffect(() => {
+    const seed = duelId || address || 'local';
+    const cat = category || 'random';
+    const list = selectQuestions(cat, DEFAULT_QUESTION_COUNT, seed);
+    setQuestions(list);
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setTimeLeft(10);
+    setPlayerScore(0);
+    setOpponentScore(0);
+    setPlayerAnswers([]);
+  }, [duelId, address, category]);
 
   useEffect(() => {
     if (!wsUrl || !duelId) return;
@@ -163,7 +181,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, on
       wsRef.current = null;
       if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
     };
-  }, [wsUrl, duelId]);
+  }, [wsUrl, duelId, category]);
 
   useEffect(() => {
     if (showResult || isSpectator) return;
@@ -237,18 +255,17 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, on
   };
 
   const nextQuestion = () => {
-    if (currentQuestion < mockQuestions.length - 1) {
+    if (currentQuestion < (questions.length || 0) - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer(null);
       setShowResult(false);
       setTimeLeft(10);
     } else {
-      // Game finished
       const won = playerScore >= opponentScore;
       const totalPool = stake * 2;
       const fee = totalPool * 0.05;
       const prize = won ? totalPool - fee : 0;
-      onGameFinish(won, playerScore, mockQuestions.length, prize);
+      onGameFinish(won, playerScore, questions.length || DEFAULT_QUESTION_COUNT, prize);
     }
   };
 
@@ -266,7 +283,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, on
           <div className="flex items-center justify-between mb-2">
             <div className="text-slate-400 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-emerald-400" />
-              Question {currentQuestion + 1}/{mockQuestions.length}
+              Question {currentQuestion + 1}/{questions.length || DEFAULT_QUESTION_COUNT}
             </div>
             <div className="flex items-center gap-2">
               <Clock className={`w-5 h-5 ${timeLeft <= 3 ? 'text-red-400 animate-pulse' : 'text-emerald-400'}`} />
@@ -295,7 +312,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, on
           <div className="text-slate-500 text-2xl">⚔️</div>
           <div className="flex items-center gap-3">
             <div className="text-right">
-            <div className="text-white text-sm">{opponentName}</div>
+            <div className="text-white text-sm">{shorten(opponentName)}</div>
               <div className="text-3xl text-blue-400">{opponentScore}</div>
             </div>
             <Avatar className="w-12 h-12 border-2 border-blue-400 shadow-lg shadow-blue-400/20">
@@ -306,19 +323,15 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, on
           </div>
         </div>
 
-        {/* Question with Image */}
+        {/* Question with Abstract Art */}
         <div className="mb-6">
           <div className="bg-gradient-to-br from-slate-800/90 to-slate-800/60 backdrop-blur-sm border-2 border-emerald-400/30 rounded-2xl overflow-hidden shadow-2xl shadow-emerald-500/10">
-            {/* Question Image */}
             <div className="relative h-48 overflow-hidden">
-              <ImageWithFallback
-                src={question.image}
-                alt="Question visual"
-                className="w-full h-full object-cover"
-              />
+              {question && (
+                <AbstractArt text={question.question} className="w-full h-full" />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
             </div>
-            {/* Question Text */}
             <div className="p-6 -mt-8 relative z-10">
               <p className="text-white text-xl text-center">{question.question}</p>
             </div>
