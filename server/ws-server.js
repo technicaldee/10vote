@@ -2,11 +2,66 @@ import 'dotenv/config';
 import { WebSocketServer } from 'ws';
 import http from 'http';
 import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
 
-const PORT = process.env.WS_PORT ? Number(process.env.WS_PORT) : 8080;
+const PORT = Number(process.env.WS_PORT || process.env.PORT || 8080);
 
 const server = http.createServer();
-const wss = new WebSocketServer({ server });
+
+// Serve built static files (SPA) from the Vite build output
+const DIST_DIR = path.resolve(process.cwd(), 'build');
+const mimeTypes = {
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.svg': 'image/svg+xml',
+  '.json': 'application/json; charset=utf-8',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.ico': 'image/x-icon',
+  '.webmanifest': 'application/manifest+json',
+};
+
+server.on('request', (req, res) => {
+  try {
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const pathname = url.pathname;
+
+    // Avoid interfering with WebSocket path; return 404 for normal HTTP on /ws
+    if (pathname === '/ws') {
+      res.statusCode = 404;
+      res.end('WebSocket endpoint');
+      return;
+    }
+
+    let filePath = path.join(DIST_DIR, pathname.replace(/^\/+/, ''));
+    if (pathname.endsWith('/')) filePath = path.join(DIST_DIR, pathname.replace(/^\/+/, ''), 'index.html');
+
+    if (!fs.existsSync(filePath)) {
+      // Single Page App fallback
+      filePath = path.join(DIST_DIR, 'index.html');
+    }
+
+    const ext = path.extname(filePath).toLowerCase();
+    const mime = mimeTypes[ext] || 'application/octet-stream';
+    res.setHeader('Content-Type', mime);
+
+    const stream = fs.createReadStream(filePath);
+    stream.on('error', () => {
+      res.statusCode = 500;
+      res.end('Server error');
+    });
+    stream.pipe(res);
+  } catch (e) {
+    res.statusCode = 500;
+    res.end('Server error');
+  }
+});
+
+const wss = new WebSocketServer({ server, path: '/ws' });
 
 const rooms = new Map(); // roomId -> Set<ws>
 const queueByCategory = new Map(); // category -> Array<ws>
