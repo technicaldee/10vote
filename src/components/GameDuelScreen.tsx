@@ -222,7 +222,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   };
 
   const handleAnswer = (index: number) => {
-    if (showResult || isSpectator) return;
+    if (showResult || isSpectator || !question) return;
     
     soundEffects.playClick();
     setSelectedAnswer(index);
@@ -336,16 +336,16 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
             </div>
             <div className="p-6 -mt-8 relative z-10">
-              <p className="text-white text-xl text-center">{question.question}</p>
+              <p className="text-white text-xl text-center">{question ? question.question : 'Loading question...'}</p>
             </div>
           </div>
         </div>
 
         {/* Answer Options */}
         <div className="space-y-3">
-          {question.options.map((option, index) => {
+          {(question?.options ?? []).map((option, index) => {
             const isSelected = selectedAnswer === index;
-            const isCorrect = index === question.correct;
+            const isCorrect = question ? index === question.correct : false;
             const showCorrect = showResult && isCorrect;
             const showIncorrect = showResult && isSelected && !isCorrect;
 
@@ -353,7 +353,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
               <Button
                 key={index}
                 onClick={() => handleAnswer(index)}
-                disabled={showResult || isSpectator}
+                disabled={showResult || isSpectator || !question}
                 className={`w-full h-16 text-lg justify-start px-6 rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] ${
                   showCorrect
                     ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-500 hover:to-emerald-600 border-2 border-emerald-400 shadow-lg shadow-emerald-500/50 animate-pulse text-white'

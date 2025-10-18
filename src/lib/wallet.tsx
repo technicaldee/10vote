@@ -13,7 +13,7 @@ const sanitize = (url?: string) => (url ? url.replace(/^`|`$/g, '').trim() : '')
 
 const httpUrl = sanitize(import.meta.env.VITE_CELO_HTTP_RPC_URL) || DEFAULT_HTTP;
 const wsUrl = sanitize(import.meta.env.VITE_CELO_WS_RPC_URL) || DEFAULT_WS;
-const wcProjectId = (import.meta.env.VITE_WALLETCONNECT_PROJECT_ID as string) || '';
+const wcProjectId = sanitize(import.meta.env.VITE_WALLETCONNECT_PROJECT_ID as string) || '';
 
 const chains = [celoChain];
 
@@ -29,13 +29,15 @@ const publicClient = createPublicClient({
   transport: http(httpUrl),
 });
 
+const connectors = [
+  new InjectedConnector({ chains }),
+  ...(wcProjectId ? [new WalletConnectConnector({ chains, options: { projectId: wcProjectId, showQrModal: true } })] : []),
+];
+
 const config = createConfig({
   autoConnect: true,
   publicClient,
-  connectors: [
-    new InjectedConnector({ chains }),
-    new WalletConnectConnector({ chains, options: { projectId: wcProjectId, showQrModal: true } }),
-  ],
+  connectors,
 });
 
 const queryClient = new QueryClient();
