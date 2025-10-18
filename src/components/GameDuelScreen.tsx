@@ -97,7 +97,10 @@ const [questions, setQuestions] = useState<NormalizedQuestion[]>([]);
 
   const isSpectator = !!spectator;
   const isCreator = !!creator;
-  const wsUrl = import.meta.env.VITE_GAME_WS_URL as string | undefined;
+  const wsUrlEnv = import.meta.env.VITE_GAME_WS_URL as string | undefined;
+  const wsUrl = (typeof window !== 'undefined')
+    ? (wsUrlEnv || `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws`)
+    : wsUrlEnv;
   const wsRef = useRef<WebSocket | null>(null);
   const { address } = useAccount();
   const helloIntervalRef = useRef<number | null>(null);

@@ -42,7 +42,10 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const { address, isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
   const chainId = useChainId();
-  const wsUrl = import.meta.env.VITE_GAME_WS_URL as string | undefined;
+  const wsUrlEnv = import.meta.env.VITE_GAME_WS_URL as string | undefined;
+  const wsUrl = (typeof window !== 'undefined')
+    ? (wsUrlEnv || `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws`)
+    : wsUrlEnv;
   const wsRef = useRef<WebSocket | null>(null);
 
   const [tokenBalance, setTokenBalance] = useState<number>(0);
