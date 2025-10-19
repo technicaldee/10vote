@@ -102,9 +102,11 @@ wss.on('connection', (ws, req) => {
       const data = JSON.parse(message.toString());
       if (data.type === 'join' && data.roomId) {
         joinRoom(ws, data.roomId);
-        ws.send(JSON.stringify({ type: 'joined', roomId: data.roomId }));
+        // Include clientId in join ack for reliable client-side filtering
+        ws.send(JSON.stringify({ type: 'joined', roomId: data.roomId, clientId: ws.id }));
       } else if (data.type === 'broadcast' && ws.roomId) {
-        const payload = { type: 'event', roomId: ws.roomId, event: data.event, ts: Date.now() };
+        // Attach senderId to event payload so clients can filter their own messages
+        const payload = { type: 'event', roomId: ws.roomId, senderId: ws.id, event: data.event, ts: Date.now() };
         const set = rooms.get(ws.roomId) || new Set();
         for (const client of set) {
           if (client.readyState === 1) client.send(JSON.stringify(payload));

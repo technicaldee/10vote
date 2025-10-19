@@ -7,6 +7,8 @@ import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
 import { soundEffects } from '../utils/soundEffects';
 import { viemPublicClient, DUEL_CONTRACT_ADDRESS } from '../lib/blockchain';
 import { duelManagerAbi } from '../abi/duelManager';
+import { useSelf } from '../lib/self';
+import { useAccount } from 'wagmi';
 
 type Period = 'daily' | 'weekly' | 'alltime';
 
@@ -14,6 +16,7 @@ export function LeaderboardTab() {
   const [period, setPeriod] = useState<Period>('weekly');
   type PlayerStat = { address: string; wins: number; losses: number; winnings: number; totalStaked: number };
   const [players, setPlayers] = useState<PlayerStat[]>([]);
+  const { verification } = useSelf();
 
   useEffect(() => {
     let cancelled = false;
@@ -22,11 +25,11 @@ export function LeaderboardTab() {
         const latest = await viemPublicClient.getBlockNumber();
         const windowBlocks = period === 'daily' ? 17280n : period === 'weekly' ? 120960n : 500000n;
         const fromBlock = latest > windowBlocks ? latest - windowBlocks : 0n;
-        const createdLogs = await viemPublicClient.getLogs({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelCreated', fromBlock, toBlock: latest });
-        const joinedLogs = await viemPublicClient.getLogs({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelJoined', fromBlock, toBlock: latest });
+        const createdLogs = await viemPublicClient.getContractEvents({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelCreated', fromBlock, toBlock: latest });
+        const joinedLogs = await viemPublicClient.getContractEvents({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelJoined', fromBlock, toBlock: latest });
         const addresses = new Set<string>();
-        createdLogs.forEach(l => addresses.add(String(l.args.player1)));
-        joinedLogs.forEach(l => addresses.add(String(l.args.player2)));
+        createdLogs.forEach((l: any) => addresses.add(String(l.args.player1)));
+        joinedLogs.forEach((l: any) => addresses.add(String(l.args.player2)));
         const stats: PlayerStat[] = [];
         for (const addr of addresses) {
           const s: any = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'stats', args: [addr as `0x${string}`] });
@@ -38,15 +41,47 @@ export function LeaderboardTab() {
       }
     }
     fetchLeaderboard();
-    const unwatchConfirm = viemPublicClient.watchContractEvent({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'ResultConfirmed' }, () => fetchLeaderboard());
+    const unwatchConfirm = viemPublicClient.watchContractEvent({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'ResultConfirmed', onLogs: () => fetchLeaderboard() });
     return () => { cancelled = true; unwatchConfirm?.(); };
   }, [period]);
 
-  const topThree = players.slice(0, 3);
-  const others = players.slice(3, 8).map((p, i) => ({ ...p, rank: i + 4 }));
+  const topThree = filteredPlayers.slice(0, 3);
+  const others = filteredPlayers.slice(3, 8).map((p, i) => ({ ...p, rank: i + 4 }));
   const prize = period === 'daily' ? 25 : period === 'weekly' ? 100 : 500;
   const userRank = 0;
   const userWinnings = 0;
+  const { address } = useAccount();
+  const [verifiedOnly, setVerifiedOnly] = useState(false);
+  const isAddressVerified = (addr: string) => !!(verification?.isHumanVerified && address && addr.toLowerCase() === address.toLowerCase());
+  const filteredPlayers = useMemo(() => verifiedOnly ? players.filter(p => isAddressVerified(p.address)) : players, [players, verifiedOnly, verification, address]);
+
+
+  useEffect(() => {
+    let cancelled = false;
+    async function fetchLeaderboard() {
+      try {
+        const latest = await viemPublicClient.getBlockNumber();
+        const windowBlocks = period === 'daily' ? 17280n : period === 'weekly' ? 120960n : 500000n;
+        const fromBlock = latest > windowBlocks ? latest - windowBlocks : 0n;
+        const createdLogs = await viemPublicClient.getContractEvents({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelCreated', fromBlock, toBlock: latest });
+        const joinedLogs = await viemPublicClient.getContractEvents({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelJoined', fromBlock, toBlock: latest });
+        const addresses = new Set<string>();
+        createdLogs.forEach((l: any) => addresses.add(String(l.args.player1)));
+        joinedLogs.forEach((l: any) => addresses.add(String(l.args.player2)));
+        const stats: PlayerStat[] = [];
+        for (const addr of addresses) {
+          const s: any = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'stats', args: [addr as `0x${string}`] });
+          stats.push({ address: addr, wins: Number(s.wins ?? s[0] ?? 0), losses: Number(s.losses ?? s[1] ?? 0), winnings: Number(s.winnings ?? s[2] ?? 0) / 1e18, totalStaked: Number(s.totalStaked ?? s[3] ?? 0) / 1e18 });
+        }
+        if (!cancelled) setPlayers(stats.sort((a, b) => b.winnings - a.winnings));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    fetchLeaderboard();
+    const unwatchConfirm = viemPublicClient.watchContractEvent({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'ResultConfirmed', onLogs: () => fetchLeaderboard() });
+    return () => { cancelled = true; unwatchConfirm?.(); };
+  }, [period]);
 
   return (
     <div className="max-w-lg mx-auto px-4 py-6 relative">
@@ -55,13 +90,20 @@ export function LeaderboardTab() {
       <div className="absolute bottom-20 left-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       
       {/* Header */}
-      <div className="text-center mb-6 relative z-10">
+      <div className="text-center mb-2 relative z-10">
         <div className="flex items-center justify-center gap-2 mb-2">
           <Trophy className="w-10 h-10 text-yellow-400 drop-shadow-glow animate-bounce" />
           <h1 className="text-4xl text-white drop-shadow-lg">Leaderboard</h1>
           <Sparkles className="w-6 h-6 text-emerald-400" />
         </div>
         <p className="text-slate-400 text-lg">🏆 Compete for bonus prizes</p>
+      </div>
+      <div className="flex items-center justify-center mb-6 gap-2">
+        {verification?.isHumanVerified ? (
+          <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-400/30">Verified Player</Badge>
+        ) : (
+          <Badge className="bg-amber-500/20 text-amber-400 border-amber-400/30">Unverified (verify in Wallet tab)</Badge>
+        )}
       </div>
 
       {/* Period Toggle */}
@@ -168,10 +210,7 @@ export function LeaderboardTab() {
       {/* Ranked List */}
       <div className="space-y-2 mb-6 relative z-10">
         {others.map((player) => (
-          <Card
-            key={player.rank}
-            className="bg-slate-800/60 border-slate-700 p-4 hover:border-emerald-400/30 transition-all hover:scale-[1.02] backdrop-blur-sm"
-          >
+          <Card key={player.rank} className="bg-slate-800/60 border-slate-700 p-4 hover:border-emerald-400/30 transition-all hover:scale-[1.02] backdrop-blur-sm">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="text-2xl text-slate-500 w-10 h-10 flex items-center justify-center bg-slate-700/50 rounded-lg">
@@ -183,7 +222,12 @@ export function LeaderboardTab() {
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <div className="text-white">{player.address}</div>
+                  <div className="text-white flex items-center gap-2">
+                    <span>{player.address}</span>
+                    {isAddressVerified(player.address) && (
+                      <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-400/30">Verified</Badge>
+                    )}
+                  </div>
                   <div className="text-slate-400 text-sm">⚔️ {player.wins}W-{player.losses}L</div>
                 </div>
               </div>

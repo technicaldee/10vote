@@ -15,6 +15,7 @@ import { CUSD_ADDRESS } from '../lib/blockchain';
 import { createPublicClient, http } from 'viem';
 import { celoChain } from '../lib/blockchain';
 import { toast } from 'sonner';
+import { useSelf } from '../lib/self';
 
 interface WalletTabProps {
   userBalance: number;
@@ -27,10 +28,13 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
   const [withdrawDialogOpen, setWithdrawDialogOpen] = useState(false);
   const [withdrawAmount, setWithdrawAmount] = useState('');
   const [withdrawAddress, setWithdrawAddress] = useState('');
+  const [verifyDialogOpen, setVerifyDialogOpen] = useState(false);
+  const [proofToken, setProofToken] = useState('');
   const { address, isConnected } = useAccount();
-  const { connectors, connect, isLoading } = useConnect();
+  const { connectors, connectAsync, isLoading } = useConnect();
   const { disconnect } = useDisconnect();
   const { data: walletClient } = useWalletClient();
+  const { verification, verifyWithProof, verifyDemo, logoutSelf } = useSelf();
 
   const publicClient = useMemo(() => createPublicClient({ chain: celoChain, transport: http(import.meta.env.VITE_CELO_HTTP_RPC_URL as string) }), []);
 
@@ -114,10 +118,63 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
         ) : (
           <div className="flex items-center gap-2">
             {connectors.map((c) => (
-              <Button key={c.id} onClick={() => connect({ connector: c })} disabled={!c.ready || isLoading}>
+              <Button
+                key={c.id}
+                onClick={async () => {
+                  try {
+                    await connectAsync({ connector: c });
+                  } catch (e) {
+                    const isWC = c.id.toLowerCase().includes('wallet');
+                    const defaultMsg = (e as any)?.message || 'Wallet connection failed';
+                    const msg = isWC
+                      ? 'WalletConnect relay unreachable or misconfigured. Check DNS, network, and allowlist.'
+                      : defaultMsg;
+                    toast.error(msg);
+                  }
+                }}
+                disabled={!c.ready || isLoading}
+              >
                 Connect {c.name}
               </Button>
             ))}
+          </div>
+        )}
+      </div>
+
+      {/* Self Verification */}
+      <div className="flex items-center justify-between mb-6">
+        {verification?.isHumanVerified ? (
+          <div className="flex items-center gap-3">
+            <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-400/30">Verified Human ✅</Badge>
+            {verification?.ageOver21 ? (
+              <Badge className="bg-sky-500/20 text-sky-400 border-sky-400/30">Age 21+</Badge>
+            ) : verification?.ageOver18 ? (
+              <Badge className="bg-sky-500/20 text-sky-400 border-sky-400/30">Age 18+</Badge>
+            ) : null}
+            <Button variant="outline" onClick={() => logoutSelf()}>Clear Verification</Button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3">
+            <Badge className="bg-amber-500/20 text-amber-400 border-amber-400/30">Unverified</Badge>
+            <Dialog open={verifyDialogOpen} onOpenChange={setVerifyDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-emerald-500 hover:bg-emerald-600">Sign in with Self</Button>
+              </DialogTrigger>
+              <DialogContent className="bg-slate-900 border-slate-700 text-white w-[92vw] max-w-sm sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="text-emerald-400">Verify with Self Protocol</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-3">
+                  <p className="text-sm text-slate-400">Paste a Self proof token (JWT) or use demo verification.</p>
+                  <Label className="text-slate-300">Self Proof Token</Label>
+                  <Input value={proofToken} onChange={(e) => setProofToken(e.target.value)} placeholder="eyJhbGciOi..." className="bg-slate-800 border-slate-700 text-slate-300" />
+                  <div className="flex gap-3">
+                    <Button onClick={() => { if (proofToken.trim()) { verifyWithProof(proofToken.trim()); setVerifyDialogOpen(false); setProofToken(''); toast.success('Verification saved'); } }} className="bg-emerald-500 hover:bg-emerald-600">Verify</Button>
+                    <Button variant="outline" onClick={() => { verifyDemo({ ageOver21: true }); setVerifyDialogOpen(false); toast.success('Demo verification enabled'); }}>Demo Verify</Button>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         )}
       </div>

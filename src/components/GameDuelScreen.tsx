@@ -8,6 +8,8 @@ import { Progress } from './ui/progress';
 import { soundEffects } from '../utils/soundEffects';
 import { AbstractArt } from './AbstractArt';
 import { selectQuestions, DEFAULT_QUESTION_COUNT, NormalizedQuestion } from '../lib/questions';
+import { useSelf } from '../lib/self';
+import { toast } from 'sonner';
 
 interface GameDuelScreenProps {
   stake: number;
@@ -94,7 +96,8 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const [isLive, setIsLive] = useState<boolean>(!!duelId && !spectator);
   const [hasOpponentHello, setHasOpponentHello] = useState<boolean>(false);
   const [questions, setQuestions] = useState<NormalizedQuestion[]>([]);
-
+  const [clientId, setClientId] = useState<string | null>(null);
+  const joinedRef = useRef<boolean>(false);
   const isSpectator = !!spectator;
   const isCreator = !!creator;
   const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
@@ -105,6 +108,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const { address } = useAccount();
   const helloIntervalRef = useRef<number | null>(null);
   const helloAttemptsRef = useRef<number>(0);
+  const { verification } = useSelf();
 
   const question = questions[currentQuestion];
   const opponentName = hasOpponentHello ? opponentDisplay : (opponent || 'Opponent');
@@ -134,46 +138,55 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
     ws.onopen = () => {
+      console.log('[game] ws open');
       try {
         ws.send(JSON.stringify({ type: 'join', roomId: duelId }));
-        const sendHello = () => {
-          const evt: any = { type: 'hello' };
-          if (address) evt.address = address;
-          ws.send(JSON.stringify({ type: 'broadcast', event: evt }));
-        };
-        // Initial hello and a few retries until we see the opponent
-        try { sendHello(); helloAttemptsRef.current = 1; } catch {}
-        helloIntervalRef.current = window.setInterval(() => {
-          if (hasOpponentHello || helloAttemptsRef.current >= 5) {
-            if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
-            return;
-          }
-          try { sendHello(); helloAttemptsRef.current += 1; } catch {}
-        }, 2000);
       } catch {}
     };
     ws.onmessage = (evt) => {
       try {
         const payload = JSON.parse(evt.data);
+        if (payload?.type === 'joined') {
+          joinedRef.current = true;
+          const id = typeof payload.clientId === 'string' ? payload.clientId : null;
+          setClientId(id);
+          console.log('[game] joined ack', { roomId: payload.roomId, clientId: id });
+          // Begin hello handshake only after joined ack
+          const sendHello = () => {
+            const ev: any = { type: 'hello' };
+            if (address) ev.address = address;
+            if (verification?.isHumanVerified) {
+              ev.identity = { human: true, ageOver21: !!verification.ageOver21, ageOver18: !!verification.ageOver18 };
+            }
+            ws.send(JSON.stringify({ type: 'broadcast', event: ev }));
+          };
+          try { sendHello(); helloAttemptsRef.current = 1; } catch {}
+          helloIntervalRef.current = window.setInterval(() => {
+            if (hasOpponentHello || helloAttemptsRef.current >= 5) {
+              if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
+              return;
+            }
+            try { sendHello(); helloAttemptsRef.current += 1; } catch {}
+          }, 2000);
+          return;
+        }
         if (payload?.type === 'event' && payload?.event) {
           const ev = payload.event;
+          const senderId: string | undefined = typeof payload.senderId === 'string' ? payload.senderId : undefined;
+          const isSelf = !!senderId && !!clientId && senderId === clientId;
           if (ev.type === 'hello') {
-            // Update opponent display if this hello is not ours
-            if (ev.address && (!address || ev.address.toLowerCase() !== address.toLowerCase())) {
-              // Show the exact opponent wallet address once handshake completes
-              setOpponentDisplay(ev.address);
+            if (!isSelf) {
+              if (ev.address) setOpponentDisplay(ev.address);
               setIsLive(true);
               setHasOpponentHello(true);
               if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
+              console.log('[game] hello received from opponent', { senderId });
             }
-          }
-          if (ev.type === 'answer') {
-            // Ignore our own broadcasted answers (server echoes back)
-            const from = ev.from as string | undefined;
-            if (from && address && from.toLowerCase() === address.toLowerCase()) {
-              return;
+          } else if (ev.type === 'answer') {
+            if (!isSelf) {
+              if (ev.isCorrect) setOpponentScore((s) => s + 1);
+              console.log('[game] opponent answer', { senderId, isCorrect: ev.isCorrect });
             }
-            if (ev.isCorrect) setOpponentScore((s) => s + 1);
           }
         }
       } catch {}
@@ -184,7 +197,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
       wsRef.current = null;
       if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
     };
-  }, [wsUrl, duelId, category]);
+  }, [wsUrl, duelId, category, verification?.isHumanVerified, verification?.ageOver18, verification?.ageOver21]);
 
   useEffect(() => {
     if (showResult || isSpectator) return;
@@ -223,6 +236,10 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
 
   const handleAnswer = (index: number) => {
     if (showResult || isSpectator || !question) return;
+    if (isLive && !verification?.isHumanVerified) {
+      toast.error('Verification required. Sign in with Self to answer in live matches.');
+      return;
+    }
     
     soundEffects.playClick();
     setSelectedAnswer(index);
@@ -241,7 +258,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
     // Broadcast answer to room participants/spectators
     try {
       const ws = wsRef.current;
-      if (ws && ws.readyState === 1 && !isSpectator) {
+      if (ws && ws.readyState === 1 && !isSpectator && joinedRef.current) {
         ws.send(JSON.stringify({ type: 'broadcast', event: { type: 'answer', index, isCorrect, from: address || 'local' } }));
       }
     } catch {}

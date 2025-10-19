@@ -12,6 +12,7 @@ import { duelManagerAbi, erc20Abi } from '../abi/duelManager';
 import { toHex } from 'viem';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
+import { useSelf } from '../lib/self';
 
 interface DuelTabProps {
   userBalance: number;
@@ -346,6 +347,10 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       // App-level overlay will prompt connect; just return
       return;
     }
+    if (!verification?.isHumanVerified) {
+      toast.error('Verification required. Please Sign in with Self first.');
+      return;
+    }
     try {
       const ok = await ensureCelo();
       if (!ok) return;
@@ -357,7 +362,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
         toast.error('Matchmaking server unavailable');
         return;
       }
-      wsRef.current.send(JSON.stringify({ type: 'queue', category: selectedCategory, stake: stakeNum, token: currentTokenSymbol }));
+      wsRef.current.send(JSON.stringify({ type: 'queue', category: selectedCategory, stake: stakeNum, token: currentTokenSymbol, identity: { human: true, proofToken: verification?.proofToken || null, ageOver21: !!verification?.ageOver21, ageOver18: !!verification?.ageOver18 } }));
       setWaitingStake(stakeNum);
       setWaitingForMatch(true);
     } catch (e: any) {
