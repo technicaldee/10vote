@@ -1,0 +1,30 @@
+{
+  "miniapp": {
+    "version": "1",
+    "name": "10Vote Game",
+    "iconUrl": "https://10vote.com/favicon.svg",
+    "homeUrl": "https://10vote.com/",
+    "imageUrl": "https://10vote.com/favicon.svg",
+    "buttonTitle": "Play 10Vote",
+    "splashImageUrl": "https://10vote.com/favicon.svg",
+    "splashBackgroundColor": "#0f172a",
+    "description": "Fast, decentralized duel trivia game with cUSD & MiniPay support.",
+    "primaryCategory": "games",
+    "tags": [
+      "trivia",
+      "duel",
+      "blockchain",
+      "celo",
+      "minipay"
+    ],
+    "requiredCapabilities": [
+      "actions.signIn",
+      "wallet.getEthereumProvider"
+    ]
+  },
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  }
+}
