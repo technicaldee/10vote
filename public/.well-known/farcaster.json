@@ -8,7 +8,7 @@
     "buttonTitle": "Play",
     "splashImageUrl": "https://10vote.com/splash.png",
     "splashBackgroundColor": "#0f172a",
-    "description": "Fast, decentralized duel trivia game with cUSD & MiniPay support.",
+    "description": "Fast decentralized duel trivia game with cUSD and MiniPay support.",
     "primaryCategory": "games",
     "tags": ["trivia", "games", "celo", "minipay"],
     "requiredCapabilities": [
