@@ -1,30 +1,24 @@
 {
-  "miniapp": {
+  "frame": {
+    "name": "10Vote",
     "version": "1",
-    "name": "10Vote Game",
     "iconUrl": "https://10vote.com/favicon.svg",
-    "homeUrl": "https://10vote.com/",
-    "imageUrl": "https://10vote.com/favicon.svg",
-    "buttonTitle": "Play 10Vote",
-    "splashImageUrl": "https://10vote.com/favicon.svg",
+    "homeUrl": "https://10vote.com",
+    "imageUrl": "https://10vote.com/2.png",
+    "splashImageUrl": "https://10vote.com/splash.png",
     "splashBackgroundColor": "#0f172a",
+    "webhookUrl": "https://10vote.com/api/webhook",
     "description": "Fast, decentralized duel trivia game with cUSD & MiniPay support.",
+    "subtitle": "Fast, decentralized duel trivia game with cUSD & MiniPay support.",
     "primaryCategory": "games",
-    "tags": [
-      "trivia",
-      "duel",
-      "blockchain",
-      "celo",
-      "minipay"
+    "screenshotUrls": [
+      "https://10vote.com/2.png"
     ],
-    "requiredCapabilities": [
-      "actions.signIn",
-      "wallet.getEthereumProvider"
-    ]
+    "heroImageUrl": "https://10vote.com/2.png"
   },
   "accountAssociation": {
-    "header": "",
-    "payload": "",
-    "signature": ""
+    "header": "eyJmaWQiOjEwOTU0NzUsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhmOThjQTM5ZGZmZUREOTQwNDhDQTY0RjVBQTA0QURiNDMzNTI0QTFhIn0",
+    "payload": "eyJkb21haW4iOiIxMHZvdGUuY29tIn0",
+    "signature": "MHgxNDc4NmMxNDQzYzUxZWExNTU5Zjg4Njk4MjkxMDdhZGZjMjY3NWM4Y2NkNjc2NTI1YTg1NDZlOGNkMjhlYTY5MmMwYjU4YTU1YWIwMzIwYzk4OWM5MTA2YTdhZTllMGI4N2U4ZTJkOWI5N2RhMDk3MjhmMTZhMWFiNzAwM2ZjOTFj"
   }
 }
