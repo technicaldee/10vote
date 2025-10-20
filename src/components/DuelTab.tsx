@@ -44,12 +44,12 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const { data: walletClient } = useWalletClient();
   const chainId = useChainId();
   const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
-  const wsUrlEnv = wsUrlEnvRaw ? wsUrlEnvRaw.replace(/^`|`$/g, '').trim() : undefined;
+  // Hardcode WS base to 10vote.com, allow ?ws override for testing
   const qsWsRaw = (typeof window !== 'undefined') ? new URLSearchParams(window.location.search).get('ws') : undefined;
   const qsWs = qsWsRaw ? qsWsRaw.replace(/^`|`$/g, '').trim() : undefined;
-  const defaultWsBase = (typeof window !== 'undefined') ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}` : undefined;
-  const wsBase = qsWs || wsUrlEnv || defaultWsBase;
-  const wsUrl = wsBase ? (wsBase.endsWith('/ws') ? wsBase : `${wsBase.replace(/\/+$/, '')}/ws`) : undefined;
+  const wsBaseHardcoded = 'wss://10vote.com';
+  const wsBase = qsWs || wsBaseHardcoded;
+  const wsUrl = wsBase.endsWith('/ws') ? wsBase : `${wsBase.replace(/\/+$/, '')}/ws`;
   const wsRef = useRef<WebSocket | null>(null);
   // Get verification context from Self provider
   const { verification } = useSelf();
