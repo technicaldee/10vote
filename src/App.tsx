@@ -86,7 +86,7 @@ export default function App() {
   if (!isConnected) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-        <Toaster richColors position="top-center" />
+        <Toaster richColors position="top-center" style={{ zIndex: 2147483647 }} />
         <div className="fixed inset-0 z-[9999] bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-6">
           <div className="max-w-md w-full bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
             <h2 className="text-white text-2xl mb-2">Connect Your Wallet</h2>
@@ -122,7 +122,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <Toaster richColors position="top-center" />
+      <Toaster richColors position="top-center" style={{ zIndex: 2147483647 }} />
       {/* Main Content */}
       <div className="pb-20 min-h-screen">
         {activeTab === 'duel' && (
@@ -163,47 +163,18 @@ export default function App() {
           />
         )}
       </div>
-
-      {/* Bottom Navigation */}
-      {!['game', 'results'].includes(activeTab) && (
-        <nav className="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 z-50">
-          <div className="flex items-center justify-around max-w-lg mx-auto px-4 py-3">
-            <button
-              onClick={() => setActiveTab('duel')}
-              className={`flex flex-col items-center gap-1 px-6 py-2 rounded-lg transition-colors ${
-                activeTab === 'duel'
-                  ? 'text-emerald-400'
-                  : 'text-slate-400 hover:text-slate-300'
-              }`}
-            >
-              <Swords className="w-6 h-6" />
-              <span className="text-xs">Duel</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('wallet')}
-              className={`flex flex-col items-center gap-1 px-6 py-2 rounded-lg transition-colors ${
-                activeTab === 'wallet'
-                  ? 'text-emerald-400'
-                  : 'text-slate-400 hover:text-slate-300'
-              }`}
-            >
-              <Wallet className="w-6 h-6" />
-              <span className="text-xs">Wallet</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('leaderboard')}
-              className={`flex flex-col items-center gap-1 px-6 py-2 rounded-lg transition-colors ${
-                activeTab === 'leaderboard'
-                  ? 'text-emerald-400'
-                  : 'text-slate-400 hover:text-slate-300'
-              }`}
-            >
-              <Trophy className="w-6 h-6" />
-              <span className="text-xs">Leaderboard</span>
-            </button>
-          </div>
-        </nav>
-      )}
+      {/* Tabs Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-slate-900/80 backdrop-blur-md border-t border-slate-800 p-2 flex justify-around text-white">
+        <button className={`flex flex-col items-center ${activeTab === 'duel' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('duel')}>
+          <Swords className="h-5 w-5 mb-1" /> Duel
+        </button>
+        <button className={`flex flex-col items-center ${activeTab === 'wallet' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('wallet')}>
+          <Wallet className="h-5 w-5 mb-1" /> Wallet
+        </button>
+        <button className={`flex flex-col items-center ${activeTab === 'leaderboard' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('leaderboard')}>
+          <Trophy className="h-5 w-5 mb-1" /> Leaderboard
+        </button>
+      </div>
     </div>
   );
 }

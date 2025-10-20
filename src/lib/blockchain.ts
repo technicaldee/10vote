@@ -31,6 +31,7 @@ export const viemPublicClient = createPublicClient({
 // Note: wallet client will be created via wagmi connectors
 
 export const CUSD_ADDRESS = (import.meta.env.VITE_CUSD_ADDRESS as `0x${string}`) || '0x765DE816845861e75A25fCA122bb6898B8B1282a';
-export const DUEL_CONTRACT_ADDRESS = import.meta.env.VITE_DUEL_CONTRACT_ADDRESS as `0x${string}`;
+const ENV_DUEL = import.meta.env.VITE_DUEL_CONTRACT_ADDRESS as `0x${string}` | undefined;
+export const DUEL_CONTRACT_ADDRESS = (ENV_DUEL ?? '0xD9f914Ae5b543163fA5A3932deC1e9e5477F10A7') as `0x${string}`;
 // CELO ERC20 (GoldToken) address on Celo mainnet
 export const CELO_TOKEN_ADDRESS = (import.meta.env.VITE_CELO_TOKEN_ADDRESS as `0x${string}`) || '0x471EcE3750Da237f93B8E339c536989b8978a438';
