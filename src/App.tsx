@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { Swords, Wallet, Trophy } from 'lucide-react';
-import { Toaster } from 'sonner';
+import { Toaster, toast } from 'sonner';
 import { DuelTab } from './components/DuelTab';
 import { WalletTab } from './components/WalletTab';
 import { LeaderboardTab } from './components/LeaderboardTab';
@@ -20,8 +20,13 @@ export default function App() {
   const [gameData, setGameData] = useState<any>(null);
 
   const { address, isConnected } = useAccount();
-  const { connectors, connect, isLoading } = useConnect();
+  const { connectors, connect, isPending } = useConnect();
   const publicClient = useMemo(() => createPublicClient({ chain: celoChain, transport: http(import.meta.env.VITE_CELO_HTTP_RPC_URL as string) }), []);
+
+  // Detect MiniPay & injected availability
+  const isMiniPay = typeof window !== 'undefined' && (window as any).ethereum?.isMiniPay === true;
+  const hasInjected = typeof window !== 'undefined' && !!(window as any).ethereum;
+  const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
   const { data: cusdBalance } = useQuery({
     queryKey: ['cusd-balance', address],
@@ -70,16 +75,23 @@ export default function App() {
             <h2 className="text-white text-2xl mb-2">Connect Your Wallet</h2>
             <p className="text-slate-400 mb-4">To play and track your balance on-chain, please connect a wallet.</p>
             <div className="flex flex-wrap gap-3">
-              {connectors.map((c) => (
-                <button
-                  key={c.id}
-                  onClick={() => connect({ connector: c })}
-                  disabled={!c.ready || isLoading}
-                  className="px-4 py-2 rounded-lg bg-emerald-600 text-white disabled:opacity-50"
-                >
-                  Connect {c.name}
-                </button>
-              ))}
+              <button
+                onClick={() => {
+                  if (!hasInjected) {
+                    toast.error(
+                      isMobile
+                        ? 'No injected wallet detected. Open this site in MiniPay or MetaMask in-app browser.'
+                        : 'No injected wallet detected. Install an injected wallet like MetaMask or Brave Wallet.'
+                    );
+                    return;
+                  }
+                  connect({ connector: connectors[0] });
+                }}
+                disabled={isPending}
+                className="px-4 py-2 rounded-lg bg-emerald-600 text-white disabled:opacity-50"
+              >
+                {isMiniPay ? 'Connect MiniPay' : 'Connect Wallet'}
+              </button>
             </div>
           </div>
         </div>

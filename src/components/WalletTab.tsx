@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { ArrowDownToLine, ArrowUpFromLine, Copy, Check, TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
@@ -8,7 +8,7 @@ import { Label } from './ui/label';
 import { Badge } from './ui/badge';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { soundEffects } from '../utils/soundEffects';
-import { useAccount, useConnect, useDisconnect, useWalletClient } from 'wagmi';
+import { useAccount, useDisconnect, useWalletClient } from 'wagmi';
 import { useQuery } from '@tanstack/react-query';
 import { erc20Abi } from '../abi/duelManager';
 import { CUSD_ADDRESS } from '../lib/blockchain';
@@ -16,6 +16,9 @@ import { createPublicClient, http } from 'viem';
 import { celoChain } from '../lib/blockchain';
 import { toast } from 'sonner';
 import { useSelf } from '../lib/self';
+import { getUniversalLink } from '@selfxyz/core';
+import { SelfQRcodeWrapper, SelfAppBuilder, type SelfApp } from '@selfxyz/qrcode';
+import { ethers } from 'ethers';
 
 interface WalletTabProps {
   userBalance: number;
@@ -31,11 +34,11 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
   const [verifyDialogOpen, setVerifyDialogOpen] = useState(false);
   const [proofToken, setProofToken] = useState('');
   const { address, isConnected } = useAccount();
-  const { connectors, connectAsync, isLoading } = useConnect();
   const { disconnect } = useDisconnect();
   const { data: walletClient } = useWalletClient();
-  const { verification, verifyWithProof, verifyDemo, logoutSelf } = useSelf();
-
+  const { verification, verifyWithProof, logoutSelf } = useSelf();
+  const [selfApp, setSelfApp] = useState<SelfApp | null>(null);
+  const [universalLink, setUniversalLink] = useState('');
   const publicClient = useMemo(() => createPublicClient({ chain: celoChain, transport: http(import.meta.env.VITE_CELO_HTTP_RPC_URL as string) }), []);
 
   const { data: cusdBalance } = useQuery({
@@ -53,9 +56,7 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
     queryKey: ['recent-tx', address],
     queryFn: async () => {
       if (!address) return [] as any[];
-      const api = import.meta.env.VITE_BLOCKSCOUT_API_URL as string;
-      const url = `${api}?module=account&action=txlist&address=${address}&sort=desc`;
-      const res = await fetch(url);
+      const res = await fetch(`/api/celo/txlist?address=${address}&sort=desc`);
       const json = await res.json();
       if (json.result && Array.isArray(json.result)) return json.result.slice(0, 10);
       return [] as any[];
@@ -97,6 +98,31 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
     }
   };
 
+  useEffect(() => {
+    try {
+      const app = new SelfAppBuilder({
+        version: 2,
+        appName: import.meta.env.VITE_SELF_APP_NAME || '10vote',
+        scope: import.meta.env.VITE_SELF_SCOPE || '10vote',
+        endpoint: import.meta.env.VITE_SELF_ENDPOINT || `${window.location.origin}/api/self/verify`,
+        logoBase64: import.meta.env.VITE_SELF_LOGO || 'https://i.postimg.cc/mrmVf9hm/self.png',
+        userId: (address as string) || ethers.ZeroAddress,
+        endpointType: import.meta.env.VITE_SELF_ENDPOINT_TYPE || 'staging_https',
+        userIdType: 'hex',
+        userDefinedData: '10vote',
+        disclosures: {
+          minimumAge: 18,
+          nationality: true,
+          gender: true,
+        },
+      }).build();
+      setSelfApp(app);
+      setUniversalLink(getUniversalLink(app));
+    } catch (error) {
+      console.error('Failed to initialize Self app:', error);
+    }
+  }, [address]);
+
   return (
     <div className="max-w-lg mx-auto px-4 py-6 relative">
       {/* Crypto background image */}
@@ -116,27 +142,8 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
             <Button variant="outline" onClick={() => disconnect()}>Disconnect</Button>
           </div>
         ) : (
-          <div className="flex items-center gap-2">
-            {connectors.map((c) => (
-              <Button
-                key={c.id}
-                onClick={async () => {
-                  try {
-                    await connectAsync({ connector: c });
-                  } catch (e) {
-                    const isWC = c.id.toLowerCase().includes('wallet');
-                    const defaultMsg = (e as any)?.message || 'Wallet connection failed';
-                    const msg = isWC
-                      ? 'WalletConnect relay unreachable or misconfigured. Check DNS, network, and allowlist.'
-                      : defaultMsg;
-                    toast.error(msg);
-                  }
-                }}
-                disabled={!c.ready || isLoading}
-              >
-                Connect {c.name}
-              </Button>
-            ))}
+          <div className="flex items-center gap-2 text-slate-400">
+            <span>Connect your wallet to manage funds.</span>
           </div>
         )}
       </div>
@@ -165,12 +172,36 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
                   <DialogTitle className="text-emerald-400">Verify with Self Protocol</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-3">
-                  <p className="text-sm text-slate-400">Paste a Self proof token (JWT) or use demo verification.</p>
+                  <p className="text-sm text-slate-400">
+                    Scan the QR code with the Self app, or paste a proof token (JWT) below.
+                    If redirected back with <code>?self_jwt=</code>, it will be captured automatically.
+                  </p>
+                  {selfApp ? (
+                    <div className="flex flex-col items-center gap-2">
+                      <SelfQRcodeWrapper
+                        selfApp={selfApp}
+                        onSuccess={() => {
+                          toast.success('Self verification complete');
+                          verifyWithProof('verified-via-qr');
+                          setVerifyDialogOpen(false);
+                        }}
+                        onError={() => {
+                          toast.error('Error: Failed to verify identity');
+                        }}
+                      />
+                      {universalLink ? (
+                        <a href={universalLink} target="_blank" rel="noreferrer" className="text-xs text-emerald-400 underline">
+                          Open in Self App
+                        </a>
+                      ) : null}
+                    </div>
+                  ) : (
+                    <div>Loading QR Code...</div>
+                  )}
                   <Label className="text-slate-300">Self Proof Token</Label>
                   <Input value={proofToken} onChange={(e) => setProofToken(e.target.value)} placeholder="eyJhbGciOi..." className="bg-slate-800 border-slate-700 text-slate-300" />
                   <div className="flex gap-3">
                     <Button onClick={() => { if (proofToken.trim()) { verifyWithProof(proofToken.trim()); setVerifyDialogOpen(false); setProofToken(''); toast.success('Verification saved'); } }} className="bg-emerald-500 hover:bg-emerald-600">Verify</Button>
-                    <Button variant="outline" onClick={() => { verifyDemo({ ageOver21: true }); setVerifyDialogOpen(false); toast.success('Demo verification enabled'); }}>Demo Verify</Button>
                   </div>
                 </div>
               </DialogContent>

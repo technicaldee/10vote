@@ -28,6 +28,17 @@ Required (frontend):
 Optional (frontend):
 - `VITE_CELO_WS_RPC_URL` — WS RPC endpoint for Celo subscriptions. Example: `wss://forno.celo.org/ws`
 - `VITE_WALLETCONNECT_PROJECT_ID` — Your WalletConnect Project ID
+- `VITE_SELF_APP_NAME` — Display name shown in the Self app (default: `10vote`)
+- `VITE_SELF_SCOPE` — Scope identifier used by Self (default: `10vote`)
+- `VITE_SELF_ENDPOINT` — Backend verification URL (default: `${window.location.origin}/api/self/verify`)
+- `VITE_SELF_ENDPOINT_TYPE` — Endpoint type for SDK (e.g. `staging_https`)
+- `VITE_SELF_LOGO` — Logo URL or base64 used by the Self SDK QR builder
+
+Optional (backend):
+- `SELF_SCOPE` — Scope used by backend verifier (default: `self-playground`)
+- `SELF_VERIFY_ENDPOINT` — Self verifier endpoint (default: `https://playground.self.xyz/api/verify`)
+- `SELF_MOCK_PASSPORT` — Set `true` to use staging/testnet (default: `false`)
+- `SELF_USER_IDENTIFIER_TYPE` — User identifier type (e.g. `uuid`, default: `uuid`)
 - `VITE_BLOCKSCOUT_API_URL` — Blockscout API URL for token/txn lookups. Example: `https://api.blockscout.com/api/v2`
 - `VITE_CUSD_ADDRESS` — cUSD token address (defaults to mainnet if not set)
 - `VITE_CELO_TOKEN_ADDRESS` — CELO token address (defaults to mainnet if not set)

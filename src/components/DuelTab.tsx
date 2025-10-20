@@ -48,7 +48,9 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const defaultWs = (typeof window !== 'undefined') ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws` : undefined;
   const wsUrl = wsUrlEnv ? (wsUrlEnv.endsWith('/ws') ? wsUrlEnv : `${wsUrlEnv.replace(/\/+$/, '')}/ws`) : defaultWs;
   const wsRef = useRef<WebSocket | null>(null);
-
+  // Get verification context from Self provider
+  const { verification } = useSelf();
+  const [matchMode, setMatchMode] = useState<'1v1' | '2v2'>('1v1');
   const [tokenBalance, setTokenBalance] = useState<number>(0);
   const STAKE_AMOUNT = 0.10;
   const CELO_USD_RATE = 0.29;
@@ -57,6 +59,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
 
   const waitForDuelCreated = async (duelId: `0x${string}`, timeoutMs = 20000) => {
     const start = Date.now();
+    if (!DUEL_CONTRACT_ADDRESS) return false;
     while (Date.now() - start < timeoutMs) {
       try {
         const res = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'duels', args: [duelId] });
@@ -72,6 +75,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
 
   const waitForDuelJoined = async (duelId: `0x${string}`, timeoutMs = 25000) => {
     const start = Date.now();
+    if (!DUEL_CONTRACT_ADDRESS) return false;
     while (Date.now() - start < timeoutMs) {
       try {
         const res = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'duels', args: [duelId] });
@@ -87,7 +91,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
 
   const ensureCelo = async () => {
     try {
-      const wc = walletClient;
+      const wc = walletClient!;
       if (!wc) return false;
       if (chainId !== celoChain.id) {
         // attempt to switch
@@ -152,7 +156,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
             
             // Below is the on-chain path (kept for reference, currently bypassed)
             const ok = await ensureCelo();
-            const wc = walletClient;
+            const wc = walletClient!;
             if (!ok || !wc) return;
             const stakeWei = BigInt(Math.floor(stake * 1e18));
             setWaitingStake(stake);
@@ -170,12 +174,12 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 console.log('[duel] creator approving', { stakeWei: stakeWei.toString() });
                 toast.message(`Approving ${currentTokenSymbol}…`);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_approve_start', duelId })); } catch {}
-                await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stakeWei], chain: celoChain });
+                await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS!, stakeWei], chain: celoChain });
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_approve_done', duelId })); } catch {}
                 console.log('[duel] creator creating duel', { duelId });
                 toast.message('Creating duel on-chain…');
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_create_start', duelId })); } catch {}
-                await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stakeWei, currentTokenAddress], chain: celoChain });
+                await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stakeWei, currentTokenAddress], chain: celoChain });
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_create_done', duelId })); } catch {}
                 setWaitingForMatch(true);
                 toast.success('Duel created. Waiting for opponent…');
@@ -216,8 +220,8 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                   try {
                     // Approve using current selection (will auto-switch below if needed)
                     const tokenForFallback = currentTokenAddress;
-                    await wc.writeContract({ address: tokenForFallback, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stakeWei], chain: celoChain });
-                    await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stakeWei, tokenForFallback], chain: celoChain });
+                    await wc.writeContract({ address: tokenForFallback, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS!, stakeWei], chain: celoChain });
+                    await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stakeWei, tokenForFallback], chain: celoChain });
                     try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_create_done', duelId })); } catch {}
                     toast.success('Duel created by you. Waiting for opponent…');
                     const joinedFallback = await waitForDuelJoined(duelId, 30000);
@@ -254,7 +258,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 let tokenToUse: `0x${string}` = currentTokenAddress;
                 let tokenSymbolForJoin = currentTokenSymbol;
                 try {
-                  const duel = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'duels', args: [duelId] });
+                  const duel = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'duels', args: [duelId] });
                   const tokenAddr = (duel as any)?.token ?? (Array.isArray(duel) ? (duel[4] as `0x${string}`) : currentTokenAddress);
                   tokenToUse = tokenAddr as `0x${string}`;
                   tokenSymbolForJoin = tokenAddr.toLowerCase() === CUSD_ADDRESS.toLowerCase() ? 'cUSD' : 'CELO';
@@ -276,12 +280,12 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 console.log('[duel] joiner approving', { stakeWei: stakeWei.toString() });
                 toast.message(`Approving ${tokenSymbolForJoin}…`);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_approve_start', duelId })); } catch {}
-                await wc.writeContract({ address: tokenToUse, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stakeWei], chain: celoChain });
+                await wc.writeContract({ address: tokenToUse, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS!, stakeWei], chain: celoChain });
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_approve_done', duelId })); } catch {}
                 console.log('[duel] joiner joining duel', { duelId });
                 toast.message('Joining duel…');
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_join_start', duelId })); } catch {}
-                await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'joinDuel', args: [duelId as `0x${string}`], chain: celoChain });
+                await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'joinDuel', args: [duelId as `0x${string}`], chain: celoChain });
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_join_done', duelId })); } catch {}
                 toast.success('Joined duel. Starting…');
                 setWaitingForMatch(false);
@@ -315,6 +319,10 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   }, [wsUrl]);
 
   useEffect(() => {
+    if (!DUEL_CONTRACT_ADDRESS) {
+      console.warn('DUEL_CONTRACT_ADDRESS is not set. Live duels watcher disabled.');
+      return;
+    }
     const unwatch = viemPublicClient.watchContractEvent({
       address: DUEL_CONTRACT_ADDRESS,
       abi: duelManagerAbi,
@@ -348,7 +356,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       return;
     }
     if (!verification?.isHumanVerified) {
-      toast.error('Verification required. Please Sign in with Self first.');
+      toast.error('Verification required. Please Sign in with Self first in wallet tab.');
       return;
     }
     try {
@@ -379,10 +387,11 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
 
   const cancelQuickMatch = async () => {
     try {
-      const wc = walletClient;
+      const wc = walletClient!;
       if (!wc || !waitingDuelId) return;
       const ok = await ensureCelo();
       if (!ok) return;
+      if (!DUEL_CONTRACT_ADDRESS) { toast.error('Duel contract address not configured'); return; }
       await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'cancelDuel', args: [waitingDuelId], chain: celoChain });
       toast.success('Quick Match cancelled. Stake refunded.');
     } catch (e) {
@@ -412,12 +421,13 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
     try {
       soundEffects.playClick();
       if (!isConnected || !walletClient || !address) return;
-      const wc = walletClient;
+      const wc = walletClient!;
       const stake = BigInt(Math.floor(STAKE_AMOUNT * 1e18)); // default stake in selected token
       const duelId = randomBytes32();
       // approve stake
       const ok = await ensureCelo();
       if (!ok) return;
+      if (!DUEL_CONTRACT_ADDRESS) { toast.error('Duel contract address not configured'); return; }
       await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stake], chain: celoChain });
       await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stake, currentTokenAddress], chain: celoChain });
       setInviteCode(duelId);
@@ -463,11 +473,12 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
     try {
       soundEffects.playClick();
       if (!isConnected || !walletClient || !joinCode) return;
-      const wc = walletClient;
+      const wc = walletClient!;
       // approve stake equal to duel's stake? For simplicity assume same default stake amount
       const stake = BigInt(Math.floor(STAKE_AMOUNT * 1e18));
       const ok = await ensureCelo();
       if (!ok) return;
+      if (!DUEL_CONTRACT_ADDRESS) { toast.error('Duel contract address not configured'); return; }
       await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stake], chain: celoChain });
       await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'joinDuel', args: [joinCode as `0x${string}`], chain: celoChain });
       toast.success('Joined duel. Starting…');
@@ -580,10 +591,39 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
         </div>
       </div>
 
+      {/* Mode Toggle: 1v1 vs 2v2 */}
+      <div className="mb-4 relative z-10">
+        <div className="flex items-center justify-between gap-2">
+          <Button
+            variant={matchMode === '1v1' ? 'default' : 'outline'}
+            onClick={() => setMatchMode('1v1')}
+            className={`${matchMode === '1v1' ? 'bg-emerald-600 text-white' : ''} flex-1 h-12 rounded-xl`}
+          >
+            1v1
+          </Button>
+          <Button
+            variant={matchMode === '2v2' ? 'default' : 'outline'}
+            onClick={() => setMatchMode('2v2')}
+            className={`${matchMode === '2v2' ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white' : ''} flex-1 h-12 rounded-xl`}
+          >
+            2v2 Squad
+          </Button>
+        </div>
+        <div className="mt-2 text-xs text-slate-400">
+          {matchMode === '1v1' ? 'Highlighted: classic duel mode' : 'Beta: squad up with a partner (coming soon)'}
+        </div>
+      </div>
+
       {/* Main Action Button with gaming vibe */}
       <div className="mb-4 relative z-10">
         <Button
-          onClick={handleQuickMatch}
+          onClick={() => {
+            if (matchMode === '2v2') {
+              toast.message('2v2 squad mode is coming soon');
+              return;
+            }
+            handleQuickMatch();
+          }}
           className="w-full h-28 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-500 hover:from-emerald-600 hover:via-emerald-700 hover:to-emerald-600 text-white shadow-2xl shadow-emerald-500/60 rounded-2xl text-2xl relative overflow-hidden group"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
@@ -594,7 +634,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
             </div>
             <div className="text-left">
               <div className="flex items-center gap-2">
-                <span>⚡ Quick Match</span>
+                <span>⚡ {matchMode === '2v2' ? 'Squad Match' : 'Quick Match'}</span>
               </div>
               <div className="text-sm opacity-90 flex items-center gap-1">
                 {categories.find(c => c.id === selectedCategory)?.emoji} {categories.find(c => c.id === selectedCategory)?.name} • {selectedToken === 'cusd' ? `$${STAKE_AMOUNT.toFixed(2)} cUSD` : `${STAKE_AMOUNT} CELO (~$${(STAKE_AMOUNT * CELO_USD_RATE).toFixed(2)})`}

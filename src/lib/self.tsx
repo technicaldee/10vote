@@ -14,7 +14,6 @@ export type SelfVerificationResult = {
 export type SelfContextValue = {
   verification: SelfVerificationResult | null;
   verifyWithProof: (proofToken: string, meta?: Partial<SelfVerificationResult>) => void;
-  verifyDemo: (opts?: Partial<SelfVerificationResult>) => void;
   logoutSelf: () => void;
 };
 
@@ -60,22 +59,24 @@ export function SelfVerificationProvider({ children }: { children: React.ReactNo
     setVerification(base);
   };
 
-  const verifyDemo = (opts?: Partial<SelfVerificationResult>) => {
-    const now = Date.now();
-    setVerification({
-      isHumanVerified: true,
-      source: 'self',
-      verifiedAt: now,
-      ageOver18: opts?.ageOver18 ?? true,
-      ageOver21: opts?.ageOver21 ?? true,
-      residencyAllowed: opts?.residencyAllowed ?? true,
-      nationality: opts?.nationality ?? 'ZZ',
-    });
-  };
+  // Auto-capture proof tokens passed via URL params
+  useEffect(() => {
+    try {
+      if (typeof window === 'undefined') return;
+      const url = new URL(window.location.href);
+      const params = url.searchParams;
+      const token = params.get('self_jwt') || params.get('self_token') || params.get('proof') || params.get('jwt');
+      if (token && !verification?.proofToken) {
+        verifyWithProof(token);
+        ['self_jwt', 'self_token', 'proof', 'jwt'].forEach((k) => params.delete(k));
+        window.history.replaceState({}, document.title, url.toString());
+      }
+    } catch {}
+  }, [verification?.proofToken]);
 
   const logoutSelf = () => setVerification(null);
 
-  const value = useMemo<SelfContextValue>(() => ({ verification, verifyWithProof, verifyDemo, logoutSelf }), [verification]);
+  const value = useMemo<SelfContextValue>(() => ({ verification, verifyWithProof, logoutSelf }), [verification]);
 
   return <SelfContext.Provider value={value}>{children}</SelfContext.Provider>;
 }

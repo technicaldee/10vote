@@ -237,7 +237,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const handleAnswer = (index: number) => {
     if (showResult || isSpectator || !question) return;
     if (isLive && !verification?.isHumanVerified) {
-      toast.error('Verification required. Sign in with Self to answer in live matches.');
+      toast.error('Verification required. Sign in with Self  in wallet tab to answer in live matches.');
       return;
     }
     

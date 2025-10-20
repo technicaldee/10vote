@@ -4,6 +4,7 @@ import http from 'http';
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
+import { SelfBackendVerifier, AllIds, DefaultConfigStore } from '@selfxyz/core';
 
 const PORT = Number(process.env.WS_PORT || process.env.PORT || 8080);
 
@@ -25,10 +26,86 @@ const mimeTypes = {
   '.webmanifest': 'application/manifest+json',
 };
 
-server.on('request', (req, res) => {
+// Initialize SelfBackendVerifier (single instance)
+const SELF_SCOPE = process.env.SELF_SCOPE || 'self-playground';
+const SELF_ENDPOINT = process.env.SELF_VERIFY_ENDPOINT || 'https://playground.self.xyz/api/verify';
+const SELF_MOCK = String(process.env.SELF_MOCK_PASSPORT || 'false').toLowerCase() === 'true';
+const SELF_USER_ID_TYPE = process.env.SELF_USER_IDENTIFIER_TYPE || 'uuid';
+const selfBackendVerifier = new SelfBackendVerifier(
+  SELF_SCOPE,
+  SELF_ENDPOINT,
+  SELF_MOCK,
+  AllIds,
+  new DefaultConfigStore({
+    minimumAge: 18,
+    excludedCountries: ['IRN', 'PRK', 'RUS', 'SYR'],
+    ofac: true,
+  }),
+  SELF_USER_ID_TYPE
+);
+
+server.on('request', async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
     const pathname = url.pathname;
+
+    // Self verification endpoint
+    if (pathname === '/api/self/verify' && req.method === 'POST') {
+      let body = '';
+      req.on('data', (chunk) => { body += chunk; });
+      req.on('end', async () => {
+        try {
+          const { attestationId, proof, publicSignals, userContextData } = JSON.parse(body || '{}');
+          if (!proof || !publicSignals || !attestationId || !userContextData) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ message: 'Proof, publicSignals, attestationId and userContextData are required' }));
+            return;
+          }
+          const result = await selfBackendVerifier.verify(attestationId, proof, publicSignals, userContextData);
+          const isValid = !!result?.isValidDetails?.isValid;
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.end(JSON.stringify({ status: isValid ? 'success' : 'failed', result: isValid, details: result?.isValidDetails || null }));
+        } catch (e) {
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.end(JSON.stringify({ error: 'Verification error', message: e?.message || String(e) }));
+        }
+      });
+      return;
+    }
+
+    // Celo tx proxy to avoid CORS in browser
+    if (pathname === '/api/celo/txlist' && req.method === 'GET') {
+      const address = url.searchParams.get('address');
+      const sort = url.searchParams.get('sort') || 'desc';
+      const upstream = process.env.BLOCKSCOUT_API_URL || 'https://explorer.celo.org/mainnet/api';
+      if (!address) {
+        res.statusCode = 400;
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.end(JSON.stringify({ error: 'address_required' }));
+        return;
+      }
+      const target = `${upstream}?module=account&action=txlist&address=${address}&sort=${sort}`;
+      try {
+        const r = await fetch(target);
+        const json = await r.json();
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.end(JSON.stringify(json));
+      } catch (e) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.end(JSON.stringify({ error: 'upstream_error', message: e?.message || String(e) }));
+      }
+      return;
+    }
 
     // Avoid interfering with WebSocket path; return 404 for normal HTTP on /ws
     if (pathname === '/ws') {
@@ -91,7 +168,6 @@ function leaveRoom(ws) {
 }
 
 wss.on('connection', (ws, req) => {
-  // assign id and register client
   ws.id = `c${nextId++}`;
   clients.add(ws);
   const ip = (req?.headers['x-forwarded-for'] || req?.socket?.remoteAddress || 'unknown');
@@ -102,10 +178,8 @@ wss.on('connection', (ws, req) => {
       const data = JSON.parse(message.toString());
       if (data.type === 'join' && data.roomId) {
         joinRoom(ws, data.roomId);
-        // Include clientId in join ack for reliable client-side filtering
         ws.send(JSON.stringify({ type: 'joined', roomId: data.roomId, clientId: ws.id }));
       } else if (data.type === 'broadcast' && ws.roomId) {
-        // Attach senderId to event payload so clients can filter their own messages
         const payload = { type: 'event', roomId: ws.roomId, senderId: ws.id, event: data.event, ts: Date.now() };
         const set = rooms.get(ws.roomId) || new Set();
         for (const client of set) {
@@ -115,13 +189,10 @@ wss.on('connection', (ws, req) => {
         const cat = String(data.category);
         const stake = Number(data.stake);
         const list = queueByCategory.get(cat) || [];
-        // Try to pair with someone else already waiting
         const other = list.find((c) => c !== ws && c.readyState === 1);
         if (other) {
-          // Remove 'other' from queue
           const remaining = list.filter((c) => c !== other);
           if (remaining.length) queueByCategory.set(cat, remaining); else queueByCategory.delete(cat);
-          // Generate a duelId and notify both
           const duelId = '0x' + crypto.randomBytes(32).toString('hex');
           const creatorMsg = { type: 'match_found', role: 'creator', category: cat, stake, duelId };
           const joinerMsg = { type: 'match_found', role: 'joiner', category: cat, stake, duelId };
@@ -130,7 +201,6 @@ wss.on('connection', (ws, req) => {
           try { other.send(JSON.stringify(joinerMsg)); } catch {}
           printStatus();
         } else {
-          // Enqueue and ack
           list.push(ws);
           queueByCategory.set(cat, list);
           ws.queueCategory = cat;
@@ -158,7 +228,6 @@ wss.on('connection', (ws, req) => {
     }
   });
   ws.on('close', () => {
-    // remove from queue if present
     const cat = ws.queueCategory;
     if (cat) {
       const list = queueByCategory.get(cat) || [];

@@ -45,15 +45,15 @@ export function LeaderboardTab() {
     return () => { cancelled = true; unwatchConfirm?.(); };
   }, [period]);
 
+  const { address } = useAccount();
+  const [verifiedOnly, setVerifiedOnly] = useState(false);
+  const isAddressVerified = (addr: string) => !!(verification?.isHumanVerified && address && addr.toLowerCase() === address.toLowerCase());
+  const filteredPlayers = useMemo(() => verifiedOnly ? players.filter(p => isAddressVerified(p.address)) : players, [players, verifiedOnly, verification, address]);
   const topThree = filteredPlayers.slice(0, 3);
   const others = filteredPlayers.slice(3, 8).map((p, i) => ({ ...p, rank: i + 4 }));
   const prize = period === 'daily' ? 25 : period === 'weekly' ? 100 : 500;
   const userRank = 0;
   const userWinnings = 0;
-  const { address } = useAccount();
-  const [verifiedOnly, setVerifiedOnly] = useState(false);
-  const isAddressVerified = (addr: string) => !!(verification?.isHumanVerified && address && addr.toLowerCase() === address.toLowerCase());
-  const filteredPlayers = useMemo(() => verifiedOnly ? players.filter(p => isAddressVerified(p.address)) : players, [players, verifiedOnly, verification, address]);
 
 
   useEffect(() => {
