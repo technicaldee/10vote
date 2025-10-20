@@ -45,8 +45,11 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const chainId = useChainId();
   const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
   const wsUrlEnv = wsUrlEnvRaw ? wsUrlEnvRaw.replace(/^`|`$/g, '').trim() : undefined;
-  const defaultWs = (typeof window !== 'undefined') ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws` : undefined;
-  const wsUrl = wsUrlEnv ? (wsUrlEnv.endsWith('/ws') ? wsUrlEnv : `${wsUrlEnv.replace(/\/+$/, '')}/ws`) : defaultWs;
+  const qsWsRaw = (typeof window !== 'undefined') ? new URLSearchParams(window.location.search).get('ws') : undefined;
+  const qsWs = qsWsRaw ? qsWsRaw.replace(/^`|`$/g, '').trim() : undefined;
+  const defaultWsBase = (typeof window !== 'undefined') ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}` : undefined;
+  const wsBase = qsWs || wsUrlEnv || defaultWsBase;
+  const wsUrl = wsBase ? (wsBase.endsWith('/ws') ? wsBase : `${wsBase.replace(/\/+$/, '')}/ws`) : undefined;
   const wsRef = useRef<WebSocket | null>(null);
   // Get verification context from Self provider
   const { verification } = useSelf();
@@ -305,9 +308,13 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
           // ignore malformed
         }
       };
-      ws.onerror = () => {
-        console.error('[matchmaking] ws error');
+      ws.onerror = (e) => {
+        console.error('[matchmaking] ws error', e);
         toast.error('Matchmaking server error');
+      };
+      ws.onclose = (evt) => {
+        console.error('[matchmaking] ws closed', { code: (evt as CloseEvent).code, reason: (evt as CloseEvent).reason });
+        toast.error(`Matchmaking server error (${(evt as CloseEvent).code || 'closed'})`);
       };
       return () => {
         try { ws.close(); } catch {}

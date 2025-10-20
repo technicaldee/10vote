@@ -102,8 +102,11 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const isCreator = !!creator;
   const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
   const wsUrlEnv = wsUrlEnvRaw ? wsUrlEnvRaw.replace(/^`|`$/g, '').trim() : undefined;
-  const defaultWs = (typeof window !== 'undefined') ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws` : undefined;
-  const wsUrl = wsUrlEnv ? (wsUrlEnv.endsWith('/ws') ? wsUrlEnv : `${wsUrlEnv.replace(/\/+$/, '')}/ws`) : defaultWs;
+  const qsWsRaw = (typeof window !== 'undefined') ? new URLSearchParams(window.location.search).get('ws') : undefined;
+  const qsWs = qsWsRaw ? qsWsRaw.replace(/^`|`$/g, '').trim() : undefined;
+  const defaultWsBase = (typeof window !== 'undefined') ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}` : undefined;
+  const wsBase = qsWs || wsUrlEnv || defaultWsBase;
+  const wsUrl = wsBase ? (wsBase.endsWith('/ws') ? wsBase : `${wsBase.replace(/\/+$/, '')}/ws`) : undefined;
   const wsRef = useRef<WebSocket | null>(null);
   const { address } = useAccount();
   const helloIntervalRef = useRef<number | null>(null);
@@ -191,7 +194,8 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
         }
       } catch {}
     };
-    ws.onerror = () => {};
+    ws.onerror = (e) => { console.error('[game] ws error', e); };
+    ws.onclose = (evt) => { console.error('[game] ws closed', { code: (evt as CloseEvent).code, reason: (evt as CloseEvent).reason }); };
     return () => {
       try { ws.close(); } catch {}
       wsRef.current = null;
