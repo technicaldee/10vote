@@ -102,25 +102,42 @@ npm run start:prod  # runs vite preview + ws server concurrently
   
 ## Farcaster MiniApp Registration
 
-- Ensure a manifest exists at `public/farcaster.json` with required fields:
-  - `name`
-  - `iconUrl`
-  - `homeUrl`
-  - `description`
-- Production values for this app:
-  - `homeUrl`: `https://10vote.com/`
-  - `iconUrl`: `https://10vote.com/favicon.svg`
+- Ensure a manifest exists at `public/farcaster.json` with the MiniApp schema:
+
+```json
+{
+  "miniapp": {
+    "version": "1",
+    "name": "10Vote Game",
+    "iconUrl": "https://10vote.com/favicon.svg",
+    "homeUrl": "https://10vote.com/",
+    "imageUrl": "https://10vote.com/favicon.svg",
+    "buttonTitle": "Play 10Vote",
+    "splashImageUrl": "https://10vote.com/favicon.svg",
+    "splashBackgroundColor": "#0f172a",
+    "description": "Fast, decentralized duel trivia game with cUSD & MiniPay support.",
+    "primaryCategory": "games",
+    "tags": ["trivia", "duel", "blockchain", "celo", "minipay"],
+    "requiredCapabilities": ["actions.signIn", "wallet.getEthereumProvider"]
+  },
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  }
+}
+```
+
 - Deploy so the manifest is publicly reachable at `https://10vote.com/farcaster.json`.
-- Enable Developer Mode in Farcaster:
-  - Open `https://farcaster.xyz/~/settings/developer-tools` and toggle on.
+- Enable Developer Mode in Farcaster: open `https://farcaster.xyz/~/settings/developer-tools` and toggle on.
 - Register your manifest using the Farcaster manifest tool:
   - Paste `https://10vote.com/farcaster.json` and register.
-  - Confirm the app is associated with your account (look for the green checkbox).
-- Make the app display in MiniApps by calling `sdk.actions.ready()` after render.
-  - Already implemented in `src/main.tsx` (UA-gated for Warpcast to avoid errors).
-- Optional: For local dev, verify `http://localhost:3000/farcaster.json` and test in Warpcast’s dev tools.
+  - The tool will generate `accountAssociation.header`, `payload`, and `signature` linking your app to your Farcaster account (green checkbox indicator). Copy those values back into `public/farcaster.json` and redeploy.
+- Ensure the app calls `sdk.actions.ready()` after render (implemented in `src/main.tsx`).
+- Optional (local dev): verify `http://localhost:3000/farcaster.json` and test within Warpcast’s dev tools.
 
 ### Notes
-- Required fields ensure the app is indexed and discoverable in Farcaster search.
-- If you later change domains or icon path, update `public/farcaster.json` accordingly and re-register.
+- Required fields enable indexing and discovery in Farcaster search.
+- Keep URLs absolute (`https://`), without backticks.
+- If you change domains or images, update the manifest and re-register.
   
