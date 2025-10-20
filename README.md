@@ -100,3 +100,27 @@ npm run start:prod  # runs vite preview + ws server concurrently
 - The `.env` file is intentionally excluded from version control via `.gitignore`.
 - On-chain validation can be re-enabled later by configuring `VITE_DUEL_CONTRACT_ADDRESS` and using the contract paths in `DuelTab.tsx`.
   
+## Farcaster MiniApp Registration
+
+- Ensure a manifest exists at `public/farcaster.json` with required fields:
+  - `name`
+  - `iconUrl`
+  - `homeUrl`
+  - `description`
+- Production values for this app:
+  - `homeUrl`: `https://10vote.com/`
+  - `iconUrl`: `https://10vote.com/favicon.svg`
+- Deploy so the manifest is publicly reachable at `https://10vote.com/farcaster.json`.
+- Enable Developer Mode in Farcaster:
+  - Open `https://farcaster.xyz/~/settings/developer-tools` and toggle on.
+- Register your manifest using the Farcaster manifest tool:
+  - Paste `https://10vote.com/farcaster.json` and register.
+  - Confirm the app is associated with your account (look for the green checkbox).
+- Make the app display in MiniApps by calling `sdk.actions.ready()` after render.
+  - Already implemented in `src/main.tsx` (UA-gated for Warpcast to avoid errors).
+- Optional: For local dev, verify `http://localhost:3000/farcaster.json` and test in Warpcast’s dev tools.
+
+### Notes
+- Required fields ensure the app is indexed and discoverable in Farcaster search.
+- If you later change domains or icon path, update `public/farcaster.json` accordingly and re-register.
+  
