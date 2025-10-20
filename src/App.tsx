@@ -28,14 +28,23 @@ export default function App() {
   const hasInjected = typeof window !== 'undefined' && !!(window as any).ethereum;
   const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
+  // Track provider-ready event from Farcaster
+  const [providerReady, setProviderReady] = useState(hasInjected);
+  useEffect(() => {
+    const onReady = () => setProviderReady(true);
+    window.addEventListener('farcaster:provider-ready', onReady);
+    return () => window.removeEventListener('farcaster:provider-ready', onReady);
+  }, []);
+
   // Auto-connect if a provider is present (MiniPay or Farcaster-injected)
   const [autoConnectAttempted, setAutoConnectAttempted] = useState(false);
   useEffect(() => {
-    if (!isConnected && !autoConnectAttempted && hasInjected && connectors.length > 0 && !isPending) {
+    if (!isConnected && !autoConnectAttempted && (providerReady || hasInjected) && connectors.length > 0 && !isPending) {
       setAutoConnectAttempted(true);
-      connect({ connector: connectors[0] });
+      const injectedConnector = connectors.find((c) => (c as any).id === 'injected' || c.name.toLowerCase().includes('injected')) || connectors[0];
+      connect({ connector: injectedConnector });
     }
-  }, [isConnected, autoConnectAttempted, hasInjected, connectors, connect, isPending]);
+  }, [isConnected, autoConnectAttempted, providerReady, hasInjected, connectors, connect, isPending]);
   const { data: cusdBalance } = useQuery({
     queryKey: ['cusd-balance', address],
     queryFn: async () => {
@@ -85,18 +94,19 @@ export default function App() {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => {
-                  if (!hasInjected) {
-                    const inFarcaster = typeof window !== 'undefined' && (window as any).__isFarcasterMiniApp;
+                  const inFarcaster = typeof window !== 'undefined' && (window as any).__isFarcasterMiniApp;
+                  if (!hasInjected && !providerReady) {
                     toast.error(
                       inFarcaster
-                        ? 'Wallet unavailable in Farcaster. Ensure wallet capability and sign in, then retry.'
+                        ? 'Wallet unavailable in Farcaster. Ensure wallet capability is enabled and sign in via the prompt.'
                         : isMobile
                         ? 'No injected wallet detected. Open this site in MiniPay or MetaMask in-app browser.'
                         : 'No injected wallet detected. Install an injected wallet like MetaMask or Brave Wallet.'
                     );
                     return;
                   }
-                  connect({ connector: connectors[0] });
+                  const injectedConnector = connectors.find((c) => (c as any).id === 'injected' || c.name.toLowerCase().includes('injected')) || connectors[0];
+                  connect({ connector: injectedConnector });
                 }}
                 disabled={isPending}
                 className="px-4 py-2 rounded-lg bg-emerald-600 text-white disabled:opacity-50"
