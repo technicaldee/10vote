@@ -28,6 +28,14 @@ export default function App() {
   const hasInjected = typeof window !== 'undefined' && !!(window as any).ethereum;
   const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
+  // Auto-connect if a provider is present (MiniPay or Farcaster-injected)
+  const [autoConnectAttempted, setAutoConnectAttempted] = useState(false);
+  useEffect(() => {
+    if (!isConnected && !autoConnectAttempted && hasInjected && connectors.length > 0 && !isPending) {
+      setAutoConnectAttempted(true);
+      connect({ connector: connectors[0] });
+    }
+  }, [isConnected, autoConnectAttempted, hasInjected, connectors, connect, isPending]);
   const { data: cusdBalance } = useQuery({
     queryKey: ['cusd-balance', address],
     queryFn: async () => {
@@ -78,8 +86,11 @@ export default function App() {
               <button
                 onClick={() => {
                   if (!hasInjected) {
+                    const inFarcaster = typeof window !== 'undefined' && (window as any).__isFarcasterMiniApp;
                     toast.error(
-                      isMobile
+                      inFarcaster
+                        ? 'Wallet unavailable in Farcaster. Ensure wallet capability and sign in, then retry.'
+                        : isMobile
                         ? 'No injected wallet detected. Open this site in MiniPay or MetaMask in-app browser.'
                         : 'No injected wallet detected. Install an injected wallet like MetaMask or Brave Wallet.'
                     );
