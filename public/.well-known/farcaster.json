@@ -1,0 +1,24 @@
+{
+  "miniapp": {
+    "version": "1",
+    "name": "10Vote",
+    "iconUrl": "https://10vote.com/favicon.png",
+    "homeUrl": "https://10vote.com",
+    "imageUrl": "https://10vote.com/2.png",
+    "buttonTitle": "Play",
+    "splashImageUrl": "https://10vote.com/splash.png",
+    "splashBackgroundColor": "#0f172a",
+    "description": "Fast, decentralized duel trivia game with cUSD & MiniPay support.",
+    "primaryCategory": "games",
+    "tags": ["trivia", "games", "celo", "minipay"],
+    "requiredCapabilities": [
+      "wallet.getEthereumProvider",
+      "actions.signIn"
+    ]
+  },
+  "accountAssociation": {
+    "header": "eyJmaWQiOjEwOTU0NzUsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhmOThjQTM5ZGZmZUREOTQwNDhDQTY0RjVBQTA0QURiNDMzNTI0QTFhIn0",
+    "payload": "eyJkb21haW4iOiIxMHZvdGUuY29tIn0",
+    "signature": "MHgxNDc4NmMxNDQzYzUxZWExNTU5Zjg4Njk4MjkxMDdhZGZjMjY3NWM4Y2NkNjc2NTI1YTg1NDZlOGNkMjhlYTY5MmMwYjU4YTU1YWIwMzIwYzk4OWM5MTA2YTdhZTllMGI4N2U4ZTJkOWI5N2RhMDk3MjhmMTZhMWFiNzAwM2ZjOTFj"
+  }
+}
