@@ -314,10 +314,12 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       };
       ws.onclose = (evt) => {
         console.error('[matchmaking] ws closed', { code: (evt as CloseEvent).code, reason: (evt as CloseEvent).reason });
+        wsRef.current = null;
         toast.error(`Matchmaking server error (${(evt as CloseEvent).code || 'closed'})`);
       };
       return () => {
         try { ws.close(); } catch {}
+        wsRef.current = null;
         console.log('[matchmaking] ws closed');
       };
     } catch (e) {

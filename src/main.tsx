@@ -40,4 +40,36 @@ root.render(
     // No-op if SDK is unavailable or not in Farcaster environment
   }
 })();
+
+// Telegram MiniApp: attempt to initialize and use injected EVM provider if available
+(async () => {
+  try {
+    const tg = (window as any).Telegram?.WebApp;
+    if (!tg) return;
+    (window as any).__isTelegramMiniApp = true;
+    try { tg.ready?.(); } catch {}
+    // If Telegram Wallet exposes an EIP-1193 provider, use it
+    const provider = (window as any).ethereum;
+    if (provider) {
+      (window as any).__hasInjectedFromTelegram = true;
+      try { await provider.request?.({ method: 'eth_requestAccounts' }); } catch {}
+      try { window.dispatchEvent(new CustomEvent('farcaster:provider-ready')); } catch {}
+    } else {
+      // Some Telegram wallets inject provider after app is ready; poll briefly
+      const start = Date.now();
+      const poll = () => {
+        const p = (window as any).ethereum;
+        if (p || Date.now() - start > 3000) {
+          if (p) {
+            (window as any).__hasInjectedFromTelegram = true;
+            try { window.dispatchEvent(new CustomEvent('farcaster:provider-ready')); } catch {}
+          }
+          return;
+        }
+        setTimeout(poll, 200);
+      };
+      poll();
+    }
+  } catch {}
+})();
   

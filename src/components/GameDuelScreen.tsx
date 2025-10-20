@@ -162,7 +162,10 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
             if (verification?.isHumanVerified) {
               ev.identity = { human: true, ageOver21: !!verification.ageOver21, ageOver18: !!verification.ageOver18 };
             }
-            ws.send(JSON.stringify({ type: 'broadcast', event: ev }));
+            const s = wsRef.current;
+            if (s && s.readyState === WebSocket.OPEN) {
+              s.send(JSON.stringify({ type: 'broadcast', event: ev }));
+            }
           };
           try { sendHello(); helloAttemptsRef.current = 1; } catch {}
           helloIntervalRef.current = window.setInterval(() => {
@@ -196,7 +199,11 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
       } catch {}
     };
     ws.onerror = (e) => { console.error('[game] ws error', e); };
-    ws.onclose = (evt) => { console.error('[game] ws closed', { code: (evt as CloseEvent).code, reason: (evt as CloseEvent).reason }); };
+    ws.onclose = (evt) => {
+      console.error('[game] ws closed', { code: (evt as CloseEvent).code, reason: (evt as CloseEvent).reason });
+      wsRef.current = null;
+      if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
+    };
     return () => {
       try { ws.close(); } catch {}
       wsRef.current = null;
