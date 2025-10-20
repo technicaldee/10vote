@@ -40,6 +40,8 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
   const [selfApp, setSelfApp] = useState<SelfApp | null>(null);
   const [universalLink, setUniversalLink] = useState('');
   const publicClient = useMemo(() => createPublicClient({ chain: celoChain, transport: http(import.meta.env.VITE_CELO_HTTP_RPC_URL as string) }), []);
+  const shortAddress = (addr?: string) => (addr ? `${addr.slice(0, 6)}…${addr.slice(-4)}` : '');
+  const shortHex = (hex?: string) => (hex ? `${hex.slice(0, 10)}…${hex.slice(-8)}` : '');
 
   const { data: cusdBalance } = useQuery({
     queryKey: ['cusd-balance', address],
@@ -125,6 +127,7 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
 
   return (
     <div className="max-w-lg mx-auto px-4 py-6 relative">
+      <div className="flex">
       {/* Crypto background image */}
       <div className="absolute top-0 left-0 right-0 h-64 overflow-hidden opacity-10 rounded-3xl blur-sm pointer-events-none">
         <ImageWithFallback
@@ -138,7 +141,7 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
       <div className="flex items-center justify-between mb-4">
         {isConnected ? (
           <div className="text-sm text-slate-300 flex items-center gap-3 min-w-0">
-            <span className="font-mono block flex-1 min-w-0 truncate" title={address || ''}>{address}</span>
+            <span className="font-mono block flex-1 min-w-0 truncate" title={address || ''}>{shortAddress(address)}</span>
             <Button variant="outline" onClick={() => disconnect()}>Disconnect</Button>
           </div>
         ) : (
@@ -210,6 +213,8 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
         )}
       </div>
 
+      </div>
+
       {/* Balance Header */}
       <div className="text-center mb-8 relative z-10">
         <div className="text-slate-400 mb-2 flex items-center justify-center gap-2">
@@ -242,11 +247,11 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
             <div className="space-y-4">
               <div>
                 <Label className="text-slate-300">Your Celo Address</Label>
-                <div className="flex items-center gap-2 mt-2">
+                <div className="flex items-center gap-2 mt-2 min-w-0">
                   <Input
                     value={address || ''}
                     readOnly
-                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-sm truncate"
+                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-sm truncate min-w-0 flex-1"
                   />
                   <Button
                     onClick={copyAddress}
@@ -298,11 +303,11 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
               </div>
               <div>
                 <Label className="text-slate-300">Your Celo Address</Label>
-                <div className="flex items-center gap-2 mt-2">
+                <div className="flex items-center gap-2 mt-2 min-w-0">
                   <Input
                     value={address || ''}
                     readOnly
-                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-xs truncate"
+                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-xs truncate min-w-0 flex-1"
                   />
                   <Button
                     onClick={copyAddress}
@@ -338,15 +343,19 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
             <Card key={tx.hash} className="bg-slate-800/60 border-slate-700 p-4 hover:border-emerald-400/30 transition-all hover:scale-[1.01] backdrop-blur-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tx.from?.toLowerCase() === address?.toLowerCase() ? 'bg-red-500/20' : 'bg-emerald-500/20'}`}>
-                    {tx.from?.toLowerCase() === address?.toLowerCase() ? (<ArrowUpFromLine className="w-5 h-5 text-red-400" />) : (<ArrowDownToLine className="w-5 h-5 text-emerald-400" />)}
+                  <div className={`${tx.from?.toLowerCase() === address?.toLowerCase() ? 'bg-red-500/20' : 'bg-emerald-500/20'} w-10 h-10 rounded-full flex items-center justify-center`}>
+                    {tx.from?.toLowerCase() === address?.toLowerCase() ? (
+                      <ArrowUpFromLine className="w-5 h-5 text-red-400" />
+                    ) : (
+                      <ArrowDownToLine className="w-5 h-5 text-emerald-400" />
+                    )}
                   </div>
-                  <div>
-                    <div className="text-white font-mono truncate max-w-[220px]">{tx.hash}</div>
+                  <div className="min-w-0">
+                    <div className="text-white font-mono truncate max-w-[220px] min-w-0" title={tx.hash}>{shortHex(tx.hash)}</div>
                     <div className="text-slate-400 text-sm">Block {tx.blockNumber}</div>
                   </div>
                 </div>
-                <a href={`https://explorer.celo.org/mainnet/tx/${tx.hash}`} target="_blank" className="text-emerald-400 text-xs underline">View</a>
+                <a href={`https://explorer.celo.org/mainnet/tx/${tx.hash}`} target="_blank" className="text-emerald-400 text-xs underline shrink-0">View</a>
               </div>
             </Card>
           ))}
