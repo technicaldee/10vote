@@ -164,17 +164,21 @@ export default function App() {
         )}
       </div>
       {/* Tabs Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-slate-900/80 backdrop-blur-md border-t border-slate-800 p-2 flex justify-around text-white">
-        <button className={`flex flex-col items-center ${activeTab === 'duel' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('duel')}>
-          <Swords className="h-5 w-5 mb-1" /> Duel
-        </button>
-        <button className={`flex flex-col items-center ${activeTab === 'wallet' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('wallet')}>
-          <Wallet className="h-5 w-5 mb-1" /> Wallet
-        </button>
-        <button className={`flex flex-col items-center ${activeTab === 'leaderboard' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('leaderboard')}>
-          <Trophy className="h-5 w-5 mb-1" /> Leaderboard
-        </button>
-      </div>
+      {!['game', 'results'].includes(activeTab) && (
+        <nav className="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 z-50">
+          <div className="flex justify-around p-2 text-white">
+            <button className={`flex flex-col items-center ${activeTab === 'duel' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('duel')}>
+              <Swords className="h-5 w-5 mb-1" /> Duel
+            </button>
+            <button className={`flex flex-col items-center ${activeTab === 'wallet' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('wallet')}>
+              <Wallet className="h-5 w-5 mb-1" /> Wallet
+            </button>
+            <button className={`flex flex-col items-center ${activeTab === 'leaderboard' ? 'text-emerald-400' : ''}`} onClick={() => setActiveTab('leaderboard')}>
+              <Trophy className="h-5 w-5 mb-1" /> Leaderboard
+            </button>
+          </div>
+        </nav>
+      )}
     </div>
   );
 }

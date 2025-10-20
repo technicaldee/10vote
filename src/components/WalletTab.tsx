@@ -137,8 +137,8 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
       {/* Wallet Connect */}
       <div className="flex items-center justify-between mb-4">
         {isConnected ? (
-          <div className="text-sm text-slate-300 flex items-center gap-3">
-            <span className="font-mono">{address}</span>
+          <div className="text-sm text-slate-300 flex items-center gap-3 min-w-0">
+            <span className="font-mono block flex-1 min-w-0 truncate" title={address || ''}>{address}</span>
             <Button variant="outline" onClick={() => disconnect()}>Disconnect</Button>
           </div>
         ) : (
@@ -246,7 +246,7 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
                   <Input
                     value={address || ''}
                     readOnly
-                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-sm"
+                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-sm truncate"
                   />
                   <Button
                     onClick={copyAddress}
@@ -302,7 +302,7 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
                   <Input
                     value={address || ''}
                     readOnly
-                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-xs"
+                    className="bg-slate-800 border-slate-700 text-slate-300 font-mono text-xs truncate"
                   />
                   <Button
                     onClick={copyAddress}
