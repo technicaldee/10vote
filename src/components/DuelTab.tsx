@@ -319,7 +319,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
     } catch (e) {
       // failed to connect
     }
-  }, [wsUrl]);
+  }, []);
 
   useEffect(() => {
     if (!DUEL_CONTRACT_ADDRESS) {

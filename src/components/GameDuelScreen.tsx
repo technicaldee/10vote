@@ -101,7 +101,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const joinedRef = useRef<boolean>(false);
   const isSpectator = !!spectator;
   const isCreator = !!creator;
-  const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
+
   const wsRef = useRef<WebSocket | null>(null);
   const { address } = useAccount();
   const helloIntervalRef = useRef<number | null>(null);
@@ -204,7 +204,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
       wsRef.current = null;
       if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
     };
-  }, [wsUrl, duelId, category, verification?.isHumanVerified, verification?.ageOver18, verification?.ageOver21]);
+  }, [duelId, category, verification?.isHumanVerified, verification?.ageOver18, verification?.ageOver21]);
 
   useEffect(() => {
     if (showResult || isSpectator) return;
