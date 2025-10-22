@@ -127,7 +127,7 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
 
   return (
     <div className="max-w-lg mx-auto px-4 py-6 relative">
-      <div className="flex">
+      <div className="">
       {/* Crypto background image */}
       <div className="absolute top-0 left-0 right-0 h-64 overflow-hidden opacity-10 rounded-3xl blur-sm pointer-events-none">
         <ImageWithFallback
