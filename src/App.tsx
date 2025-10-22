@@ -27,6 +27,7 @@ export default function App() {
   const isMiniPay = typeof window !== 'undefined' && (window as any).ethereum?.isMiniPay === true;
   const hasInjected = typeof window !== 'undefined' && !!(window as any).ethereum;
   const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  const inFarcaster = typeof window !== 'undefined' && (window as any).__isFarcasterMiniApp;
 
   // Track provider-ready event from Farcaster
   const [providerReady, setProviderReady] = useState(hasInjected);
@@ -92,9 +93,9 @@ export default function App() {
             <h2 className="text-white text-2xl mb-2">Connect Your Wallet</h2>
             <p className="text-slate-400 mb-4">To play and track your balance on-chain, please connect a wallet.</p>
             <div className="flex flex-wrap gap-3">
+              {/* Injected Wallet Button */}
               <button
                 onClick={() => {
-                  const inFarcaster = typeof window !== 'undefined' && (window as any).__isFarcasterMiniApp;
                   if (!hasInjected && !providerReady) {
                     toast.error(
                       inFarcaster
@@ -105,14 +106,34 @@ export default function App() {
                     );
                     return;
                   }
-                  const injectedConnector = connectors.find((c) => (c as any).id === 'injected' || c.name.toLowerCase().includes('injected')) || connectors[0];
-                  connect({ connector: injectedConnector });
+                  const injectedConnector = connectors.find((c) => (c as any).id === 'injected' || c.name.toLowerCase().includes('injected'));
+                  if (injectedConnector) {
+                    connect({ connector: injectedConnector });
+                  }
                 }}
-                disabled={isPending}
+                disabled={isPending || (!hasInjected && !providerReady)}
                 className="px-4 py-2 rounded-lg bg-emerald-600 text-white disabled:opacity-50"
               >
-                {isMiniPay ? 'Connect MiniPay' : 'Connect Wallet'}
+                {isMiniPay ? 'Connect MiniPay' : inFarcaster ? 'Connect Farcaster Wallet' : 'Connect Wallet'}
               </button>
+
+              {/* WalletConnect Button - especially useful for mobile */}
+              {isMobile && !inFarcaster && (
+                <button
+                  onClick={() => {
+                    const wcConnector = connectors.find((c) => (c as any).id === 'walletConnect' || c.name.toLowerCase().includes('walletconnect'));
+                    if (wcConnector) {
+                      connect({ connector: wcConnector });
+                    } else {
+                      toast.error('WalletConnect not available');
+                    }
+                  }}
+                  disabled={isPending}
+                  className="px-4 py-2 rounded-lg bg-blue-600 text-white disabled:opacity-50"
+                >
+                  WalletConnect
+                </button>
+              )}
             </div>
           </div>
         </div>

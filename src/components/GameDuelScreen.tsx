@@ -10,6 +10,7 @@ import { AbstractArt } from './AbstractArt';
 import { selectQuestions, DEFAULT_QUESTION_COUNT, NormalizedQuestion } from '../lib/questions';
 import { useSelf } from '../lib/self';
 import { toast } from 'sonner';
+import { getWebSocketUrl, createWebSocket } from '../lib/websocket';
 
 interface GameDuelScreenProps {
   stake: number;
@@ -101,13 +102,6 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const isSpectator = !!spectator;
   const isCreator = !!creator;
   const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
-  const wsUrlEnv = wsUrlEnvRaw ? wsUrlEnvRaw.replace(/^`|`$/g, '').trim() : undefined;
-  // Hardcode WS base to 10vote.com, allow ?ws override for testing
-  const qsWsRaw = (typeof window !== 'undefined') ? new URLSearchParams(window.location.search).get('ws') : undefined;
-  const qsWs = qsWsRaw ? qsWsRaw.replace(/^`|`$/g, '').trim() : undefined;
-  const wsBaseHardcoded = 'wss://10vote.com';
-  const wsBase = qsWs || wsBaseHardcoded;
-  const wsUrl = wsBase.endsWith('/ws') ? wsBase : `${wsBase.replace(/\/+$/, '')}/ws`;
   const wsRef = useRef<WebSocket | null>(null);
   const { address } = useAccount();
   const helloIntervalRef = useRef<number | null>(null);
@@ -138,8 +132,9 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   }, [duelId, address, category]);
 
   useEffect(() => {
-    if (!wsUrl || !duelId) return;
-    const ws = new WebSocket(wsUrl);
+    if (!duelId) return;
+    const wsUrl = getWebSocketUrl();
+    const ws = createWebSocket(wsUrl);
     wsRef.current = ws;
     ws.onopen = () => {
       console.log('[game] ws open');

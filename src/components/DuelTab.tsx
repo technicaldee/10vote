@@ -13,6 +13,7 @@ import { toHex } from 'viem';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { useSelf } from '../lib/self';
+import { getWebSocketUrl, createWebSocket } from '../lib/websocket';
 
 interface DuelTabProps {
   userBalance: number;
@@ -43,13 +44,6 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const { address, isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
   const chainId = useChainId();
-  const wsUrlEnvRaw = import.meta.env.VITE_GAME_WS_URL as string | undefined;
-  // Hardcode WS base to 10vote.com, allow ?ws override for testing
-  const qsWsRaw = (typeof window !== 'undefined') ? new URLSearchParams(window.location.search).get('ws') : undefined;
-  const qsWs = qsWsRaw ? qsWsRaw.replace(/^`|`$/g, '').trim() : undefined;
-  const wsBaseHardcoded = 'wss://10vote.com';
-  const wsBase = qsWs || wsBaseHardcoded;
-  const wsUrl = wsBase.endsWith('/ws') ? wsBase : `${wsBase.replace(/\/+$/, '')}/ws`;
   const wsRef = useRef<WebSocket | null>(null);
   // Get verification context from Self provider
   const { verification } = useSelf();
@@ -132,9 +126,9 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   }, [address, currentTokenAddress]);
   
   useEffect(() => {
-    if (!wsUrl) return;
     try {
-      const ws = new WebSocket(wsUrl);
+      const wsUrl = getWebSocketUrl();
+      const ws = createWebSocket(wsUrl);
       wsRef.current = ws;
       ws.onopen = () => {
         console.log('[matchmaking] ws open');

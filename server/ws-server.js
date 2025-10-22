@@ -49,6 +49,18 @@ server.on('request', async (req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
     const pathname = url.pathname;
 
+    // Add CORS headers for all requests
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+      res.statusCode = 200;
+      res.end();
+      return;
+    }
+
     // Self verification endpoint
     if (pathname === '/api/self/verify' && req.method === 'POST') {
       let body = '';
@@ -138,7 +150,15 @@ server.on('request', async (req, res) => {
   }
 });
 
-const wss = new WebSocketServer({ server, path: '/ws' });
+const wss = new WebSocketServer({ 
+  server, 
+  path: '/ws',
+  // Handle CORS for WebSocket connections
+  verifyClient: (info) => {
+    // Allow all origins for now - in production you might want to restrict this
+    return true;
+  }
+});
 
 const rooms = new Map(); // roomId -> Set<ws>
 const queueByCategory = new Map(); // category -> Array<ws>
