@@ -20,10 +20,18 @@ root.render(
     const mod: any = await import(/* @vite-ignore */ sdkUrl);
     const sdk = mod?.sdk;
     if (!sdk) return;
-    (window as any).__isFarcasterMiniApp = true;
+    
+    // Only set as Farcaster miniapp if SDK actually works (meaning we're in Farcaster)
+    try {
+      await sdk.actions.ready();
+      (window as any).__isFarcasterMiniApp = true;
+      console.log('[Farcaster] Successfully initialized in Farcaster environment');
+    } catch (e) {
+      console.log('[Farcaster] Not in Farcaster environment, SDK ready() failed');
+      return;
+    }
     // Ensure the app has rendered; then signal ready to hide splash screen
     await new Promise((r) => requestAnimationFrame(r));
-    await sdk.actions.ready();
     // Obtain Farcaster-provided EIP-1193 provider and inject for Wagmi
     try {
       const provider = await sdk?.wallet?.getEthereumProvider?.();

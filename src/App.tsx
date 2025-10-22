@@ -29,6 +29,18 @@ export default function App() {
   const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
   const inFarcaster = typeof window !== 'undefined' && (window as any).__isFarcasterMiniApp;
 
+  // Debug logging
+  useEffect(() => {
+    console.log('[Wallet Debug]', {
+      isMiniPay,
+      hasInjected,
+      isMobile,
+      inFarcaster,
+      userAgent: navigator.userAgent,
+      connectors: connectors.map(c => ({ id: (c as any).id, name: c.name }))
+    });
+  }, [isMiniPay, hasInjected, isMobile, inFarcaster, connectors]);
+
   // Track provider-ready event from Farcaster
   const [providerReady, setProviderReady] = useState(hasInjected);
   useEffect(() => {
@@ -117,8 +129,8 @@ export default function App() {
                 {isMiniPay ? 'Connect MiniPay' : inFarcaster ? 'Connect Farcaster Wallet' : 'Connect Wallet'}
               </button>
 
-              {/* WalletConnect Button - especially useful for mobile */}
-              {isMobile && !inFarcaster && (
+              {/* WalletConnect Button - show on mobile or when no injected wallet */}
+              {(isMobile || !hasInjected) && (
                 <button
                   onClick={() => {
                     const wcConnector = connectors.find((c) => (c as any).id === 'walletConnect' || c.name.toLowerCase().includes('walletconnect'));
