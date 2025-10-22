@@ -11,7 +11,7 @@ const sanitize = (url?: string) => (url ? url.replace(/^`|`$/g, '').trim() : '')
 const httpUrl = sanitize(import.meta.env.VITE_CELO_HTTP_RPC_URL) || DEFAULT_HTTP;
 
 // WalletConnect project ID - you'll need to get this from https://cloud.walletconnect.com/
-const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'your-project-id-here';
+const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'd783a17fe1222625cf15cf7ede98a7e3';
 
 const config = createConfig({
   chains: [celoChain],

@@ -58,12 +58,12 @@ import { defineConfig } from 'vite';
       open: true,
       proxy: {
         '/api': {
-          target: 'http://localhost:8080',
+          target: 'http://10vote.com',
           changeOrigin: true,
           ws: true,
         },
         '/ws': {
-          target: 'ws://localhost:8080',
+          target: 'ws://10vote.com',
           ws: true,
         },
       },
