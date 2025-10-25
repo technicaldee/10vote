@@ -9,11 +9,12 @@ import { soundEffects } from '../utils/soundEffects';
 import { useAccount, useWalletClient, useChainId } from 'wagmi';
 import { viemPublicClient, DUEL_CONTRACT_ADDRESS, CUSD_ADDRESS, CELO_TOKEN_ADDRESS, celoChain } from '../lib/blockchain';
 import { duelManagerAbi, erc20Abi } from '../abi/duelManager';
-import { toHex } from 'viem';
+import { toHex, encodeFunctionData } from 'viem';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { useSelf } from '../lib/self';
 import { getWebSocketUrl, createWebSocket } from '../lib/websocket';
+import { getReferralTag, submitReferral } from '@divvi/referral-sdk';
 
 interface DuelTabProps {
   userBalance: number;
@@ -29,6 +30,27 @@ const categories = [
   { id: 'pop', name: 'Pop Culture', emoji: '🎬', gradient: 'from-rose-500 to-red-500' },
   { id: 'geography', name: 'Geography', emoji: '🌍', gradient: 'from-teal-500 to-green-500' },
 ];
+
+const DIVVI_CONSUMER: `0x${string}` = '0x900f96DD68CA49001228348f1A2Cd28556FB62dd';
+
+async function sendWithReferral(
+  wc: any,
+  to: `0x${string}`,
+  abi: any,
+  functionName: string,
+  args: any[],
+  value?: bigint
+) {
+  const [account] = await wc.getAddresses();
+  const data = encodeFunctionData({ abi, functionName, args });
+  const tag = getReferralTag({ user: account, consumer: DIVVI_CONSUMER });
+  const fullData = (data + tag.slice(2)) as `0x${string}`;
+  const txHash = await wc.sendTransaction({ account, to, data: fullData, value });
+  const chainId = await wc.getChainId();
+  try { await viemPublicClient.waitForTransactionReceipt({ hash: txHash }); } catch {}
+  try { await submitReferral({ txHash, chainId }); } catch {}
+  return txHash;
+}
 
 export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const [selectedCategory, setSelectedCategory] = useState('random');
@@ -171,12 +193,12 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 console.log('[duel] creator approving', { stakeWei: stakeWei.toString() });
                 toast.message(`Approving ${currentTokenSymbol}…`);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_approve_start', duelId })); } catch {}
-                await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS!, stakeWei], chain: celoChain });
+                await sendWithReferral(wc, currentTokenAddress, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS!, stakeWei]);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_approve_done', duelId })); } catch {}
                 console.log('[duel] creator creating duel', { duelId });
                 toast.message('Creating duel on-chain…');
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_create_start', duelId })); } catch {}
-                await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stakeWei, currentTokenAddress], chain: celoChain });
+                await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS!, duelManagerAbi, 'createDuel', [duelId, stakeWei, currentTokenAddress]);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_create_done', duelId })); } catch {}
                 setWaitingForMatch(true);
                 toast.success('Duel created. Waiting for opponent…');
@@ -217,8 +239,8 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                   try {
                     // Approve using current selection (will auto-switch below if needed)
                     const tokenForFallback = currentTokenAddress;
-                    await wc.writeContract({ address: tokenForFallback, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS!, stakeWei], chain: celoChain });
-                    await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stakeWei, tokenForFallback], chain: celoChain });
+                    await sendWithReferral(wc, tokenForFallback, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS!, stakeWei]);
+                    await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS!, duelManagerAbi, 'createDuel', [duelId, stakeWei, tokenForFallback]);
                     try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_create_done', duelId })); } catch {}
                     toast.success('Duel created by you. Waiting for opponent…');
                     const joinedFallback = await waitForDuelJoined(duelId, 30000);
@@ -277,12 +299,12 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                 console.log('[duel] joiner approving', { stakeWei: stakeWei.toString() });
                 toast.message(`Approving ${tokenSymbolForJoin}…`);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_approve_start', duelId })); } catch {}
-                await wc.writeContract({ address: tokenToUse, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS!, stakeWei], chain: celoChain });
+                await sendWithReferral(wc, tokenToUse, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS!, stakeWei]);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_approve_done', duelId })); } catch {}
                 console.log('[duel] joiner joining duel', { duelId });
                 toast.message('Joining duel…');
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_join_start', duelId })); } catch {}
-                await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'joinDuel', args: [duelId as `0x${string}`], chain: celoChain });
+                await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS!, duelManagerAbi, 'joinDuel', [duelId as `0x${string}`]);
                 try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_join_done', duelId })); } catch {}
                 toast.success('Joined duel. Starting…');
                 setWaitingForMatch(false);
@@ -395,7 +417,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       const ok = await ensureCelo();
       if (!ok) return;
       if (!DUEL_CONTRACT_ADDRESS) { toast.error('Duel contract address not configured'); return; }
-      await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'cancelDuel', args: [waitingDuelId], chain: celoChain });
+      await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS, duelManagerAbi, 'cancelDuel', [waitingDuelId]);
       toast.success('Quick Match cancelled. Stake refunded.');
     } catch (e) {
       const msg = (e as any)?.shortMessage || (e as any)?.message || 'Failed to cancel duel';
@@ -431,8 +453,8 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       const ok = await ensureCelo();
       if (!ok) return;
       if (!DUEL_CONTRACT_ADDRESS) { toast.error('Duel contract address not configured'); return; }
-      await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stake], chain: celoChain });
-      await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'createDuel', args: [duelId, stake, currentTokenAddress], chain: celoChain });
+      await sendWithReferral(wc, currentTokenAddress, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS, stake]);
+      await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS, duelManagerAbi, 'createDuel', [duelId, stake, currentTokenAddress]);
       setInviteCode(duelId);
       setShowFriendPanel(true);
       toast.success('Friend duel code created');
@@ -482,8 +504,8 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
       const ok = await ensureCelo();
       if (!ok) return;
       if (!DUEL_CONTRACT_ADDRESS) { toast.error('Duel contract address not configured'); return; }
-      await wc.writeContract({ address: currentTokenAddress, abi: erc20Abi, functionName: 'approve', args: [DUEL_CONTRACT_ADDRESS, stake], chain: celoChain });
-      await wc.writeContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'joinDuel', args: [joinCode as `0x${string}`], chain: celoChain });
+      await sendWithReferral(wc, currentTokenAddress, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS, stake]);
+      await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS, duelManagerAbi, 'joinDuel', [joinCode as `0x${string}`]);
       toast.success('Joined duel. Starting…');
       onStartGame(Number(stake) / 1e18, undefined, joinCode as `0x${string}`, false, false, selectedCategory);
     } catch (e) {

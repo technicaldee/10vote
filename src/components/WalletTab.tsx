@@ -11,14 +11,15 @@ import { soundEffects } from '../utils/soundEffects';
 import { useAccount, useDisconnect, useWalletClient } from 'wagmi';
 import { useQuery } from '@tanstack/react-query';
 import { erc20Abi } from '../abi/duelManager';
-import { CUSD_ADDRESS } from '../lib/blockchain';
-import { createPublicClient, http } from 'viem';
+import { CUSD_ADDRESS, viemPublicClient } from '../lib/blockchain';
+import { createPublicClient, http, encodeFunctionData } from 'viem';
 import { celoChain } from '../lib/blockchain';
 import { toast } from 'sonner';
 import { useSelf } from '../lib/self';
 import { getUniversalLink } from '@selfxyz/core';
 import { SelfQRcodeWrapper, SelfAppBuilder, type SelfApp } from '@selfxyz/qrcode';
 import { ethers } from 'ethers';
+import { getReferralTag, submitReferral } from '@divvi/referral-sdk';
 
 interface WalletTabProps {
   userBalance: number;
@@ -88,7 +89,7 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
     if (amount > 0 && amount <= available && withdrawAddress) {
       try {
         const value = BigInt(Math.floor(amount * 1e18));
-        await wc.writeContract({ address: CUSD_ADDRESS, abi: erc20Abi, functionName: 'transfer', args: [withdrawAddress as `0x${string}`, value], chain: celoChain });
+        await sendWithReferral(wc, CUSD_ADDRESS as `0x${string}`, erc20Abi, 'transfer', [withdrawAddress as `0x${string}`, value]);
         setWithdrawDialogOpen(false);
         setWithdrawAmount('');
         setWithdrawAddress('');
@@ -366,4 +367,25 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
       </div>
     </div>
   );
+}
+
+const DIVVI_CONSUMER: `0x${string}` = '0x900f96DD68CA49001228348f1A2Cd28556FB62dd';
+
+async function sendWithReferral(
+  wc: any,
+  to: `0x${string}`,
+  abi: any,
+  functionName: string,
+  args: any[],
+  value?: bigint
+) {
+  const [account] = await wc.getAddresses();
+  const data = encodeFunctionData({ abi, functionName, args });
+  const tag = getReferralTag({ user: account, consumer: DIVVI_CONSUMER });
+  const fullData = (data + tag.slice(2)) as `0x${string}`;
+  const txHash = await wc.sendTransaction({ account, to, data: fullData, value });
+  const chainId = await wc.getChainId();
+  try { await viemPublicClient.waitForTransactionReceipt({ hash: txHash }); } catch {}
+  try { await submitReferral({ txHash, chainId }); } catch {}
+  return txHash;
 }

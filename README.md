@@ -28,23 +28,14 @@ Required (frontend):
 Optional (frontend):
 - `VITE_CELO_WS_RPC_URL` — WS RPC endpoint for Celo subscriptions. Example: `wss://forno.celo.org/ws`
 - `VITE_WALLETCONNECT_PROJECT_ID` — Your WalletConnect Project ID
-- `VITE_SELF_APP_NAME` — Display name shown in the Self app (default: `10vote`)
-- `VITE_SELF_SCOPE` — Scope identifier used by Self (default: `10vote`)
-- `VITE_SELF_ENDPOINT` — Backend verification URL (default: `${window.location.origin}/api/self/verify`)
-- `VITE_SELF_ENDPOINT_TYPE` — Endpoint type for SDK (e.g. `staging_https`)
-- `VITE_SELF_LOGO` — Logo URL or base64 used by the Self SDK QR builder
 
-Optional (backend):
-- `SELF_SCOPE` — Scope used by backend verifier (default: `self-playground`)
-- `SELF_VERIFY_ENDPOINT` — Self verifier endpoint (default: `https://playground.self.xyz/api/verify`)
-- `SELF_MOCK_PASSPORT` — Set `true` to use staging/testnet (default: `false`)
-- `SELF_USER_IDENTIFIER_TYPE` — User identifier type (e.g. `uuid`, default: `uuid`)
-- `VITE_BLOCKSCOUT_API_URL` — Blockscout API URL for token/txn lookups. Example: `https://api.blockscout.com/api/v2`
-- `VITE_CUSD_ADDRESS` — cUSD token address (defaults to mainnet if not set)
-- `VITE_CELO_TOKEN_ADDRESS` — CELO token address (defaults to mainnet if not set)
-- `VITE_DUEL_CONTRACT_ADDRESS` — DuelManager contract address if you enable on-chain validation
+Optional (contracts):
+- `DUEL_CONTRACT_ADDRESS` — Auto-populated by the deploy script
+- `VITE_DUEL_CONTRACT_ADDRESS` — Auto-populated by the deploy script for the frontend
+- `FEE_COLLECTOR` — Address that receives game fees
+- `FEE_BPS` — Fee in basis points (e.g. `500` for 5%)
 
-Example `.env`:
+Example:
 ```
 VITE_GAME_WS_URL=ws://localhost:8080
 VITE_CELO_HTTP_RPC_URL=https://forno.celo.org
@@ -53,9 +44,16 @@ VITE_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
 VITE_BLOCKSCOUT_API_URL=https://api.blockscout.com/api/v2
 # Optional overrides (these have sensible defaults in code)
 # VITE_CUSD_ADDRESS=0x765DE816845861e75A25fCA122bb6898B8B1282a
-# VITE_CELO_TOKEN_ADDRESS=0x471EcE3750Da237f93B8E339c5369898B8978a438
+# VITE_CELO_TOKEN_ADDRESS=0x471EcE3750Da237f93B8E339c536989b8978a438
 # VITE_DUEL_CONTRACT_ADDRESS=0xYourDeployedDuelManager
 ```
+
+## Deployed Contract
+- `DuelManager` (Celo Mainnet, chainId `42220`): `0x7CB521B5DA3A5Bf62517E90477394D08EdE4823F`
+- `feeCollector`: `0x900f96DD68CA49001228348f1A2Cd28556FB62dd`
+- `feeBps`: `500` (5%)
+
+The deploy script updates `.env` keys `DUEL_CONTRACT_ADDRESS` and `VITE_DUEL_CONTRACT_ADDRESS` automatically.
 
 ## Getting Started
 1. Install dependencies:

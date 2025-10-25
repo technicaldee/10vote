@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@divvi/referral-sdk": "^2.3.0",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -76,6 +77,6 @@
     "ws:build": "node build/ws-server.js",
     "hardhat": "hardhat",
     "compile:contracts": "hardhat compile",
-    "deploy:celo": "hardhat run --network celo scripts/deploy.js"
+    "deploy:celo": "hardhat run --network celo scripts/deploy.cjs"
   }
 }
