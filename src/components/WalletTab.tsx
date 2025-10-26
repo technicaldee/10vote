@@ -55,6 +55,8 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
     refetchInterval: 15000,
   });
 
+  const availableTotal = isConnected ? Math.max(userBalance, cusdBalance ?? 0) : userBalance;
+
   const { data: transactions } = useQuery({
     queryKey: ['recent-tx', address],
     queryFn: async () => {
@@ -219,13 +221,13 @@ export function WalletTab({ userBalance, onBalanceChange }: WalletTabProps) {
       {/* Balance Header */}
       <div className="text-center mb-8 relative z-10">
         <div className="text-slate-400 mb-2 flex items-center justify-center gap-2">
-          💰 Total Available Balance
+          <DollarSign className="w-4 h-4" /> Total Available Balance
         </div>
         <div className="text-7xl text-emerald-400 mb-6 drop-shadow-glow animate-pulse">
-          ${isConnected ? (cusdBalance ?? 0).toFixed(2) : userBalance.toFixed(2)}
+          ${availableTotal.toFixed(2)}
         </div>
         <Badge className="bg-emerald-400/20 text-emerald-400 border-emerald-400/30 px-4 py-2">
-          cUSD on Celo Network 🌐
+          cUSD on Celo Network
         </Badge>
       </div>
 

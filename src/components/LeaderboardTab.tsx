@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Trophy, Medal, Crown, TrendingUp, Sparkles } from 'lucide-react';
+import { Trophy, Medal, Crown, TrendingUp, Sparkles, DollarSign, Swords, Target, CalendarDays, BarChart3, Star, Rocket } from 'lucide-react';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
@@ -17,33 +17,8 @@ export function LeaderboardTab() {
   type PlayerStat = { address: string; wins: number; losses: number; winnings: number; totalStaked: number };
   const [players, setPlayers] = useState<PlayerStat[]>([]);
   const { verification } = useSelf();
+  // duplicate leaderboard effect removed; single effect above handles fetching and updates
 
-  useEffect(() => {
-    let cancelled = false;
-    async function fetchLeaderboard() {
-      try {
-        const latest = await viemPublicClient.getBlockNumber();
-        const windowBlocks = period === 'daily' ? 17280n : period === 'weekly' ? 120960n : 500000n;
-        const fromBlock = latest > windowBlocks ? latest - windowBlocks : 0n;
-        const createdLogs = await viemPublicClient.getContractEvents({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelCreated', fromBlock, toBlock: latest });
-        const joinedLogs = await viemPublicClient.getContractEvents({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'DuelJoined', fromBlock, toBlock: latest });
-        const addresses = new Set<string>();
-        createdLogs.forEach((l: any) => addresses.add(String(l.args.player1)));
-        joinedLogs.forEach((l: any) => addresses.add(String(l.args.player2)));
-        const stats: PlayerStat[] = [];
-        for (const addr of addresses) {
-          const s: any = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, functionName: 'stats', args: [addr as `0x${string}`] });
-          stats.push({ address: addr, wins: Number(s.wins ?? s[0] ?? 0), losses: Number(s.losses ?? s[1] ?? 0), winnings: Number(s.winnings ?? s[2] ?? 0) / 1e18, totalStaked: Number(s.totalStaked ?? s[3] ?? 0) / 1e18 });
-        }
-        if (!cancelled) setPlayers(stats.sort((a, b) => b.winnings - a.winnings));
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    fetchLeaderboard();
-    const unwatchConfirm = viemPublicClient.watchContractEvent({ address: DUEL_CONTRACT_ADDRESS, abi: duelManagerAbi, eventName: 'ResultConfirmed', onLogs: () => fetchLeaderboard() });
-    return () => { cancelled = true; unwatchConfirm?.(); };
-  }, [period]);
 
   const { address } = useAccount();
   const [verifiedOnly, setVerifiedOnly] = useState(false);
@@ -96,7 +71,7 @@ export function LeaderboardTab() {
           <h1 className="text-4xl text-white drop-shadow-lg">Leaderboard</h1>
           <Sparkles className="w-6 h-6 text-emerald-400" />
         </div>
-        <p className="text-slate-400 text-lg">🏆 Compete for bonus prizes</p>
+        <p className="text-slate-400 text-lg flex items-center gap-2"><Trophy className="w-4 h-4" /> Compete for bonus prizes</p>
       </div>
       <div className="flex items-center justify-center mb-6 gap-2">
         {verification?.isHumanVerified ? (
@@ -113,19 +88,19 @@ export function LeaderboardTab() {
             value="daily"
             className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white"
           >
-            📅 Daily
+            <span className="flex items-center gap-1"><CalendarDays className="w-3 h-3" /> Daily</span>
           </TabsTrigger>
           <TabsTrigger
             value="weekly"
             className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white"
           >
-            📊 Weekly
+            <span className="flex items-center gap-1"><BarChart3 className="w-3 h-3" /> Weekly</span>
           </TabsTrigger>
           <TabsTrigger
             value="alltime"
             className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white"
           >
-            ⭐ All-Time
+            <span className="flex items-center gap-1"><Star className="w-3 h-3" /> All-Time</span>
           </TabsTrigger>
         </TabsList>
       </Tabs>
@@ -139,7 +114,7 @@ export function LeaderboardTab() {
             Bonus Prize Pool
             <Sparkles className="w-4 h-4" />
           </div>
-          <div className="text-5xl text-yellow-400 drop-shadow-lg mb-2">💰 ${prize} cUSD</div>
+          <div className="text-5xl text-yellow-400 drop-shadow-lg mb-2 flex items-center justify-center gap-2"><DollarSign className="w-8 h-8" /> ${prize} cUSD</div>
           <div className="text-yellow-200 text-sm">Split among top 3 players</div>
         </div>
       </Card>
@@ -228,11 +203,11 @@ export function LeaderboardTab() {
                       <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-400/30">Verified</Badge>
                     )}
                   </div>
-                  <div className="text-slate-400 text-sm">⚔️ {player.wins}W-{player.losses}L</div>
+                  <div className="text-slate-400 text-sm flex items-center gap-1"><Swords className="w-3 h-3" /> {player.wins}W-{player.losses}L</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-emerald-400 text-lg">💰 ${player.winnings.toFixed(2)}</div>
+                <div className="text-emerald-400 text-lg flex items-center gap-1"><DollarSign className="w-4 h-4" /> ${player.winnings.toFixed(2)}</div>
               </div>
             </div>
           </Card>
@@ -256,9 +231,9 @@ export function LeaderboardTab() {
             </div>
           </div>
           <div className="text-right">
-            <div className="text-emerald-400 text-2xl drop-shadow-lg">💰 ${userWinnings.toFixed(2)}</div>
-            <Badge className="bg-emerald-400/30 text-emerald-300 border-emerald-400/50 mt-1 px-3 py-1">
-              🚀 Keep climbing!
+            <div className="text-emerald-400 text-2xl drop-shadow-lg flex items-center gap-1"><DollarSign className="w-4 h-4" /> ${userWinnings.toFixed(2)}</div>
+            <Badge className="bg-emerald-400/30 text-emerald-300 border-emerald-400/50 mt-1 px-3 py-1 flex items-center gap-1">
+              <Rocket className="w-3 h-3" /> Keep climbing!
             </Badge>
           </div>
         </div>

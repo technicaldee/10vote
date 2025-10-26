@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>10vote — Pitch Deck</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --text: #e6f2ff;
+      --muted: #9fb4cc;
+      --accent: #10b981; /* emerald */
+      --accent2: #60a5fa; /* sky */
+      --warning: #f59e0b; /* amber */
+    }
+    html, body { background: var(--bg); color: var(--text); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif; }
+    .deck { max-width: 960px; margin: 0 auto; padding: 32px; }
+    .slide { background: linear-gradient(180deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02)), var(--card); border: 1px solid rgba(96,165,250,0.15); border-radius: 20px; padding: 40px; margin: 28px 0; box-shadow: 0 12px 40px rgba(16,185,129,0.12); }
+    .title { font-size: 42px; font-weight: 800; letter-spacing: 0.5px; margin: 0 0 10px; }
+    .subtitle { color: var(--muted); font-size: 18px; margin: 0 0 24px; }
+    .bullets { margin: 10px 0 0 0; padding-left: 18px; }
+    .bullets li { margin: 8px 0; line-height: 1.5; }
+    .tag { display: inline-block; font-size: 13px; color: #c7ffe6; background: rgba(16,185,129,0.18); border: 1px solid rgba(16,185,129,0.35); padding: 4px 10px; border-radius: 999px; margin-right: 8px; }
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .muted { color: var(--muted); }
+    .kpi { display: inline-block; background: rgba(96,165,250,0.18); color: #dff0ff; border: 1px solid rgba(96,165,250,0.35); padding: 12px 16px; border-radius: 14px; margin: 6px 10px 6px 0; font-weight: 600; }
+    .logo { height: 28px; vertical-align: middle; margin-left: 6px; }
+    .foot { margin-top: 18px; font-size: 14px; color: var(--muted); }
+    /* Print tweaks */
+    @media print {
+      body { background: white; }
+      .slide { break-after: page; box-shadow: none; border-color: #e6eaf0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <!-- Cover -->
+    <section class="slide">
+      <h1 class="title">10vote</h1>
+      <h2 class="subtitle">Real‑time trivia duels with on‑chain stakes on Celo</h2>
+      <div class="muted">Play head‑to‑head, stake cUSD, and climb the leaderboard. Identity‑verified via Self.</div>
+      <div class="foot">Contact: founders@10vote.app • Chain: Celo • Token: cUSD <img class="logo" src="/favicon.svg" alt="logo" /></div>
+    </section>
+
+    <!-- Problem -->
+    <section class="slide">
+      <h2 class="title">Problem</h2>
+      <ul class="bullets">
+        <li>Casual gaming lacks meaningful stakes and trust in outcomes.</li>
+        <li>Web2 platforms struggle with fair matchmaking and anti‑fraud.</li>
+        <li>Crypto gaming is complex for everyday users; poor UX and onboarding.</li>
+      </ul>
+      <div class="tag">Gap: Trust + Stakes + Instant Fun</div>
+    </section>
+
+    <!-- Solution -->
+    <section class="slide">
+      <h2 class="title">Solution</h2>
+      <ul class="bullets">
+        <li>Fast “Quick Match” trivia duels with cUSD stakes.</li>
+        <li>On‑chain settlement via smart contracts; transparent wins and refunds.</li>
+        <li>Identity verification via Self to reduce fraud and ensure fair play.</li>
+        <li>Seamless wallet flow and auto‑reconnect WebSocket matchmaking.</li>
+      </ul>
+      <div class="tag">Verified Players</div><div class="tag">Provable Results</div><div class="tag">Instant Play</div>
+    </section>
+
+    <!-- Product -->
+    <section class="slide">
+      <h2 class="title">Product</h2>
+      <div class="columns">
+        <div>
+          <ul class="bullets">
+            <li>1v1 duels; 2v2 squad mode in development.</li>
+            <li>Categories: Random, General, Sports, Science, History, Pop Culture, Geography.</li>
+            <li>Wallet tab: cUSD balance, deposit/withdraw, Self verification.</li>
+            <li>Leaderboard: daily/weekly/all‑time rankings and bonus prize pools.</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="bullets">
+            <li>Quick Match queuing with robust reconnect & error feedback.</li>
+            <li>Live duels feed with avatars, stakes, category images.</li>
+            <li>Friend duels: create code and share; join by code.</li>
+            <li>Sound effects and polished UI with Lucide icons.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market -->
+    <section class="slide">
+      <h2 class="title">Market</h2>
+      <ul class="bullets">
+        <li><strong>Casual Gaming TAM:</strong> >$100B globally; trivia is evergreen and social.</li>
+        <li><strong>Web3 Gaming:</strong> rapid growth; Celo focus aligns with mobile‑first users.</li>
+        <li><strong>Target Users:</strong> crypto‑curious casual gamers + communities seeking provable competitions.</li>
+      </ul>
+      <span class="kpi">Mobile‑first</span><span class="kpi">Low fees</span><span class="kpi">Global reach</span>
+    </section>
+
+    <!-- Business Model -->
+    <section class="slide">
+      <h2 class="title">Business Model</h2>
+      <ul class="bullets">
+        <li>Take rate on duel stakes and tournament fees.</li>
+        <li>Season passes and cosmetic upgrades (non‑pay‑to‑win).</li>
+        <li>Sponsorships for themed trivia and brand tournaments.</li>
+      </ul>
+      <div class="muted">Future: premium leagues, community‑run clubs, and partner integrations.</div>
+    </section>
+
+    <!-- Traction & KPIs -->
+    <section class="slide">
+      <h2 class="title">Traction</h2>
+      <ul class="bullets">
+        <li>Functional MVP on Celo: duels, wallet, leaderboard, friend codes.</li>
+        <li>Identity verification via Self integrated end‑to‑end.</li>
+        <li>Reliable matchmaking with auto‑reconnect and user feedback.</li>
+      </ul>
+      <span class="kpi">MVP Live</span><span class="kpi">Verified Players</span><span class="kpi">Quick Match</span>
+    </section>
+
+    <!-- Technology -->
+    <section class="slide">
+      <h2 class="title">Technology</h2>
+      <ul class="bullets">
+        <li>Celo + cUSD smart contracts (DuelManager) for staking and settlement.</li>
+        <li>Frontend: React + Vite + Wagmi + Viem; Lucide icons; Tailwind styles.</li>
+        <li>Matchmaking via WebSocket server with reconnect/backoff and status toasts.</li>
+        <li>Data: on‑chain events and stats (watchContractEvent, readContract).</li>
+      </ul>
+      <div class="muted">Designed for fast UX, low fees, and transparent outcomes.</div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="slide">
+      <h2 class="title">Roadmap</h2>
+      <ul class="bullets">
+        <li>Q1: 2v2 squad mode, new categories, social sharing, referral rewards.</li>
+        <li>Q2: Seasonal tournaments, guilds/clubs, creator tools for custom trivia.</li>
+        <li>Q3: Mobile app packaging, multi‑chain research, sponsorship integrations.</li>
+      </ul>
+    </section>
+
+    <!-- Go‑to‑Market -->
+    <section class="slide">
+      <h2 class="title">Go‑to‑Market</h2>
+      <ul class="bullets">
+        <li>Influencer‑led community tournaments and weekly prize pools.</li>
+        <li>University/club onboarding with verified leagues.</li>
+        <li>Crypto meetups and hackathon circuits; Celo ecosystem partnerships.</li>
+      </ul>
+    </section>
+
+    <!-- Competition -->
+    <section class="slide">
+      <h2 class="title">Competition & Differentiation</h2>
+      <ul class="bullets">
+        <li>Web2 trivia apps: engagement but no trust or stakes.</li>
+        <li>Web3 games: complex UX; few deliver instant casual fun.</li>
+        <li><strong>10vote edge:</strong> verified identity, provable outcomes, buttery‑smooth UX.</li>
+      </ul>
+      <div class="tag">Trust</div><div class="tag">Speed</div><div class="tag">Transparency</div>
+    </section>
+
+    <!-- Team & Ask -->
+    <section class="slide">
+      <h2 class="title">Team & Ask</h2>
+      <ul class="bullets">
+        <li>Team: product, web3, and gaming veterans; shipped multiple consumer apps.</li>
+        <li>Advisors: ecosystem partners across Celo, identity, and gaming.</li>
+        <li>Ask: pre‑seed to scale tournaments, content, and growth; integrations with sponsors.</li>
+      </ul>
+      <div class="foot">Contact: founders@10vote.app • Demo: 10vote.app • Chain: Celo</div>
+    </section>
+
+  </div>
+</body>
+</html>

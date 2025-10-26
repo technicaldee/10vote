@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Zap, Clock, Trophy, Sparkles, Gamepad2, CircleSlash } from 'lucide-react';
+import { Zap, Clock, Trophy, Sparkles, Gamepad2, CircleSlash, Dice6, Brain, FlaskConical, ScrollText, Clapperboard, Globe, Target, DollarSign, Swords } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
@@ -67,6 +67,9 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const { data: walletClient } = useWalletClient();
   const chainId = useChainId();
   const wsRef = useRef<WebSocket | null>(null);
+  const [wsStatus, setWsStatus] = useState<'connecting' | 'open' | 'reconnecting' | 'closed'>('connecting');
+  const reconnectTimeoutRef = useRef<number | null>(null);
+  const reconnectToastIdRef = useRef<string | number | null>(null);
   // Get verification context from Self provider
   const { verification } = useSelf();
   const [matchMode, setMatchMode] = useState<'1v1' | '2v2'>('1v1');
@@ -75,6 +78,20 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   const CELO_USD_RATE = 0.29;
   const currentTokenAddress = selectedToken === 'cusd' ? CUSD_ADDRESS : CELO_TOKEN_ADDRESS;
   const currentTokenSymbol = selectedToken === 'cusd' ? 'cUSD' : 'CELO';
+
+  const CategoryIcon = ({ id }: { id: string }) => {
+    const common = 'w-4 h-4';
+    switch (id) {
+      case 'random': return <Dice6 className={common} />;
+      case 'general': return <Brain className={common} />;
+      case 'sports': return <Trophy className={common} />;
+      case 'science': return <FlaskConical className={common} />;
+      case 'history': return <ScrollText className={common} />;
+      case 'pop': return <Clapperboard className={common} />;
+      case 'geography': return <Globe className={common} />;
+      default: return <Sparkles className={common} />;
+    }
+  };
 
   const waitForDuelCreated = async (duelId: `0x${string}`, timeoutMs = 20000) => {
     const start = Date.now();
@@ -148,200 +165,78 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
   }, [address, currentTokenAddress]);
   
   useEffect(() => {
-    try {
+    let cancelled = false;
+
+    const openToast = () => {
+      if (reconnectToastIdRef.current == null) {
+        const id = toast.message('Disconnected. Reconnecting…', { duration: Infinity });
+        reconnectToastIdRef.current = id;
+      }
+    };
+    const closeToast = () => {
+      if (reconnectToastIdRef.current != null) {
+        toast.dismiss(reconnectToastIdRef.current as any);
+        reconnectToastIdRef.current = null;
+      }
+    };
+
+    const connect = () => {
+      if (cancelled) return;
       const wsUrl = getWebSocketUrl();
       const ws = createWebSocket(wsUrl);
       wsRef.current = ws;
+      setWsStatus(prev => (prev === 'reconnecting' ? 'reconnecting' : 'connecting'));
       ws.onopen = () => {
         console.log('[matchmaking] ws open');
+        setWsStatus('open');
+        closeToast();
       };
       ws.onmessage = async (evt) => {
         try {
           const payload = JSON.parse(evt.data as string);
           console.log('[matchmaking] ws message', payload);
+          if (payload.type === 'error') {
+            toast.error(payload.message || 'Matchmaking error');
+          }
           if (payload.type === 'queued') {
             toast.message('Queued for Quick Match…');
           }
           if (payload.type === 'match_found') {
             const { role, duelId, stake } = payload as { role: 'creator'|'joiner', duelId: `0x${string}`, stake: number };
-            console.log('[matchmaking] match_found', { role, duelId, stake });
-            // Immediate start: do not wait for on-chain approval/creation
             setWaitingStake(stake);
             setWaitingDuelId(duelId);
             setWaitingForMatch(false);
             try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'direct_start', duelId, extra: { role, stake } })); } catch {}
             onStartGame(stake, undefined, duelId as `0x${string}`, false, role === 'creator', selectedCategory);
-            return;
-            
-            // Below is the on-chain path (kept for reference, currently bypassed)
-            const ok = await ensureCelo();
-            const wc = walletClient!;
-            if (!ok || !wc) return;
-            const stakeWei = BigInt(Math.floor(stake * 1e18));
-            setWaitingStake(stake);
-            setWaitingDuelId(duelId);
-            try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'match_found', duelId, extra: { role, stake } })); } catch {}
-            if (role === 'creator') {
-              try {
-                if (tokenBalance < stake) {
-                  toast.error(`Insufficient ${currentTokenSymbol} for stake`);
-                  try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_insufficient_balance', duelId, extra: { tokenBalance, stake, token: currentTokenSymbol } })); } catch {}
-                  setWaitingForMatch(false);
-                  setWaitingDuelId(null);
-                  return;
-                }
-                console.log('[duel] creator approving', { stakeWei: stakeWei.toString() });
-                toast.message(`Approving ${currentTokenSymbol}…`);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_approve_start', duelId })); } catch {}
-                await sendWithReferral(wc, currentTokenAddress, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS!, stakeWei]);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_approve_done', duelId })); } catch {}
-                console.log('[duel] creator creating duel', { duelId });
-                toast.message('Creating duel on-chain…');
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_create_start', duelId })); } catch {}
-                await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS!, duelManagerAbi, 'createDuel', [duelId, stakeWei, currentTokenAddress]);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_create_done', duelId })); } catch {}
-                setWaitingForMatch(true);
-                toast.success('Duel created. Waiting for opponent…');
-                const joined = await waitForDuelJoined(duelId, 30000);
-                if (!joined) {
-                  toast.error('Timed out waiting for opponent to join');
-                  try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_timeout_joined', duelId })); } catch {}
-                  setWaitingForMatch(false);
-                  setWaitingDuelId(null);
-                  return;
-                }
-                setStopWaitingWatch(null);
-                setWaitingForMatch(false);
-                console.log('[duel] creator matched start game');
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_matched', duelId })); } catch {}
-                toast.success('Match found! Starting game…');
-                onStartGame(stake, undefined, duelId as `0x${string}`, false, true, selectedCategory);
-              } catch (e: any) {
-                const msg = e?.shortMessage || e?.message || 'Failed to create duel';
-                console.error('[duel] creator error', e);
-                toast.error(msg);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'creator_error', duelId, extra: { message: msg } })); } catch {}
-                setWaitingForMatch(false);
-                setWaitingDuelId(null);
-              }
-            } else {
-              // joiner path
-              try {
-                setWaitingForMatch(true);
-                console.log('[duel] joiner waiting for duel creation', { duelId });
-                toast.message('Waiting for duel to be created…');
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_waiting_created', duelId })); } catch {}
-                const created = await waitForDuelCreated(duelId, 25000);
-                if (!created) {
-                  // Fallback: become creator if the assigned creator did not create
-                  toast.message('Creator slow. Attempting to create duel…');
-                  try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_create_start', duelId })); } catch {}
-                  try {
-                    // Approve using current selection (will auto-switch below if needed)
-                    const tokenForFallback = currentTokenAddress;
-                    await sendWithReferral(wc, tokenForFallback, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS!, stakeWei]);
-                    await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS!, duelManagerAbi, 'createDuel', [duelId, stakeWei, tokenForFallback]);
-                    try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_create_done', duelId })); } catch {}
-                    toast.success('Duel created by you. Waiting for opponent…');
-                    const joinedFallback = await waitForDuelJoined(duelId, 30000);
-                    if (!joinedFallback) {
-                      toast.error('Timed out waiting for opponent to join');
-                      try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_timeout_joined', duelId })); } catch {}
-                      setWaitingForMatch(false);
-                      setWaitingDuelId(null);
-                      return;
-                    }
-                    setStopWaitingWatch(null);
-                    setWaitingForMatch(false);
-                    console.log('[duel] fallback creator matched start game');
-                    try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_matched', duelId })); } catch {}
-                    toast.success('Match found! Starting game…');
-                    onStartGame(stake, undefined, duelId as `0x${string}`, false, true, selectedCategory);
-                    return;
-                  } catch (e: any) {
-                    // If duel already exists, continue as normal joiner; otherwise, bail out
-                    const msg = e?.shortMessage || e?.message || '';
-                    if (typeof msg === 'string' && msg.toLowerCase().includes('already')) {
-                      // Duel was created by other user during our attempt; proceed
-                    } else {
-                      toast.error('Could not create duel. Please retry.');
-                      try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_fallback_create_error', duelId, extra: { message: msg } })); } catch {}
-                      setWaitingForMatch(false);
-                      setWaitingDuelId(null);
-                      return;
-                    }
-                  }
-                }
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_created_confirmed', duelId })); } catch {}
-                // Read duel token from contract to ensure correct approval token
-                let tokenToUse: `0x${string}` = currentTokenAddress;
-                let tokenSymbolForJoin = currentTokenSymbol;
-                try {
-                  const duel = await viemPublicClient.readContract({ address: DUEL_CONTRACT_ADDRESS!, abi: duelManagerAbi, functionName: 'duels', args: [duelId] });
-                  const tokenAddr = (duel as any)?.token ?? (Array.isArray(duel) ? (duel[4] as `0x${string}`) : currentTokenAddress);
-                  tokenToUse = tokenAddr as `0x${string}`;
-                  tokenSymbolForJoin = tokenAddr.toLowerCase() === CUSD_ADDRESS.toLowerCase() ? 'cUSD' : 'CELO';
-                  // reflect in UI selection
-                  setSelectedToken(tokenSymbolForJoin === 'cUSD' ? 'cusd' : 'celo');
-                } catch {}
-                // Ensure balance for the required token
-                try {
-                  const bal = await viemPublicClient.readContract({ address: tokenToUse, abi: erc20Abi, functionName: 'balanceOf', args: [address!] });
-                  const joinerTokenBalance = Number(bal) / 1e18;
-                  if (joinerTokenBalance < stake) {
-                    toast.error(`Insufficient ${tokenSymbolForJoin} for stake`);
-                    try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_insufficient_balance', duelId, extra: { joinerTokenBalance, stake, token: tokenSymbolForJoin } })); } catch {}
-                    setWaitingForMatch(false);
-                    setWaitingDuelId(null);
-                    return;
-                  }
-                } catch {}
-                console.log('[duel] joiner approving', { stakeWei: stakeWei.toString() });
-                toast.message(`Approving ${tokenSymbolForJoin}…`);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_approve_start', duelId })); } catch {}
-                await sendWithReferral(wc, tokenToUse, erc20Abi, 'approve', [DUEL_CONTRACT_ADDRESS!, stakeWei]);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_approve_done', duelId })); } catch {}
-                console.log('[duel] joiner joining duel', { duelId });
-                toast.message('Joining duel…');
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_join_start', duelId })); } catch {}
-                await sendWithReferral(wc, DUEL_CONTRACT_ADDRESS!, duelManagerAbi, 'joinDuel', [duelId as `0x${string}`]);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_join_done', duelId })); } catch {}
-                toast.success('Joined duel. Starting…');
-                setWaitingForMatch(false);
-                console.log('[duel] joiner start game');
-                onStartGame(stake, undefined, duelId as `0x${string}`, false, false, selectedCategory);
-              } catch (e: any) {
-                const msg = e?.shortMessage || e?.message || 'Failed to join duel';
-                console.error('[duel] joiner error', e);
-                toast.error(msg);
-                try { wsRef.current?.send(JSON.stringify({ type: 'status', phase: 'joiner_error', duelId, extra: { message: msg } })); } catch {}
-                setWaitingForMatch(false);
-                setWaitingDuelId(null);
-              }
-            }
           }
-        } catch (err) {
-          // ignore malformed
+        } catch (e) {
+          console.error('[matchmaking] failed to parse ws message', e);
         }
       };
-      ws.onerror = (e) => {
-        console.error('[matchmaking] ws error', e);
-        toast.error('Matchmaking server error');
-      };
       ws.onclose = (evt) => {
-        console.error('[matchmaking] ws closed', { code: (evt as CloseEvent).code, reason: (evt as CloseEvent).reason });
-        wsRef.current = null;
-        toast.error(`Matchmaking server error (${(evt as CloseEvent).code || 'closed'})`);
+        console.log('[matchmaking] ws closed', { code: evt.code, reason: evt.reason });
+        if (cancelled) return;
+        setWsStatus('reconnecting');
+        openToast();
+        const timeout = reconnectTimeoutRef.current ? Math.min((reconnectTimeoutRef.current as number) * 2, 10000) : 1000;
+        reconnectTimeoutRef.current = timeout;
+        window.setTimeout(() => {
+          if (!cancelled) connect();
+        }, timeout);
       };
-      return () => {
-        try { ws.close(); } catch {}
-        wsRef.current = null;
-        console.log('[matchmaking] ws closed');
+      ws.onerror = (err) => {
+        console.error('[matchmaking] ws error', err);
       };
-    } catch (e) {
-      // failed to connect
-    }
-  }, []);
+    };
+
+    connect();
+
+    return () => {
+      cancelled = true;
+      closeToast();
+      try { wsRef.current?.close(); } catch {}
+    };
+  }, [selectedCategory]);
 
   useEffect(() => {
     if (!DUEL_CONTRACT_ADDRESS) {
@@ -570,7 +465,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
             <Badge className="bg-emerald-400/15 text-emerald-300 border-emerald-400/30 mt-1">{currentTokenSymbol} • Celo Mainnet</Badge>
           </div>
         </div>
-        <div className="text-4xl">⚔️</div>
+        <div className="text-4xl"><Swords className="w-10 h-10 text-slate-500" /></div>
       </div>
 
       {/* Category Selector - Gamy UI */}
@@ -649,7 +544,8 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
             }
             handleQuickMatch();
           }}
-          className="w-full h-28 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-500 hover:from-emerald-600 hover:via-emerald-700 hover:to-emerald-600 text-white shadow-2xl shadow-emerald-500/60 rounded-2xl text-2xl relative overflow-hidden group"
+          disabled={wsStatus !== 'open'}
+          className="w-full h-28 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-500 hover:from-emerald-600 hover:via-emerald-700 hover:to-emerald-600 text-white shadow-2xl shadow-emerald-500/60 rounded-2xl text-2xl relative overflow-hidden group disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-20" />
@@ -659,10 +555,10 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
             </div>
             <div className="text-left">
               <div className="flex items-center gap-2">
-                <span>⚡ {matchMode === '2v2' ? 'Squad Match' : 'Quick Match'}</span>
+                <Zap className="w-5 h-5" /> <span>{matchMode === '2v2' ? 'Squad Match' : 'Quick Match'}</span>
               </div>
               <div className="text-sm opacity-90 flex items-center gap-1">
-                {categories.find(c => c.id === selectedCategory)?.emoji} {categories.find(c => c.id === selectedCategory)?.name} • {selectedToken === 'cusd' ? `$${STAKE_AMOUNT.toFixed(2)} cUSD` : `${STAKE_AMOUNT} CELO (~$${(STAKE_AMOUNT * CELO_USD_RATE).toFixed(2)})`}
+                <CategoryIcon id={selectedCategory} /> {categories.find(c => c.id === selectedCategory)?.name} • {selectedToken === 'cusd' ? `$${STAKE_AMOUNT.toFixed(2)} cUSD` : `${STAKE_AMOUNT} CELO (~$${(STAKE_AMOUNT * CELO_USD_RATE).toFixed(2)})`}
               </div>
             </div>
           </div>
@@ -680,7 +576,7 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
             <div className="text-left">
               <div className="flex items-center gap-2">
                 <span>Play with a Friend</span>
-                <span>🎯</span>
+                <Target className="w-4 h-4" />
               </div>
               <div className="text-xs opacity-90">
                 Create a duel or join by code
@@ -753,14 +649,14 @@ export function DuelTab({ userBalance, onStartGame }: DuelTabProps) {
                     <div>
                       <div className="text-white flex items-center gap-2">
                         {game.player}
-                        <span className="text-xs">⚔️</span>
+                        <Swords className="w-3 h-3 text-slate-400" />
                       </div>
                       <div className="text-emerald-400 text-sm">{game.category}</div>
                     </div>
                   </div>
                   <div className="text-right">
                     <Badge className="bg-gradient-to-r from-emerald-400/30 to-emerald-500/20 text-emerald-400 border-emerald-400/50 shadow-lg px-3 py-1">
-                      💰 ${Number(game.stake).toFixed(2)}
+                      <DollarSign className="w-3 h-3" /> ${Number(game.stake).toFixed(2)}
                     </Badge>
                     <div className="text-slate-500 text-xs mt-1 flex items-center gap-1 justify-end">
                       <Clock className="w-3 h-3" />
