@@ -1,6 +1,6 @@
 
 # 10vote Game App
-
+ - Demo Video: https://www.loom.com/share/80938f3e43834f1880155c4d718d9afc
 Real-time trivia duels with WebSocket matchmaking and a Celo-enabled wallet experience. This repo contains:
 - A React + Vite frontend (`src/`)
 - A lightweight WebSocket matchmaking server (`server/ws-server.js`)
