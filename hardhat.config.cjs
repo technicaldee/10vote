@@ -8,7 +8,11 @@ module.exports = {
   solidity: {
     version: '0.8.24',
     settings: {
-      optimizer: { enabled: true, runs: 200 }
+      optimizer: { 
+        enabled: true, 
+        runs: 1000 // Optimize for gas (more runs = smaller code, higher gas)
+      },
+      viaIR: true // Enable IR-based codegen for better optimization
     }
   },
   networks: {

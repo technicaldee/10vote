@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
-import { Trophy, TrendingUp, Clock, Zap, Sparkles, Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Trophy, TrendingUp, Clock, Zap, Sparkles, Star, Award, Share2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { soundEffects } from '../utils/soundEffects';
+import { updateStatsAfterGame, getAllAchievements, type Achievement } from '../lib/playerStats';
+import { useAccount } from 'wagmi';
+import { toast } from 'sonner';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
+import { completeDailyChallenge, getDailyChallenge } from '../lib/dailyChallenge';
 
 interface GameResultsScreenProps {
   won: boolean;
@@ -12,6 +17,7 @@ interface GameResultsScreenProps {
   correctAnswers: number;
   totalQuestions: number;
   stake: number;
+  category?: string;
   onRematch: () => void;
   onNewDuel: () => void;
 }
@@ -22,12 +28,17 @@ export function GameResultsScreen({
   correctAnswers,
   totalQuestions,
   stake,
+  category = 'random',
   onRematch,
   onNewDuel,
 }: GameResultsScreenProps) {
   const totalPool = stake * 2;
   const fee = totalPool * 0.05;
   const accuracy = Math.round((correctAnswers / totalQuestions) * 100);
+  const { address } = useAccount();
+  const [newAchievements, setNewAchievements] = useState<Achievement[]>([]);
+  const [showAchievementDialog, setShowAchievementDialog] = useState(false);
+  const [playerStats, setPlayerStats] = useState<any>(null);
 
   useEffect(() => {
     if (won) {
@@ -36,7 +47,44 @@ export function GameResultsScreen({
     } else {
       soundEffects.playDefeat();
     }
-  }, [won]);
+
+    // Update stats and check for achievements
+    if (address) {
+      const { stats, newAchievements: achievements } = updateStatsAfterGame(
+        address,
+        won,
+        correctAnswers,
+        totalQuestions,
+        prize,
+        category
+      );
+      setPlayerStats(stats);
+      
+      if (achievements.length > 0) {
+        setNewAchievements(achievements);
+        setShowAchievementDialog(true);
+        achievements.forEach(ach => {
+          toast.success(`Achievement Unlocked: ${ach.name}!`, {
+            description: ach.description,
+            duration: 5000,
+          });
+        });
+      }
+      
+      // Check daily challenge completion
+      if (stake > 0) { // Only for real games, not practice
+        const challenge = getDailyChallenge();
+        if (!challenge.completed && challenge.category === category) {
+          if (completeDailyChallenge(correctAnswers)) {
+            toast.success('🎯 Daily Challenge Completed!', {
+              description: `You earned $${challenge.reward.toFixed(2)} cUSD bonus!`,
+              duration: 6000,
+            });
+          }
+        }
+      }
+    }
+  }, [won, address, correctAnswers, totalQuestions, prize, category, stake]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 px-4 py-12 flex items-center justify-center relative overflow-hidden">
@@ -174,16 +222,46 @@ export function GameResultsScreen({
             <Zap className="w-6 h-6 mr-2 relative z-10" fill="currentColor" />
             <span className="relative z-10">Rematch - ${stake.toFixed(2)} cUSD</span>
           </Button>
-          <Button
-            onClick={() => {
-              soundEffects.playClick();
-              onNewDuel();
-            }}
-            variant="outline"
-            className="w-full h-14 border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-white text-lg rounded-xl backdrop-blur-sm"
-          >
-            New Duel
-          </Button>
+          <div className="grid grid-cols-2 gap-3">
+            <Button
+              onClick={async () => {
+                soundEffects.playClick();
+                const shareText = won
+                  ? `🎉 I just won ${correctAnswers}/${totalQuestions} questions and earned $${prize.toFixed(2)} cUSD on 10vote!`
+                  : `Just played a trivia duel on 10vote! Got ${correctAnswers}/${totalQuestions} correct. Play at 10vote.com`;
+                const shareData = {
+                  title: '10vote Game Result',
+                  text: shareText,
+                  url: window.location.href,
+                };
+                try {
+                  if ((navigator as any).share) {
+                    await (navigator as any).share(shareData);
+                  } else {
+                    await navigator.clipboard.writeText(shareText + ' - ' + window.location.href);
+                    toast.success('Result copied to clipboard!');
+                  }
+                } catch (e) {
+                  console.error('Share failed:', e);
+                }
+              }}
+              variant="outline"
+              className="h-14 border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-white text-lg rounded-xl backdrop-blur-sm"
+            >
+              <Share2 className="w-5 h-5 mr-2" />
+              Share
+            </Button>
+            <Button
+              onClick={() => {
+                soundEffects.playClick();
+                onNewDuel();
+              }}
+              variant="outline"
+              className="h-14 border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-white text-lg rounded-xl backdrop-blur-sm"
+            >
+              New Duel
+            </Button>
+          </div>
         </div>
 
         {/* Achievement Badge */}
@@ -202,7 +280,60 @@ export function GameResultsScreen({
             </Badge>
           </div>
         )}
+
+        {/* Player Stats */}
+        {playerStats && (
+          <Card className="bg-slate-800/60 border-slate-700 mt-6 p-4">
+            <div className="grid grid-cols-2 gap-4 text-center">
+              <div>
+                <div className="text-slate-400 text-xs mb-1">Current Streak</div>
+                <div className="text-2xl text-emerald-400 font-bold">{playerStats.currentStreak}</div>
+              </div>
+              <div>
+                <div className="text-slate-400 text-xs mb-1">Best Streak</div>
+                <div className="text-2xl text-yellow-400 font-bold">{playerStats.bestStreak}</div>
+              </div>
+              <div>
+                <div className="text-slate-400 text-xs mb-1">Total Games</div>
+                <div className="text-2xl text-white font-bold">{playerStats.totalGames}</div>
+              </div>
+              <div>
+                <div className="text-slate-400 text-xs mb-1">Win Rate</div>
+                <div className="text-2xl text-blue-400 font-bold">
+                  {playerStats.totalGames > 0 ? Math.round((playerStats.wins / playerStats.totalGames) * 100) : 0}%
+                </div>
+              </div>
+            </div>
+          </Card>
+        )}
       </div>
+
+      {/* Achievement Unlocked Dialog */}
+      <Dialog open={showAchievementDialog} onOpenChange={setShowAchievementDialog}>
+        <DialogContent className="bg-slate-900 border-slate-700">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-center text-emerald-400 flex items-center justify-center gap-2">
+              <Award className="w-6 h-6" />
+              Achievement Unlocked!
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              {newAchievements.map((ach, idx) => (
+                <div key={ach.id} className="mt-4 p-4 bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 rounded-lg border border-emerald-400/30">
+                  <div className="text-4xl mb-2">{ach.icon}</div>
+                  <div className="text-xl text-white font-bold mb-1">{ach.name}</div>
+                  <div className="text-slate-300 text-sm">{ach.description}</div>
+                </div>
+              ))}
+            </DialogDescription>
+          </DialogHeader>
+          <Button
+            onClick={() => setShowAchievementDialog(false)}
+            className="w-full bg-emerald-600 hover:bg-emerald-700"
+          >
+            Awesome!
+          </Button>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

@@ -58,6 +58,7 @@ export const duelManagerAbi = [
       { name: 'token', type: 'address' },
       { name: 'status', type: 'uint8' },
       { name: 'winner', type: 'address' },
+      { name: 'isComputerDuel', type: 'bool' },
     ] },
   { type: 'function', stateMutability: 'view', name: 'stats', inputs: [
       { name: '', type: 'address' },
@@ -73,6 +74,27 @@ export const duelManagerAbi = [
     ], outputs: [
       { name: '', type: 'address[]' },
     ] },
+  { type: 'function', stateMutability: 'nonpayable', name: 'createComputerDuel', inputs: [
+      { name: 'id', type: 'bytes32' },
+      { name: 'stake', type: 'uint256' },
+      { name: 'token', type: 'address' },
+    ], outputs: [] },
+  { type: 'function', stateMutability: 'nonpayable', name: 'finishComputerDuel', inputs: [
+      { name: 'id', type: 'bytes32' },
+      { name: 'winner', type: 'address' },
+    ], outputs: [] },
+  { type: 'event', name: 'ComputerDuelCreated', inputs: [
+      { name: 'id', type: 'bytes32', indexed: true },
+      { name: 'player1', type: 'address', indexed: true },
+      { name: 'stake', type: 'uint256', indexed: false },
+      { name: 'token', type: 'address', indexed: true },
+    ], anonymous: false },
+  { type: 'event', name: 'ComputerDuelFinished', inputs: [
+      { name: 'id', type: 'bytes32', indexed: true },
+      { name: 'winner', type: 'address', indexed: true },
+      { name: 'prize', type: 'uint256', indexed: false },
+      { name: 'playerWon', type: 'bool', indexed: false },
+    ], anonymous: false },
 ] as const;
 
 export const erc20Abi = [

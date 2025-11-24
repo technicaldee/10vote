@@ -83,53 +83,121 @@ function normalize(categoryId: string, raw: RawQuestion[], rnd: () => number): N
   });
 }
 
+// Get daily seed based on current date (changes daily at midnight UTC)
+export function getDailySeed(): string {
+    const today = new Date();
+    const month = String(today.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(today.getUTCDate()).padStart(2, '0');
+    const dateStr = `${today.getUTCFullYear()}-${month}-${day}`;
+    return `daily:${dateStr}`;
+}
+
+// Get daily question set index (rotates daily)
+export function getDailyQuestionSetIndex(totalSets: number): number {
+    const seed = getDailySeed();
+    const rnd = seededRandom(seed);
+    return Math.floor(rnd() * totalSets);
+}
+
 export function selectQuestions(categoryId: string, count: number, seed: string): NormalizedQuestion[] {
-  const rnd = seededRandom(`${seed}:${categoryId}:${count}`);
-  const categories = Object.keys(CATEGORY_MAP);
-  const clampCount = Math.max(1, Math.min(count, 50));
+    // Incorporate daily seed to ensure questions change daily
+    const dailySeed = getDailySeed();
+    // Create a combined seed - the seed parameter should already be unique per game session
+    const combinedSeed = `${dailySeed}:${seed}:${categoryId}:${count}`;
+    const rnd = seededRandom(combinedSeed);
+    const categories = Object.keys(CATEGORY_MAP);
+    const clampCount = Math.max(1, Math.min(count, 50));
 
-  // Build normalized pools per category
-  const pools: Record<string, NormalizedQuestion[]> = {};
-  for (const cat of categories) {
-    pools[cat] = normalize(cat, CATEGORY_MAP[cat], rnd);
-  }
-
-  const pickFromPool = (pool: NormalizedQuestion[], howMany: number): NormalizedQuestion[] => {
-    const shuffled = shuffle(pool, rnd);
-    return shuffled.slice(0, Math.min(howMany, shuffled.length));
-  };
-
-  if (categoryId !== 'random') {
-    return pickFromPool(pools[categoryId] || [], clampCount);
-  }
-
-  // Random mode: mix across categories with at least one from each when possible
-  const sequence: string[] = [];
-  const perCatInitial = Math.min(clampCount, categories.length);
-  // Ensure first round includes unique categories (up to count)
-  const initialCats = shuffle(categories, rnd).slice(0, perCatInitial);
-  sequence.push(...initialCats);
-  // Fill remaining picks randomly
-  while (sequence.length < clampCount) {
-    sequence.push(categories[Math.floor(rnd() * categories.length)]);
-  }
-
-  const usedByCat: Record<string, Set<string>> = {};
-  for (const cat of categories) usedByCat[cat] = new Set();
-
-  const result: NormalizedQuestion[] = [];
-  for (const cat of sequence) {
-    const pool = pools[cat];
-    // pick first unused question from shuffled pool
-    const shuffled = shuffle(pool, rnd);
-    const next = shuffled.find((q) => !usedByCat[cat].has(q.id));
-    if (next) {
-      usedByCat[cat].add(next.id);
-      result.push(next);
+    // Build normalized pools per category
+    const pools: Record<string, NormalizedQuestion[]> = {};
+    for (const cat of categories) {
+        pools[cat] = normalize(cat, CATEGORY_MAP[cat], rnd);
     }
-  }
 
-  return result.slice(0, clampCount);
+    const pickFromPool = (pool: NormalizedQuestion[], howMany: number): NormalizedQuestion[] => {
+        // Shuffle the pool multiple times for better randomization
+        let shuffled = shuffle(pool, rnd);
+        // Additional shuffle pass for more randomness
+        shuffled = shuffle(shuffled, rnd);
+        // Ensure we don't pick duplicates by tracking used question IDs
+        const used = new Set<string>();
+        const result: NormalizedQuestion[] = [];
+        
+        for (const q of shuffled) {
+            if (result.length >= howMany) break;
+            if (!used.has(q.id)) {
+                used.add(q.id);
+                result.push(q);
+            }
+        }
+        
+        // If we still need more questions and have exhausted unique ones, allow repeats
+        // but shuffle options to make it feel different
+        while (result.length < howMany && shuffled.length > 0) {
+            const q = shuffled[result.length % shuffled.length];
+            // Create a variant by shuffling options
+            const optionsCopy = [...q.options];
+            const correctAnswer = optionsCopy[q.correct];
+            const shuffledOptions = shuffle(optionsCopy, rnd);
+            const newCorrect = shuffledOptions.indexOf(correctAnswer);
+            
+            result.push({
+                ...q,
+                id: `${q.id}-v${result.length}`,
+                options: shuffledOptions,
+                correct: newCorrect >= 0 ? newCorrect : 0,
+            });
+        }
+        
+        return result;
+    };
+
+    if (categoryId !== 'random') {
+        return pickFromPool(pools[categoryId] || [], clampCount);
+    }
+
+    // Random mode: mix across categories with at least one from each when possible
+    const sequence: string[] = [];
+    const perCatInitial = Math.min(clampCount, categories.length);
+    // Ensure first round includes unique categories (up to count)
+    const initialCats = shuffle(categories, rnd).slice(0, perCatInitial);
+    sequence.push(...initialCats);
+    // Fill remaining picks randomly
+    while (sequence.length < clampCount) {
+        sequence.push(categories[Math.floor(rnd() * categories.length)]);
+    }
+
+    const usedByCat: Record<string, Set<string>> = {};
+    for (const cat of categories) usedByCat[cat] = new Set();
+
+    const result: NormalizedQuestion[] = [];
+    for (const cat of sequence) {
+        const pool = pools[cat];
+        // pick first unused question from shuffled pool
+        const shuffled = shuffle(pool, rnd);
+        const next = shuffled.find((q) => !usedByCat[cat].has(q.id));
+        if (next) {
+            usedByCat[cat].add(next.id);
+            result.push(next);
+        } else if (pool.length > 0) {
+            // If all questions in category are used, pick a random one anyway
+            // but shuffle its options to make it feel different
+            const fallback = pool[Math.floor(rnd() * pool.length)];
+            const optionsCopy = [...fallback.options];
+            const correctAnswer = optionsCopy[fallback.correct];
+            const shuffledOptions = shuffle(optionsCopy, rnd);
+            const newCorrect = shuffledOptions.indexOf(correctAnswer);
+            
+            result.push({
+                ...fallback,
+                id: `${fallback.id}-v${result.length}`,
+                options: shuffledOptions,
+                correct: newCorrect >= 0 ? newCorrect : 0,
+            });
+        }
+    }
+
+    return result.slice(0, clampCount);
 }
 
 export const DEFAULT_QUESTION_COUNT = 10;

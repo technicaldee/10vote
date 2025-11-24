@@ -29,6 +29,14 @@ Optional (frontend):
 - `VITE_CELO_WS_RPC_URL` — WS RPC endpoint for Celo subscriptions. Example: `wss://forno.celo.org/ws`
 - `VITE_WALLETCONNECT_PROJECT_ID` — Your WalletConnect Project ID
 
+Optional (WebSocket server - for Redis Cloud):
+- `REDIS_HOST` — Redis hostname. Example: `redis-15680.c273.us-east-1-2.ec2.cloud.redislabs.com`
+- `REDIS_PORT` — Redis port. Example: `15680`
+- `REDIS_PASSWORD` — Redis password (required for Redis Cloud)
+- `REDIS_DB` — Redis database number (default: `0`)
+- Or use `REDIS_CONNECTION_STRING` — Format: `host:port`
+- Or use `REDIS_URL` — Full URL format: `redis://:password@host:port/db`
+
 Optional (contracts):
 - `DUEL_CONTRACT_ADDRESS` — Auto-populated by the deploy script
 - `VITE_DUEL_CONTRACT_ADDRESS` — Auto-populated by the deploy script for the frontend

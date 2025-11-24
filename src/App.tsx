@@ -113,8 +113,8 @@ export default function App() {
                       inFarcaster
                         ? 'Wallet unavailable in Farcaster. Ensure wallet capability is enabled and sign in via the prompt.'
                         : isMobile
-                        ? 'No injected wallet detected. Open this site in MiniPay or MetaMask in-app browser.'
-                        : 'No injected wallet detected. Install an injected wallet like MetaMask or Brave Wallet.'
+                          ? 'No injected wallet detected. Open this site in MiniPay or MetaMask in-app browser.'
+                          : 'No injected wallet detected. Install an injected wallet like MetaMask or Brave Wallet.'
                     );
                     return;
                   }
@@ -159,22 +159,22 @@ export default function App() {
       {/* Main Content */}
       <div className="pb-20 min-h-screen">
         {activeTab === 'duel' && (
-          <DuelTab 
-            userBalance={isConnected ? (cusdBalance ?? 0) : userBalance} 
+          <DuelTab
+            userBalance={isConnected ? (cusdBalance ?? 0) : userBalance}
             onStartGame={startGame}
           />
         )}
         {activeTab === 'wallet' && (
-          <WalletTab 
+          <WalletTab
             userBalance={isConnected ? (cusdBalance ?? 0) : userBalance}
-            onBalanceChange={() => {}}
+            onBalanceChange={() => { }}
           />
         )}
         {activeTab === 'leaderboard' && (
           <LeaderboardTab />
         )}
         {activeTab === 'game' && (
-          <GameDuelScreen 
+          <GameDuelScreen
             stake={gameData?.stake || 0.10}
             opponent={gameData?.opponent}
             duelId={gameData?.duelId}
@@ -185,12 +185,13 @@ export default function App() {
           />
         )}
         {activeTab === 'results' && (
-          <GameResultsScreen 
+          <GameResultsScreen
             won={gameData?.won}
             prize={gameData?.prize}
             correctAnswers={gameData?.correctAnswers}
             totalQuestions={gameData?.totalQuestions}
             stake={gameData?.stake}
+            category={gameData?.category}
             onRematch={() => startGame(gameData?.stake, gameData?.opponent, gameData?.duelId, false, true, gameData?.category)}
             onNewDuel={returnToDuel}
           />

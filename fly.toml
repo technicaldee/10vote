@@ -1,0 +1,32 @@
+app = "10vote-ws"
+primary_region = "iad"
+
+[build]
+
+[env]
+  PORT = "8080"
+  WS_PORT = "8080"
+  NODE_ENV = "production"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "1s"
+
+[deploy]
+  release_command = "npm run build"
+
+

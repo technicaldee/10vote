@@ -37,6 +37,196 @@
         "DuelManager",
         "IERC20"
       ]
+    },
+    "/Users/edidiong/Desktop/10vote/contracts/DuelManager.sol": {
+      "lastModificationDate": 1764025818077,
+      "contentHash": "4dee023956087d1c8ffc1a26fd6e419d",
+      "sourceName": "contracts/DuelManager.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "DuelManager",
+        "IERC20"
+      ]
+    },
+    "/Users/edidiong/Desktop/10vote/contracts/DuelManagerV2.sol": {
+      "lastModificationDate": 1763954576259,
+      "contentHash": "c2de464e3c521559b53779156f2edc19",
+      "sourceName": "contracts/DuelManagerV2.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "DuelManagerV2",
+        "IERC20"
+      ]
+    },
+    "/Users/edidiong/Desktop/10vote/contracts/ReferralSystem.sol": {
+      "lastModificationDate": 1764024308584,
+      "contentHash": "5ed8b1dbd94adfdc8d80c705e75552e4",
+      "sourceName": "contracts/ReferralSystem.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "ReferralSystem"
+      ]
+    },
+    "/Users/edidiong/Desktop/10vote/contracts/StakingRewards.sol": {
+      "lastModificationDate": 1764024308558,
+      "contentHash": "7f81dc9521dd6a36fb4a52e4f2fd5730",
+      "sourceName": "contracts/StakingRewards.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "IERC20",
+        "StakingRewards"
+      ]
+    },
+    "/Users/edidiong/Desktop/10vote/contracts/Tournament.sol": {
+      "lastModificationDate": 1763954722150,
+      "contentHash": "63edb5e766ac83ed7c44d433a1c444be",
+      "sourceName": "contracts/Tournament.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "IDuelManager",
+        "IERC20",
+        "Tournament"
+      ]
     }
   }
 }

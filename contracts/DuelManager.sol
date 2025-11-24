@@ -19,6 +19,7 @@ contract DuelManager {
         address token; // cUSD (or any ERC20)
         Status status;
         address winner;
+        bool isComputerDuel; // New: flag for computer duels
     }
 
     struct PlayerStats {
@@ -31,6 +32,7 @@ contract DuelManager {
     address public owner;
     address public feeCollector;
     uint256 public feeBps; // e.g., 500 = 5%
+    address public computerOpponent; // Address for computer opponent (can be owner or dedicated address)
 
     mapping(bytes32 => Duel) public duels;
     mapping(bytes32 => mapping(address => address)) public confirmations; // duelId => player => winner
@@ -45,6 +47,8 @@ contract DuelManager {
     event ResultConfirmed(bytes32 indexed id, address indexed player, address indexed winner);
     event DuelFinished(bytes32 indexed id, address indexed winner, uint256 prize);
     event DuelCancelled(bytes32 indexed id);
+    event ComputerDuelCreated(bytes32 indexed id, address indexed player1, uint256 stake, address indexed token);
+    event ComputerDuelFinished(bytes32 indexed id, address indexed winner, uint256 prize, bool playerWon);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Not owner");
@@ -61,6 +65,7 @@ contract DuelManager {
         owner = msg.sender;
         feeCollector = _feeCollector == address(0) ? msg.sender : _feeCollector;
         feeBps = _feeBps;
+        computerOpponent = address(0x000000000000000000000000000000000000dEaD); // Dead address for computer
     }
 
     function setFeeCollector(address _feeCollector) external onlyOwner {
@@ -70,6 +75,10 @@ contract DuelManager {
     function setFeeBps(uint256 _feeBps) external onlyOwner {
         require(_feeBps <= 2000, "Fee too high"); // max 20%
         feeBps = _feeBps;
+    }
+
+    function setComputerOpponent(address _computerOpponent) external onlyOwner {
+        computerOpponent = _computerOpponent;
     }
 
     function createDuel(bytes32 id, uint256 stake, address token) external {
@@ -84,7 +93,8 @@ contract DuelManager {
             stake: stake,
             token: token,
             status: Status.Open,
-            winner: address(0)
+            winner: address(0),
+            isComputerDuel: false
         });
 
         // pull stake from player1
@@ -93,6 +103,31 @@ contract DuelManager {
         _trackPlayer(msg.sender);
 
         emit DuelCreated(id, msg.sender, stake, token);
+    }
+
+    // New: Create a duel with computer opponent
+    function createComputerDuel(bytes32 id, uint256 stake, address token) external {
+        require(duels[id].player1 == address(0), "Duel exists");
+        require(stake > 0, "Stake>0");
+        require(token != address(0), "Token required");
+
+        duels[id] = Duel({
+            id: id,
+            player1: msg.sender,
+            player2: computerOpponent,
+            stake: stake,
+            token: token,
+            status: Status.Active,
+            winner: address(0),
+            isComputerDuel: true
+        });
+
+        // pull stake from player1 (computer doesn't stake)
+        require(IERC20(token).transferFrom(msg.sender, address(this), stake), "stake transfer failed");
+        stats[msg.sender].totalStaked += stake;
+
+        emit ComputerDuelCreated(id, msg.sender, stake, token);
+        emit DuelStarted(id);
     }
 
     function joinDuel(bytes32 id) external {
@@ -123,11 +158,63 @@ contract DuelManager {
         confirmations[id][msg.sender] = winner;
         emit ResultConfirmed(id, msg.sender, winner);
 
-        address c1 = confirmations[id][d.player1];
-        address c2 = confirmations[id][d.player2];
-        if (c1 != address(0) && c2 != address(0) && c1 == c2) {
-            _finishDuel(id, c1);
+        // For computer duels, only player1 needs to confirm
+        if (d.isComputerDuel) {
+            if (confirmations[id][d.player1] != address(0)) {
+                _finishComputerDuel(id, confirmations[id][d.player1]);
+            }
+        } else {
+            address c1 = confirmations[id][d.player1];
+            address c2 = confirmations[id][d.player2];
+            if (c1 != address(0) && c2 != address(0) && c1 == c2) {
+                _finishDuel(id, c1);
+            }
         }
+    }
+
+    // New: Finish computer duel (only owner can call, or auto-called on confirmResult)
+    function finishComputerDuel(bytes32 id, address winner) external {
+        Duel storage d = duels[id];
+        require(d.isComputerDuel, "Not computer duel");
+        require(d.status == Status.Active, "Not active");
+        require(winner == d.player1 || winner == d.player2, "Invalid winner");
+        
+        // Only owner or player1 can finish computer duel
+        require(msg.sender == owner || msg.sender == d.player1, "Not authorized");
+        
+        _finishComputerDuel(id, winner);
+    }
+
+    function _finishComputerDuel(bytes32 id, address winner) internal {
+        Duel storage d = duels[id];
+        require(d.status == Status.Active, "Not active");
+        require(d.isComputerDuel, "Not computer duel");
+
+        d.status = Status.Finished;
+        d.winner = winner;
+
+        uint256 totalPool = d.stake; // Only player1 staked
+        uint256 fee = (totalPool * feeBps) / 10000;
+        uint256 prize = totalPool - fee;
+
+        bool playerWon = winner == d.player1;
+
+        if (playerWon) {
+            // Player wins: send them the prize
+            require(IERC20(d.token).transfer(d.player1, prize), "prize transfer failed");
+            stats[d.player1].wins += 1;
+            stats[d.player1].winnings += prize;
+        } else {
+            // Computer wins: keep the stake (fee goes to feeCollector)
+            if (fee > 0) {
+                require(IERC20(d.token).transfer(feeCollector, fee), "fee transfer failed");
+            }
+            // Remaining stake stays in contract (can be withdrawn by owner)
+            stats[d.player1].losses += 1;
+        }
+
+        emit ComputerDuelFinished(id, winner, prize, playerWon);
+        emit DuelFinished(id, winner, prize);
     }
 
     function cancelDuel(bytes32 id) external {

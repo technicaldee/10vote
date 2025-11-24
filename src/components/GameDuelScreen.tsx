@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { useState, useEffect, useRef } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useWalletClient } from 'wagmi';
 import { Clock, Check, X, Sparkles } from 'lucide-react';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { Button } from './ui/button';
@@ -10,7 +10,11 @@ import { AbstractArt } from './AbstractArt';
 import { selectQuestions, DEFAULT_QUESTION_COUNT, NormalizedQuestion } from '../lib/questions';
 import { useSelf } from '../lib/self';
 import { toast } from 'sonner';
-import { getWebSocketUrl, createWebSocket } from '../lib/websocket';
+import { getWebSocketUrl, StableWebSocket } from '../lib/websocket';
+import { DUEL_CONTRACT_ADDRESS, celoChain } from '../lib/blockchain';
+import { duelManagerAbi } from '../abi/duelManager';
+import { encodeFunctionData } from 'viem';
+import { getReferralTag, submitReferral } from '@divvi/referral-sdk';
 
 interface GameDuelScreenProps {
   stake: number;
@@ -96,29 +100,64 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
   const [opponentDisplay, setOpponentDisplay] = useState<string>(opponent || 'Opponent');
   const [isLive, setIsLive] = useState<boolean>(!!duelId && !spectator);
   const [hasOpponentHello, setHasOpponentHello] = useState<boolean>(false);
+  const isComputerOpponent = opponent === '0x000000000000000000000000000000000000dEaD';
+  const computerAnswerTimeoutRef = useRef<number | null>(null);
   const [questions, setQuestions] = useState<NormalizedQuestion[]>([]);
   const [clientId, setClientId] = useState<string | null>(null);
   const joinedRef = useRef<boolean>(false);
   const isSpectator = !!spectator;
   const isCreator = !!creator;
 
-  const wsRef = useRef<WebSocket | null>(null);
+  const wsRef = useRef<StableWebSocket | null>(null);
   const { address } = useAccount();
+  const { data: walletClient } = useWalletClient();
   const helloIntervalRef = useRef<number | null>(null);
   const helloAttemptsRef = useRef<number>(0);
   const { verification } = useSelf();
+  const [confirmingResult, setConfirmingResult] = useState(false);
 
   const question = questions[currentQuestion];
-  const opponentName = hasOpponentHello ? opponentDisplay : (opponent || 'Opponent');
+  const opponentName = isComputerOpponent ? '🤖 Computer' : (hasOpponentHello ? opponentDisplay : (opponent || 'Opponent'));
 
   const shorten = (addr?: string) => {
     if (!addr || addr.length < 10) return addr || 'Opponent';
     return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
   };
 
+  // Generate a unique game session ID that persists for this game instance
+  const gameSessionIdRef = useRef<string | null>(null);
+  const lastGameKeyRef = useRef<string>('');
+  
   // Load deterministic questions based on category and duelId (or address)
   useEffect(() => {
-    const seed = duelId || address || 'local';
+    // Create a unique key for this game session
+    const gameKey = `${duelId || 'solo'}:${category || 'random'}:${address || 'local'}`;
+    
+    // If this is a new game (different key), reset the session ID
+    if (gameKey !== lastGameKeyRef.current) {
+      gameSessionIdRef.current = null;
+      lastGameKeyRef.current = gameKey;
+    }
+    
+    // For duels: use duelId as seed (both players get same questions for fairness)
+    // For solo games: generate unique seed per game session
+    let seed: string;
+    
+    if (duelId) {
+      // In a duel, both players should get the same questions
+      seed = `duel:${duelId}`;
+    } else {
+      // For solo games, generate a unique seed per game session
+      // Use a combination of address, timestamp, and random component
+      if (!gameSessionIdRef.current) {
+        const timestamp = Date.now();
+        const random = Math.random().toString(36).substring(2, 15);
+        const addr = address || 'local';
+        gameSessionIdRef.current = `solo:${addr}:${timestamp}:${random}`;
+      }
+      seed = gameSessionIdRef.current;
+    }
+    
     const cat = category || 'random';
     const list = selectQuestions(cat, DEFAULT_QUESTION_COUNT, seed);
     setQuestions(list);
@@ -133,76 +172,106 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
 
   useEffect(() => {
     if (!duelId) return;
+    
     const wsUrl = getWebSocketUrl();
-    const ws = createWebSocket(wsUrl);
-    wsRef.current = ws;
-    ws.onopen = () => {
-      console.log('[game] ws open');
-      try {
-        ws.send(JSON.stringify({ type: 'join', roomId: duelId }));
-      } catch {}
-    };
-    ws.onmessage = (evt) => {
-      try {
-        const payload = JSON.parse(evt.data);
-        if (payload?.type === 'joined') {
-          joinedRef.current = true;
-          const id = typeof payload.clientId === 'string' ? payload.clientId : null;
-          setClientId(id);
-          console.log('[game] joined ack', { roomId: payload.roomId, clientId: id });
-          // Begin hello handshake only after joined ack
-          const sendHello = () => {
-            const ev: any = { type: 'hello' };
-            if (address) ev.address = address;
-            if (verification?.isHumanVerified) {
-              ev.identity = { human: true, ageOver21: !!verification.ageOver21, ageOver18: !!verification.ageOver18 };
-            }
-            const s = wsRef.current;
-            if (s && s.readyState === WebSocket.OPEN) {
-              s.send(JSON.stringify({ type: 'broadcast', event: ev }));
-            }
-          };
-          try { sendHello(); helloAttemptsRef.current = 1; } catch {}
-          helloIntervalRef.current = window.setInterval(() => {
-            if (hasOpponentHello || helloAttemptsRef.current >= 5) {
-              if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
-              return;
-            }
-            try { sendHello(); helloAttemptsRef.current += 1; } catch {}
-          }, 2000);
-          return;
-        }
-        if (payload?.type === 'event' && payload?.event) {
-          const ev = payload.event;
-          const senderId: string | undefined = typeof payload.senderId === 'string' ? payload.senderId : undefined;
-          const isSelf = !!senderId && !!clientId && senderId === clientId;
-          if (ev.type === 'hello') {
-            if (!isSelf) {
-              if (ev.address) setOpponentDisplay(ev.address);
-              setIsLive(true);
-              setHasOpponentHello(true);
-              if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
-              console.log('[game] hello received from opponent', { senderId });
-            }
-          } else if (ev.type === 'answer') {
-            if (!isSelf) {
-              if (ev.isCorrect) setOpponentScore((s) => s + 1);
-              console.log('[game] opponent answer', { senderId, isCorrect: ev.isCorrect });
+    const ws = new StableWebSocket({
+      url: wsUrl,
+      onOpen: () => {
+        console.log('[game] ws open');
+        try {
+          ws.send({ type: 'join', roomId: duelId });
+        } catch { }
+      },
+      onMessage: (payload) => {
+        try {
+          if (payload?.type === 'joined') {
+            joinedRef.current = true;
+            const id = typeof payload.clientId === 'string' ? payload.clientId : null;
+            setClientId(id);
+            console.log('[game] joined ack', { roomId: payload.roomId, clientId: id });
+            // Begin hello handshake only after joined ack
+            const sendHello = () => {
+              const ev: any = { type: 'hello' };
+              if (address) ev.address = address;
+              if (verification?.isHumanVerified) {
+                ev.identity = { human: true, ageOver21: !!verification.ageOver21, ageOver18: !!verification.ageOver18 };
+              }
+              const s = wsRef.current;
+              if (s && s.isConnected) {
+                s.send({ type: 'broadcast', event: ev });
+                // Also send initial score and address
+                s.send({ type: 'broadcast', event: { type: 'score_update', score: playerScore, from: address } });
+                if (address) {
+                  s.send({ type: 'broadcast', event: { type: 'address_update', address: address, from: address } });
+                }
+              }
+            };
+            try { sendHello(); helloAttemptsRef.current = 1; } catch { }
+            helloIntervalRef.current = window.setInterval(() => {
+              if (hasOpponentHello || helloAttemptsRef.current >= 5) {
+                if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
+                return;
+              }
+              try { sendHello(); helloAttemptsRef.current += 1; } catch { }
+            }, 2000);
+            return;
+          }
+          if (payload?.type === 'event' && payload?.event) {
+            const ev = payload.event;
+            const senderId: string | undefined = typeof payload.senderId === 'string' ? payload.senderId : undefined;
+            const isSelf = !!senderId && !!clientId && senderId === clientId;
+            if (ev.type === 'hello') {
+              if (!isSelf) {
+                if (ev.address) setOpponentDisplay(ev.address);
+                setIsLive(true);
+                setHasOpponentHello(true);
+                if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
+                console.log('[game] hello received from opponent', { senderId });
+              }
+            } else if (ev.type === 'answer') {
+              if (!isSelf) {
+                if (ev.isCorrect) setOpponentScore((s) => s + 1);
+                console.log('[game] opponent answer', { senderId, isCorrect: ev.isCorrect });
+              }
+            } else if (ev.type === 'score_update') {
+              // Real-time score update
+              if (!isSelf && ev.score !== undefined) {
+                setOpponentScore(ev.score);
+                console.log('[game] opponent score update', { senderId, score: ev.score });
+              }
+            } else if (ev.type === 'address_update') {
+              // Real-time address update
+              if (!isSelf && ev.address) {
+                setOpponentDisplay(ev.address);
+                console.log('[game] opponent address update', { senderId, address: ev.address });
+              }
             }
           }
-        }
-      } catch {}
-    };
-    ws.onerror = (e) => { console.error('[game] ws error', e); };
-    ws.onclose = (evt) => {
-      console.error('[game] ws closed', { code: (evt as CloseEvent).code, reason: (evt as CloseEvent).reason });
-      wsRef.current = null;
-      if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
-    };
+        } catch { }
+      },
+      onError: (e) => { console.error('[game] ws error', e); },
+      onClose: (evt) => {
+        console.error('[game] ws closed', { code: evt.code, reason: evt.reason });
+        if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
+      },
+      reconnect: true,
+      maxReconnectAttempts: 10,
+      reconnectDelay: 2000,
+    });
+    
+    wsRef.current = ws;
+    
+    // Initialize computer opponent if applicable
+    if (isComputerOpponent && !hasOpponentHello) {
+      setHasOpponentHello(true);
+      setIsLive(true);
+      setOpponentDisplay('🤖 Computer');
+    }
+    
     return () => {
-      try { ws.close(); } catch {}
-      wsRef.current = null;
+      ws.close();
       if (helloIntervalRef.current) { clearInterval(helloIntervalRef.current); helloIntervalRef.current = null; }
+      if (computerAnswerTimeoutRef.current) { clearTimeout(computerAnswerTimeoutRef.current); computerAnswerTimeoutRef.current = null; }
     };
   }, [duelId, category, verification?.isHumanVerified, verification?.ageOver18, verification?.ageOver21]);
 
@@ -247,31 +316,56 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
       toast.error('Verification required. Sign in with Self  in wallet tab to answer in live matches.');
       return;
     }
-    
+
     soundEffects.playClick();
     setSelectedAnswer(index);
     setShowResult(true);
 
     const isCorrect = index === question.correct;
     setPlayerAnswers([...playerAnswers, isCorrect]);
-    
+
+    const newScore = isCorrect ? playerScore + 1 : playerScore;
     if (isCorrect) {
       soundEffects.playCorrect();
-      setPlayerScore(playerScore + 1);
+      setPlayerScore(newScore);
     } else {
       soundEffects.playWrong();
     }
 
-    // Broadcast answer to room participants/spectators
+    // Broadcast answer, score, and address to room participants/spectators in real-time
     try {
       const ws = wsRef.current;
-      if (ws && ws.readyState === 1 && !isSpectator && joinedRef.current) {
-        ws.send(JSON.stringify({ type: 'broadcast', event: { type: 'answer', index, isCorrect, from: address || 'local' } }));
+      if (ws && ws.isConnected && !isSpectator && joinedRef.current) {
+        const newScore = isCorrect ? playerScore + 1 : playerScore;
+        // Send answer
+        ws.send({ type: 'broadcast', event: { type: 'answer', index, isCorrect, from: address || 'local' } });
+        // Send real-time score update
+        ws.send({ type: 'broadcast', event: { type: 'score_update', score: newScore, from: address || 'local' } });
+        // Send address update if available
+        if (address) {
+          ws.send({ type: 'broadcast', event: { type: 'address_update', address: address, from: address } });
+        }
       }
-    } catch {}
+    } catch { }
 
-    // Do not simulate opponent answers in live matches
-    if (!isLive) {
+    // Simulate computer opponent answer (with difficulty - 60% correct rate)
+    if (isComputerOpponent && question) {
+      // Clear any existing timeout
+      if (computerAnswerTimeoutRef.current) {
+        clearTimeout(computerAnswerTimeoutRef.current);
+      }
+      // Computer answers after 1-3 seconds (simulating thinking time)
+      const thinkTime = 1000 + Math.random() * 2000;
+      computerAnswerTimeoutRef.current = window.setTimeout(() => {
+        const computerCorrect = Math.random() < 0.6; // 60% accuracy
+        const computerAnswer = computerCorrect ? question.correct : Math.floor(Math.random() * question.options.length);
+        if (computerCorrect) {
+          setOpponentScore((s) => s + 1);
+        }
+        console.log('[game] Computer opponent answered', { correct: computerCorrect, answer: computerAnswer });
+      }, thinkTime);
+    } else if (!isLive) {
+      // For practice mode, simulate random opponent
       const opponentCorrect = Math.random() > 0.3;
       if (opponentCorrect) {
         setOpponentScore(opponentScore + 1);
@@ -281,17 +375,92 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
     setTimeout(nextQuestion, 2000);
   };
 
-  const nextQuestion = () => {
+  const confirmResultOnChain = async (winnerAddress: string) => {
+    if (!duelId || !walletClient || !address || !DUEL_CONTRACT_ADDRESS) {
+      console.warn('[GameDuelScreen] Cannot confirm result - missing required data');
+      return false;
+    }
+
+    try {
+      setConfirmingResult(true);
+      const wc = walletClient;
+      
+      // Ensure we're on Celo
+      const chainId = await wc.getChainId();
+      if (chainId !== celoChain.id) {
+        toast.error('Please switch to Celo Mainnet');
+        return false;
+      }
+
+      // For computer duels, use finishComputerDuel; otherwise use confirmResult
+      const [account] = await wc.getAddresses();
+      const functionName = isComputerOpponent ? 'finishComputerDuel' : 'confirmResult';
+      const data = encodeFunctionData({
+        abi: duelManagerAbi,
+        functionName: functionName as any,
+        args: [duelId as `0x${string}`, winnerAddress as `0x${string}`],
+      });
+      
+      const DIVVI_CONSUMER: `0x${string}` = '0x900f96DD68CA49001228348f1A2Cd28556FB62dd';
+      const tag = getReferralTag({ user: account, consumer: DIVVI_CONSUMER });
+      const fullData = (data + tag.slice(2)) as `0x${string}`;
+      
+      const txHash = await wc.sendTransaction({
+        account,
+        to: DUEL_CONTRACT_ADDRESS,
+        data: fullData,
+      });
+      
+      toast.success('Confirming result on-chain...', { description: 'Transaction submitted' });
+      
+      // Wait for transaction
+      const { viemPublicClient } = await import('../lib/blockchain');
+      await viemPublicClient.waitForTransactionReceipt({ hash: txHash });
+      
+      // Submit referral
+      try {
+        await submitReferral({ txHash, chainId });
+      } catch (e) {
+        console.warn('[GameDuelScreen] Referral submission failed:', e);
+      }
+      
+      toast.success('Result confirmed! Prize will be distributed.');
+      return true;
+    } catch (error: any) {
+      console.error('[GameDuelScreen] Failed to confirm result:', error);
+      const msg = error?.shortMessage || error?.message || 'Failed to confirm result';
+      toast.error(msg);
+      return false;
+    } finally {
+      setConfirmingResult(false);
+    }
+  };
+
+  const nextQuestion = async () => {
     if (currentQuestion < (questions.length || 0) - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer(null);
       setShowResult(false);
       setTimeLeft(10);
     } else {
+      // Game finished - determine winner
       const won = playerScore >= opponentScore;
       const totalPool = stake * 2;
       const fee = totalPool * 0.05;
       const prize = won ? totalPool - fee : 0;
+      
+      // If this is a live match with duelId, confirm result on-chain
+      // BOTH players must confirm - this ensures proper on-chain settlement
+      // Skip for practice mode (stake === 0)
+      if (duelId && isLive && address && opponentDisplay && opponentDisplay !== 'Opponent' && stake > 0) {
+        const winnerAddress = won ? address : opponentDisplay;
+        // Always confirm - the contract requires both players to confirm
+        const confirmed = await confirmResultOnChain(winnerAddress);
+        if (!confirmed) {
+          toast.error('Failed to confirm result on-chain. Please try again or contact support.');
+        }
+      }
+      
       onGameFinish(won, playerScore, questions.length || DEFAULT_QUESTION_COUNT, prize);
     }
   };
@@ -319,8 +488,8 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
               </span>
             </div>
           </div>
-          <Progress 
-            value={(timeLeft / 10) * 100} 
+          <Progress
+            value={(timeLeft / 10) * 100}
             className={`h-2 bg-slate-800 transition-colors ${timeLeft <= 3 ? 'bg-red-900/30' : ''}`}
           />
         </div>
@@ -339,7 +508,7 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
           <div className="text-slate-500 text-2xl">⚔️</div>
           <div className="flex items-center gap-3">
             <div className="text-right">
-            <div className="text-white text-sm">{shorten(opponentName)}</div>
+              <div className="text-white text-sm">{shorten(opponentName)}</div>
               <div className="text-3xl text-blue-400">{opponentScore}</div>
             </div>
             <Avatar className="w-12 h-12 border-2 border-blue-400 shadow-lg shadow-blue-400/20">
@@ -378,15 +547,14 @@ export function GameDuelScreen({ stake, opponent, duelId, spectator, creator, ca
                 key={index}
                 onClick={() => handleAnswer(index)}
                 disabled={showResult || isSpectator || !question}
-                className={`w-full h-16 text-lg justify-start px-6 rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] ${
-                  showCorrect
+                className={`w-full h-16 text-lg justify-start px-6 rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] ${showCorrect
                     ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-500 hover:to-emerald-600 border-2 border-emerald-400 shadow-lg shadow-emerald-500/50 animate-pulse text-white'
                     : showIncorrect
-                    ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-500 hover:to-red-600 border-2 border-red-400 shadow-lg shadow-red-500/50 text-white'
-                    : isSelected
-                    ? 'bg-emerald-400/20 border-2 border-emerald-400 text-white'
-                    : 'bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700 border-2 border-slate-700 hover:border-emerald-400/30 text-white'
-                }`}
+                      ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-500 hover:to-red-600 border-2 border-red-400 shadow-lg shadow-red-500/50 text-white'
+                      : isSelected
+                        ? 'bg-emerald-400/20 border-2 border-emerald-400 text-white'
+                        : 'bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700 border-2 border-slate-700 hover:border-emerald-400/30 text-white'
+                  }`}
                 variant="outline"
               >
                 <span className="flex-1 text-left text-white">{option}</span>
